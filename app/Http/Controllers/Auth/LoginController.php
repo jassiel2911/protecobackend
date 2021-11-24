@@ -26,7 +26,31 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    public function redirectTo(){
+         if (auth()->user()->role == 0) {
+            $cursos = Curso::all()->where('tipo','inter');
+            return route('home');
+         } else if (auth()->user()->role == 1) {
+            return route('becarios.home');
+         } else{
+            return route('admin.index');
+         }
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, 
+        [
+            'email' => ['required'],
+            'password' => ['required'],
+        ],
+        [
+            'email.required'=>'Por favor ingresa tu correo electrónico',
+            'password.required'=>'Por favor crea una contraseña',
+        ]
+        );
+    }
 
     /**
      * Create a new controller instance.

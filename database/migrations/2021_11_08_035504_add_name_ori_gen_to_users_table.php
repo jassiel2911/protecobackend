@@ -14,10 +14,7 @@ class AddNameOriGenToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('patname');
-            $table->string('matname');
-            $table->integer('origin');
-            $table->integer('gender');
+            
         });
     }
 

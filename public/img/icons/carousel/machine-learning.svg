@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 3 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-3-Copy">
+            <g id="Group-3" transform="translate(3.000000, 3.000000)">
+                <circle id="Oval" fill="#FCBD5E" cx="97" cy="97" r="97"></circle>
+                <path d="M91,173 L123.128817,173 C136.002646,172.305568 142.433985,164.298626 142.422834,148.979176 C142.411683,133.659725 142.411764,120.662568 142.423077,109.987703" id="Path-5" stroke="#173651" stroke-width="6" stroke-dasharray="6"></path>
+                <g id="Group" transform="translate(4.000000, 80.000000)" stroke-width="6">
+                    <polygon id="Polygon" stroke="#183651" points="56 11 98.7975432 42.0942353 82.4503364 92.4057647 29.5496636 92.4057647 13.2024568 42.0942353"></polygon>
+                    <path d="M55.5,17.5 L55.5,46.0394464" id="Line-49" stroke="#1A3750" stroke-linecap="square"></path>
+                    <path d="M22,42 L49.5669883,49.3865523" id="Line-49-Copy-4" stroke="#1A3750" stroke-linecap="square"></path>
+                    <path d="M62,42 L89.5669883,49.3865523" id="Line-49-Copy-5" stroke="#1A3750" stroke-linecap="square" transform="translate(75.783494, 45.693276) scale(-1, 1) translate(-75.783494, -45.693276) "></path>
+                    <path d="M60,59 L74.2697232,83.7158856" id="Line-49-Copy" stroke="#1A3750" stroke-linecap="square"></path>
+                    <path d="M51.75,61.4426316 L37.4802768,86.1585172" id="Line-49-Copy-2" stroke="#1A3750" stroke-linecap="square"></path>
+                    <circle id="Oval-Copy" stroke="#183651" fill="#FFFFFF" cx="55.5" cy="56.5" r="14.5"></circle>
+                    <circle id="Oval-Copy-2" stroke="#183651" fill="#FFFFFF" cx="98.5" cy="42.5" r="11.5"></circle>
+                    <circle id="Oval-Copy-3" stroke="#183651" fill="#FFFFFF" cx="55.5" cy="11.5" r="11.5"></circle>
+                    <circle id="Oval-Copy-5" stroke="#183651" fill="#FFFFFF" cx="29.5" cy="92.5" r="11.5"></circle>
+                    <circle id="Oval-Copy-6" stroke="#183651" fill="#FFFFFF" cx="83.5" cy="92.5" r="11.5"></circle>
+                    <circle id="Oval-Copy-4" stroke="#183651" fill="#FFFFFF" cx="11.5" cy="42.5" r="11.5"></circle>
+                </g>
+                <g id="Group-2" transform="translate(105.000000, 15.000000)">
+                    <rect id="Rectangle-5" stroke="#173651" stroke-width="6" fill="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" x="29" y="86" width="18" height="21"></rect>
+                    <path d="M0,37 C0,16.5654643 16.5654643,0 37,0 C57.4345357,0 74,16.5654643 74,37 C74,50.9006082 64.0000154,59.6682392 59.0000077,69.3341196 C56.3333359,75.7780399 55,84.3333333 55,95 L20,95 C20.6666667,82.3333333 19.6666667,73.9573362 17,69.8720087 C13,63.7440175 0,51.3056304 0,37 Z" id="Combined-Shape" stroke="#173651" stroke-width="6" fill="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M52,55 C44.6666667,64.4805382 41,73.4805382 41,82 L41,92 L33,92 L33,82 C33,73.4805382 29.3333333,64.4805382 22,55 C16,47.5094771 13,41.1761438 13,36 C13,22.745166 23.745166,12 37,12 C50.254834,12 61,22.745166 61,36 C61,41.1761438 58,47.5094771 52,55 Z" id="Combined-Shape" fill="#2AA0DA"></path>
+                    <path d="M37,23 C45,23.6666667 49,27.6666667 49,35" id="Path-4" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"></path>
+                </g>
+                <path d="M106,85 C94,71 91,54.3333333 97,35 C103,15.6666667 118,5 142,3 C165.333333,5 180.333333,14.6666667 187,32 C193.666667,49.3333333 191.666667,66.3333333 181,83" id="Path-7" stroke="#173651" stroke-width="6" stroke-dasharray="6"></path>
+            </g>
+        </g>
+    </g>
+</svg>

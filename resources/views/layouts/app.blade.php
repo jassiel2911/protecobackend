@@ -7,77 +7,141 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <title>PROTECO</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mediaqueries.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/glider.min.css') }}" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('css/glider.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+    <link rel="stylesheet" href="{{asset('css/mediaqueries.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+
+    <link rel="shortcut icon" href="{{asset('img/icons/personales/logo.png')}}">
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+    
+    <!-- Header -->
+    <header class="header header-home">
+        <!-- Navbar -->
+        <nav class="nav nav-home container">
+            <div class="nav-ico">
+                <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/logo_color.png" alt="PROTECO"> -->
+                <div class="d-flex">
+                    <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/logo_negro.png" alt="PROTECO">
+                    <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/UNAM_logobn1.png" alt="PROTECO">
+                    <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/fi_negro.svg" alt="PROTECO"> -->
                 </div>
-            </div>
-        </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+                <img class="logo ico-proteco nav-logo nav-logo_blanco" src="img/icons/personales/logo_blanco.png" alt="PROTECO">
+            </div>
+            <button class="nav-toggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu nav-home_menu">
+                <li class="nav-menu_item">
+                    <a href="#proteco" class="nav-menu_link nav-link active" >Inicio</a>
+                </li>
+                <li class="nav-menu_item">
+                    <a href="#cursos-proteco" class="nav-menu_link nav-link" >Cursos</a>
+                </li>
+                <li class="nav-menu_item">
+                    <a href="#talleres-proteco" class="nav-menu_link nav-link" >Talleres</a>
+                </li>
+                <li class="nav-menu_item">
+                    <a href="#asesorias-proteco" class="nav-menu_link nav-link" id="nav-asesorias">Asesorías</a>
+                </li>
+                <li class="nav-menu_item">
+                    <a href="#contacto-proteco" class="nav-menu_link nav-link" id="nav-contacto">Contacto</a>
+                </li>
+                @guest
+                <li class="nav-menu_item menu_item-btn">
+                    <a href="{{route('register')}}" class="nav-menu_link nav-link btn-form btn-azul-outline" id="nav-contacto">Crear cuenta</a>
+                </li>
+                <li class="nav-menu_item menu_item-btn">
+                    <a href="{{route('login')}}" class="nav-menu_link nav-link btn-form btn-azul text-blanco" id="nav-contacto">Iniciar sesión</a>
+                </li>
+                @else
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{auth()->user()->fname}}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        @if(auth()->user()->role==2)
+                            <li><a class="dropdown-item" href="{{route('admin.index')}}">Administrador</a></li>
+                        @elseif(auth()->user()->role==2)
+                            <li><a class="dropdown-item" href="#">Instructor</a></li>
+                        @endif
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            Cerrar sesión
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </ul>
+                    </li>
+                    
+                @endguest
+            </ul>
+        </nav>
+    </header>
+   
+    @yield('content')
+
+    <!-- Footer -->
+    <footer class="home-footer container-fluid" id="contacto-proteco">
+        <div class="row home-footer_row">
+            <div class="col-12 col-lg-4 footer-col-logo">
+                <img class="img-fluid footer-logo mobile-none" src="{{asset('img/icons/personales/logo.png')}}" alt="Facultad de Ingenieria">
+            </div>
+            <!-- Boton de email -->
+            <div class="col-12 col-lg-4 footer-col-contacto">
+                <h4 class="text-azul">Contacto</h4>
+                <a class="text-negro" target="_blank" href="mailto:cursosproteco@gmail.com">cursosproteco@gmail.com</a>
+                <p>55 5622 3045</p>
+                <p>Anexo Facultad Ingeniería Edificio Q "Luis G. Valdés Vallejo Laboratorio Q220, C.U., 04510 Ciudad de México, CDMX</p>
+            </div>
+            <!-- Boton de telefono -->
+            <div class="col-12 col-lg-4 footer-col-redes">
+                <a target="_blank" href="">
+                    <img src="img/icons/generales/fb-azul.svg" alt="">
+                </a>
+                <a target="_blank" href="">
+                    <img src="img/icons/generales/ig-azul.svg" alt="">
+                </a>
+                <a target="_blank" href="">
+                    <img src="img/icons/generales/tw-azul.svg" alt="">
+                </a>
+                <a target="_blank" href="">
+                    <img src="img/icons/generales/in-azul.svg" alt="">
+                </a>
+                <a target="_blank" href="">
+                    <img src="img/icons/generales/yt-azul.svg" alt="">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/glider.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
+
 </body>
 </html>

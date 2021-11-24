@@ -49,11 +49,27 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+        return Validator::make($data, 
+        [
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            'origin' => ['required'],
+            'gender' => ['required'],
+            'aviso'=>['required']
+        ],
+        [
+            'fname.required'=>'Por favor ingresa tu(s) nombre(s)',
+            'lname.required'=>'Por favor ingresa tus apellidos',
+            'email.required'=>'Por favor ingresa tu correo electrónico',
+            'password.required'=>'Por favor crea una contraseña',
+            'password.confirmed'=>'Las contraseñas no coinciden',
+            'origin.required'=>'Por favor indica tu procedencia',
+            'gender.required'=>'Esta información se utilizará unicamente para fines estadísticos',
+            'aviso.required' => 'Por favor lee nuestro Aviso de Privacidad',
+        ]
+        );
     }
 
     /**
@@ -65,8 +81,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'fname' => $data['fname'],
+            'lname' => $data['lname'],
             'email' => $data['email'],
+            'origin' => $data['origin'],
+            'gender' => $data['gender'],
+            'aviso' => $data['aviso'],
             'password' => Hash::make($data['password']),
         ]);
     }
