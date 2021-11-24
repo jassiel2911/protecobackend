@@ -13,8 +13,11 @@ class AdminCursosController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         return view('admin.courses.index');
 
+=======
+>>>>>>> d3b9c97d3341b7593ce447e27fd81283d103d2f0
     }
 
     /**
