@@ -1,16 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminCursosController;
 use App\Http\Controllers\BecariosController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\CartController;
 
 
 
-=======
->>>>>>> d3b9c97d3341b7593ce447e27fd81283d103d2f0
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +29,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-<<<<<<< HEAD
 Route::get('/becarios', [App\Http\Controllers\AdminUserController::class, 'becarios'])->name('becarios');
 Route::get('/admins', [App\Http\Controllers\AdminUserController::class, 'admins'])->name('admins');
 
@@ -44,8 +41,8 @@ Route::resource('cursos', CursoController::class);
 Route::get('/cursos/inters', [App\Http\Controllers\CursoController::class, 'inters'])->name('cursos.inters');
 Route::get('/cursos/semestrales', [App\Http\Controllers\CursoController::class, 'semestrales'])->name('semestrales');
 
+Route::resource('carrito', CartController::class);
 
 
 
-=======
->>>>>>> d3b9c97d3341b7593ce447e27fd81283d103d2f0
+
