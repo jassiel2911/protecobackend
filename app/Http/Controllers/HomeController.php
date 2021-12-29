@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class HomeController extends Controller
 {
@@ -14,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -24,7 +28,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::all()->where('tipo','inter');
-        return view('home', compact('cursos'));
+        $cursos = Curso::all()->where('tipo','Intersemestral');
+        $carts=0;
+
+         if (Auth::check()) {
+            $carts = Cart::all()->where('user_id', auth()->user()->id);
+        }
+        $total=0;
+        $i=0;
+        return view('home', compact('cursos','carts','total','i'));
     }
 }

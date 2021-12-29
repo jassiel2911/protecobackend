@@ -11,6 +11,10 @@ class Curso extends Model
     use HasFactory;
 
     public function carts(){
-        return $this->hasMany(Cart::class);
+        return $this->hasMany('App\Models\Cart');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
     }
 }

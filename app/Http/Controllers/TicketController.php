@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Ticket;
+use App\Models\TicketItem;
 use App\Models\Cart;
-use App\Models\Curso;
+use App\Models\User;
 
 
-class CartController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +19,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
-        return "hola";
+        
     }
 
     /**
@@ -39,20 +40,43 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::check()) {
-            $cart = new Cart;
-            $cart->user_id=auth()->user()->id;
-            $cart->curso_id=$request->curso_id;
-            $cart->save();
+        $user_id = auth()->user()->id;
+        $carts = Cart::where('user_id',$user_id)->get();
 
-            $carts = Cart::where('user_id', auth()->user()->id)->get();
-            return redirect()->back()->with('success','success');
-        }
-        else{
-            return redirect('/login')->with('error','Para agregar cursos a tu carrito por favor inicia sesión');
-        }
+        $ticket = new Ticket();
+        $id = $ticket->id;
 
-       
+        $ticket->user_id = $user_id;
+        // $ticket->ficha_id = 000;
+        // $ticket->comprobante_id = 000;
+
+        $ticket->status = "Pendiente de ficha";
+        $ticket->total = $request->total;
+        $ticket->semestre = "22-1";
+
+        $ticket->save();
+
+        foreach($carts as $cart){
+            $ticket_item = new TicketItem();
+            $ticket_item->curso_id=$cart->curso_id;
+            $ticket_item->ticket_id= $ticket->id;
+            if(auth()->user()->origin == "Comunidad UNAM"){
+                $ticket_item->precio = 500;
+            }else if(auth()->user()->origin == "Alumno externo"){
+                $ticket_item->precio = 600;
+            }else if(auth()->user()->origin == "Publico en general"){
+                $ticket_item->precio = 700;
+            }
+
+            $ticket_item->save();
+        }
+        $total=0;
+        $i=0;
+        Cart::where('user_id',$user_id)->delete();
+
+        $ticket_items = TicketItem::all()->where('ticket_id',$ticket->id);
+
+        return view('ticket-success', ['ticket_items'=>$ticket_items, 'total'=>$total, 'i'=>$i]);
     }
 
     /**
@@ -63,10 +87,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        $carts = Cart::where('user_id', auth()->user()->id)->get();
-        $i=0;
-        $total=0;
-        return view('cart', compact('carts','i','total'));
+        //
     }
 
     /**

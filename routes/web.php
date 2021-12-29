@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminCursosController;
 use App\Http\Controllers\BecariosController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\TicketController;
+
 
 
 
@@ -21,15 +23,15 @@ use App\Http\Controllers\CartController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/becarios', [App\Http\Controllers\AdminUserController::class, 'becarios'])->name('becarios');
+Route::get('/users/becarios', [App\Http\Controllers\AdminUserController::class, 'becarios'])->name('users.becarios');
 Route::get('/admins', [App\Http\Controllers\AdminUserController::class, 'admins'])->name('admins');
 
 
@@ -38,10 +40,14 @@ Route::resource('admin', AdminUserController::class);
 Route::resource('admincursos', AdminCursosController::class);
 
 Route::resource('cursos', CursoController::class);
+Route::resource('becarios', BecariosController::class);
+Route::resource('ticket', TicketController::class);
+
+
 Route::get('/cursos/inters', [App\Http\Controllers\CursoController::class, 'inters'])->name('cursos.inters');
 Route::get('/cursos/semestrales', [App\Http\Controllers\CursoController::class, 'semestrales'])->name('semestrales');
 
-Route::resource('carrito', CartController::class);
+Route::resource('cart', CartController::class);
 
 
 

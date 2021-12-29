@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\Curso;
 
 class LoginController extends Controller
 {
@@ -32,7 +33,7 @@ class LoginController extends Controller
             $cursos = Curso::all()->where('tipo','inter');
             return route('home');
          } else if (auth()->user()->role == 1) {
-            return route('becarios.home');
+            return route('becarios.index');
          } else{
             return route('admin.index');
          }

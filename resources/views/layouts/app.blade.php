@@ -35,8 +35,8 @@
             <div class="nav-ico">
                 <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/logo_color.png" alt="PROTECO"> -->
                 <div class="d-flex">
-                    <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/logo_negro.png" alt="PROTECO">
-                    <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/UNAM_logobn1.png" alt="PROTECO">
+                    <img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/logo_negro.png')}}" alt="PROTECO">
+                    <img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/UNAM_logobn1.png')}}" alt="PROTECO">
                     <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/fi_negro.svg" alt="PROTECO"> -->
                 </div>
 
@@ -47,7 +47,7 @@
             </button>
             <ul class="nav-menu nav-home_menu">
                 <li class="nav-menu_item">
-                    <a href="#proteco" class="nav-menu_link nav-link active" >Inicio</a>
+                    <a href="{{route('home')}}" class="nav-menu_link nav-link active" >Inicio</a>
                 </li>
                 <li class="nav-menu_item">
                     <a href="#cursos-proteco" class="nav-menu_link nav-link" >Cursos</a>
@@ -69,17 +69,25 @@
                     <a href="{{route('login')}}" class="nav-menu_link nav-link btn-form btn-azul text-blanco" id="nav-contacto">Iniciar sesión</a>
                 </li>
                 @else
+                    <!-- para admins -->
+                    <li class="nav-menu_item">
+                        <a href="{{route('cart.show', auth()->user()->id)}}" class="nav-menu_link nav-link" id="nav-contacto">Carrito</a>
+                    </li>
+                    @if(auth()->user()->role==2)
+                    <li class="nav-menu_item">
+                        <a href="{{route('admin.index')}}" class="nav-menu_link nav-link" id="nav-asesorias">Panel de administrador</a>
+                    </li>
+                    @elseif(auth()->user()->role==1)
+                    <li class="nav-menu_item">
+                        <a href="{{route('becarios.index')}}" class="nav-menu_link nav-link" id="nav-contacto">Panel de becario</a>
+                    </li>
+                    @endif
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{auth()->user()->fname}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        @if(auth()->user()->role==2)
-                            <li><a class="dropdown-item" href="{{route('admin.index')}}">Administrador</a></li>
-                        @elseif(auth()->user()->role==2)
-                            <li><a class="dropdown-item" href="#">Instructor</a></li>
-                        @endif
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">

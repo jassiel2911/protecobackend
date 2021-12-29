@@ -50,7 +50,7 @@
           <div class="row">
             <label class="col" for="">Rol</label>
           </div>
-          <select class="form-select" name="gender">
+          <select class="form-select" name="role">
            <option value="0"  {{ $user->role == '0' ? 'selected' : '' }}>Asistente</option>
             <option value="1"  {{ $user->role == '1' ? 'selected' : '' }}>Becario(a)</option>
             <option value="2"  {{ $user->role == '2' ? 'selected' : '' }}>Administrador(a)</option>

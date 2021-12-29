@@ -14,6 +14,10 @@ class User extends Authenticatable
         return $this->hasMany(Cart::class);
     }
 
+    public function cursos(){
+        return $this->hasMany(Curso::class);
+    }
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -29,7 +33,6 @@ class User extends Authenticatable
         'origin',
         'gender',
         'aviso',
-
     ];
 
     /**

@@ -2,6 +2,72 @@
 
 @section('content')
 <main>
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" >
+      Launch demo modal
+    </button> -->
+
+    <!-- Modal -->
+    @if(session('success'))
+     <script>
+        window.onload = function() {
+            var element = document.getElementById("carousel-logos");
+            element.scrollIntoView();
+        };
+     </script>
+    <div class="modal fade show d-block justify-content-center align-content-center align-items-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: rgba(0,0,0,.5)">
+      <div class="modal-dialog p-3">
+        <div class="modal-content p-4">
+          <div class="modal-header">
+            <h3 class="modal-title text-rosa" id="exampleModalLabel">Tu carrito</h3>
+            
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+          </div>
+          <div class="modal-body">
+            @foreach($carts as $cart)
+                <div class=" d-flex align-content-center align-items-center justify-content-between">
+                    <div class="d-flex align-content-center align-items-center">
+                        <img class="img-fluid" src="{{asset('/img/logos/'.$cart->curso->imagen)}}" alt="" width="70">
+                        <h5 class="text-start mx-4">{{$cart->curso->nombre}}</h5>
+                    </div>
+                    <p class="d-none">{{$i = $i+1}}</p>
+                    @if(auth()->user()->origin == "Comunidad UNAM")
+                    <p class="text-end">$500</p>
+                    <p class="d-none">{{$total = $total + 500}}</p>
+                    @elseif(auth()->user()->origin == "Alumno externo")
+                    <p class="text-end">$600</p>
+                    <p class="d-none">{{$total = $total + 600}}</p>
+
+                    @elseif(auth()->user()->origin == "Publico en general")
+                    <p class="text-end">$700</p>
+                    <p class="d-none">{{$total = $total + 700}}</p>
+                    @endif
+                </div><br>
+
+            @endforeach
+            <hr>
+            <div class="d-flex justify-content-end">
+                <p><strong>Total: </strong>$ {{$total}}</p>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="{{route('cart.show', auth()->user()->id)}}" class="btn-form text-center text-dark bg-light mx-3">Ver carrito</a>
+                <a href="" class="btn-form text-center text-white bg-rosa mx-3">Generar comprobante</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endif
+    <script>
+        function closeModal(){
+            // alert('close');
+            var modal = document.getElementById("exampleModal");
+            modal.classList.remove("show");
+            modal.classList.remove("d-block");
+        }
+    </script>
+    <!-- modal ex -->
+    
 
     <!-- Presentacion -->
     <section class="section-presentacion container-fluid" id="proteco">
@@ -36,7 +102,7 @@
         <h3 class="text-center"><small>Del 10 al 28 de enero del 2022</small></h3>
 			
         <!-- Carousel logos -->
-        <div class="owl-carousel carousel-logos">
+        <div class="owl-carousel carousel-logos" id="carousel-logos">
             <!-- Python -->
             <div><img class="padding-logo" src="./img/icons/carousel/python.svg" alt="Python" title="Python"> </div>
             <!-- C -->
@@ -66,7 +132,68 @@
             <!-- bases de datos -->
             <div><img class="padding-logo" src="./img/icons/carousel/db.svg" alt="Bases de Datos"  title="Bases de Datos"></div>
         </div>
-
+          <div class="container" id="container-cursos">
+            <div class="row">
+                @foreach($cursos as $curso)
+                <div class="col">
+                    <div class="scene scene--card ">
+                        <div class="cursos-card shadow-lg" id="card-t">
+                            <div class="card__face card__face--front">
+                                <img class="iconos-cursos" src="{{asset('/img/logos/'.$curso->imagen)}}" alt="Java">
+                                <div class="c-body text-start">
+                                    <h3 class="text-azul text-center">{{$curso->nombre}}</h3>
+                                    <hr>
+                                    <p>Del {{\Carbon\Carbon::parse($curso->fecha_inicio)->format('j F, Y') }} al {{\Carbon\Carbon::parse($curso->fecha_fin)->format('j F, Y') }} </p>
+                                        <br>
+                                    <p>De {{$curso->hora_inicio}} al {{$curso->hora_fin}} </p>
+                                    <br>
+                                </div>
+                                <div class="c-footer">
+                                    <div class="tag"><small>{{$curso->cat}}</small></div>
+                                    <div class="c-footer-links">
+                                        <form action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                             <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                             <input type="hidden" name="curso_id" value="{{$curso->id}}">
+                                            <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
+                                                <img src="img/icons/generales/carrito_compras.png" alt="">
+                                            </button>
+                                            
+                                        </form>
+                                        <button class="c-footer-link card__flip">
+                                            <img src="img/icons/generales/menu_puntos.png" alt="">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card__face card__face--back">
+                                <div class="back-body">
+                                    <p class="p"><span>Antecedentes:</span> {{$curso->antecedentes}}</p>
+                                    <p class="p"><span>Equipo:</span>{{$curso->equipo}}</p>
+                                    <p class="p"><span>Días:</span> {{$curso->dias}}</p>
+                                    <hr>
+                                    <p class="p-grande text-center text-azul">Precios</p>
+                                    <p class="p"><span>Comunidad UNAM:</span> ${{$curso->precio_unam}}</p>
+                                    <p class="p"><span>Alumnos externos:</span> ${{$curso->precio_ext}}</p>
+                                    <p class="p"><span>Público general:</span> ${{$curso->precio_gral}}</p>
+                                </div>
+                                <div class="back-footer">
+                                    <div class="back-footer-links">
+                                        <a class="text-azul" target="_blank" href="{{asset('/temarios/'.$curso->temario)}}">Ver temario</a>
+                                        <button class="c-footer-link card__flip">
+                                            <img src="img/icons/generales/menu_puntos.png" alt="">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                
+            </div><br>
+            <a class="d-block text-center text-rosa" href="">Ver todos</a>
+        </div>
         <!-- Aprende con nosotros -->
         <div class="home-aprende">
             <img class="img-fluid mobile-none" src="img/base/cursos.svg" alt="">
@@ -225,63 +352,7 @@
             <div role="tablist" class="carousel__indicadores"></div>
         </div>	 -->
 
-        <div class="container">
-            <div class="row">
-                @foreach($cursos as $curso)
-                <div class="col">
-                    <div class="scene scene--card ">
-                        <div class="cursos-card shadow-lg" id="card-t">
-                            <div class="card__face card__face--front">
-                                <img class="iconos-cursos" src="{{asset('/img/logos/'.$curso->imagen)}}" alt="Java">
-                                <div class="c-body">
-                                    <h3 class="text-azul">{{$curso->nombre}}</h3>
-                                    <p>Del {{$curso->fecha_inicio}} </p>
-                                    <p>al {{$curso->fecha_fin}} </p>
-                                    <hr>
-                                    <p>Del {{$curso->hora_inicio}} </p>
-                                    <p>al {{$curso->hora_fin}} </p>
-                                    <br>
-                                </div>
-                                <div class="c-footer">
-                                    <div class="tag"><small>{{$curso->cat}}</small></div>
-                                    <div class="c-footer-links">
-                                        <a class="c-footer-link" href="">
-                                            <img src="img/icons/generales/carrito_compras.png" alt="">
-                                        </a>
-                                        <button class="c-footer-link card__flip">
-                                            <img src="img/icons/generales/menu_puntos.png" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card__face card__face--back">
-                                <div class="back-body">
-                                    <p class="p"><span>Antecedentes:</span> {{$curso->antecedentes}}</p>
-                                    <p class="p"><span>Equipo:</span>{{$curso->equipo}}</p>
-                                    <p class="p"><span>Días:</span> {{$curso->dias}}</p>
-                                    <hr>
-                                    <p class="p-grande text-center text-azul">Precios</p>
-                                    <p class="p"><span>Comunidad UNAM:</span> ${{$curso->precio_unam}}</p>
-                                    <p class="p"><span>Alumnos externos:</span> ${{$curso->precio_ext}}</p>
-                                    <p class="p"><span>Público general:</span> ${{$curso->precio_gral}}</p>
-                                </div>
-                                <div class="back-footer">
-                                    <div class="back-footer-links">
-                                        <a class="text-azul" target="_blank" href="{{asset('/temarios/'.$curso->temario)}}">Ver temario</a>
-                                        <button class="c-footer-link card__flip">
-                                            <img src="img/icons/generales/menu_puntos.png" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                
-            </div><br>
-            <a class="d-block text-center text-rosa" href="">Ver todos</a>
-        </div>
+      
 
 			
             <!-- Formulario -->

@@ -878,8 +878,9 @@ html, body {
 		height: 2rem;
 		margin: auto 0;
 	}
+	
 	.card__face--front .c-footer{
-		display: grid;
+		/* display: grid; */
 		grid-template-columns: 70% 30%;
 	}
 	.c-footer-links{

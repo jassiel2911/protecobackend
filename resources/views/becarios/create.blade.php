@@ -3,7 +3,7 @@
 @section('content')
  <main>
   <section class="container mt-5">
-   <a href="{{route('cursos.index')}}">Regresar</a><br><br>
+   <a href="{{route('becarios.index')}}">Regresar</a><br><br>
     <h1 class="text-rosa text-center">Crear curso</h1><br>
 
     @if(session('success'))
@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <form class="container w-75" action="{{route('cursos.store')}}" method="POST" enctype="multipart/form-data">
+    <form class="container w-75" action="{{route('becarios.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
       <!-- Nombre -->
       <div class="input-div row">
@@ -93,17 +93,20 @@
                 <option value="Avanzado"  >Avanzado</option>
               </select>
           </div>
-          <div class="col-4">
+          <input name="cupo" type="hidden" placeholder="" value="50">
+
+          <!-- <div class="col-4">
             <label for="name" class="form-label">Cupo</label>
-            <input name="cupo" type="number" placeholder="" >
-          </div>
+            <input name="cupo" type="hidden" placeholder="" value="50">
+          </div> -->
           <div class="col-4">
             <label for="name" class="form-label">Semestre</label>
             <select class="form-select" name="semestre" id="auth-select">
                 <option value="22-1" >22-1</option>
             </select>
           </div>
-         <input type="hidden" name="publicado" value="1">
+           <input type="hidden" name="publicado" value="0">
+
         </div>
          <div class="input-div mx-auto mt-3 col-4">
           <input type="submit" class="auth-submit btn btn-rosa" value="Crear">

@@ -41,13 +41,7 @@
                   <a href="{{route('home')}}" class="nav-menu_link nav-link " >Inicio</a>
               </li>
               <li class="nav-menu_item">
-                  <a href="{{route('admin.index')}}" class="nav-menu_link nav-link" >Usuarios</a>
-              </li>
-              <li class="nav-menu_item">
                   <a href="{{route('cursos.index')}}" class="nav-menu_link nav-link" >Cursos</a>
-              </li>
-              <li class="nav-menu_item">
-                  <a href="#asesorias-proteco" class="nav-menu_link nav-link" id="nav-asesorias">Reporte</a>
               </li>
              <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,6 +51,8 @@
                   <li><a class="dropdown-item" href="#">Perfil</a></li>
                   @if(auth()->user()->role==2)
                       <li><a class="dropdown-item" href="{{route('admin.index')}}">Administrador</a></li>
+                  @elseif(auth()->user()->role==2)
+                      <li><a class="dropdown-item" href="#">Instructor</a></li>
                   @endif
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();

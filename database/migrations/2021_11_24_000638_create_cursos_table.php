@@ -17,6 +17,7 @@ class CreateCursosTable extends Migration
             $table->id();
 
             $table->string('nombre');
+            $table->string('semestre');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->time('hora_inicio');
@@ -31,9 +32,15 @@ class CreateCursosTable extends Migration
             $table->string('temario');
             $table->string('imagen');
             $table->string('cat');
-
+            $table->string('nivel');
+            $table->integer('cupo');
+            $table->unsignedBigInteger('titular');
+            $table->integer('inscritos')->default(0);
+            $table->boolean('publicado')->default(0);
 
             $table->timestamps();
+
+            $table->foreign('titular')->references('id')->on('users')->onDelete('cascade');;
         });
     }
 

@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'origin' => ['required'],
+      
             'gender' => ['required'],
             'aviso'=>['required']
         ],
@@ -65,7 +65,7 @@ class RegisterController extends Controller
             'email.required'=>'Por favor ingresa tu correo electrónico',
             'password.required'=>'Por favor crea una contraseña',
             'password.confirmed'=>'Las contraseñas no coinciden',
-            'origin.required'=>'Por favor indica tu procedencia',
+           
             'gender.required'=>'Esta información se utilizará unicamente para fines estadísticos',
             'aviso.required' => 'Por favor lee nuestro Aviso de Privacidad',
         ]
@@ -84,7 +84,7 @@ class RegisterController extends Controller
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'email' => $data['email'],
-            'origin' => $data['origin'],
+            'origin' => $data['origin'], 
             'gender' => $data['gender'],
             'aviso' => $data['aviso'],
             'password' => Hash::make($data['password']),

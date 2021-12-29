@@ -22,14 +22,15 @@
   </section>
   <section class="home-cursos container my-5">
       <section class="container show-curso_lista">
-          <table class="table table-hover">
+          <table class="table table-hover table-striped table-bordered">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
+                <th scope="col">Semestre</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">No. Asistentes</th>
-                <th scope="col">Fecha de inicio</th>
+                <th scope="col">Publicado</th>
               </tr>
             </thead>
             <tbody>
@@ -37,13 +38,25 @@
               <tr>
                 <th scope="row">{{$curso->id}}</th>
                 <td>{{$curso->nombre}}</td>
-                <td>{{$curso->fecha_inicio }} - {{$curso->fecha_fin }}</td>
-                <td>{{$curso->id}}</td>
-                <td>{{$curso->id}}</td>
+                <td>{{$curso->semestre}}</td>
+                <td>{{\Carbon\Carbon::parse($curso->fecha_inicio)->format('j F, Y') }} - {{\Carbon\Carbon::parse($curso->fecha_fin)->format('j F, Y') }}</td>
+                <td>{{$curso->inscritos}}</td>
                 <td>
-                  <a href="admin-user-show.html"><span class="tag-category badge rounded-pill bg-dark">Ver</span></a>
-                  <a href="admin-user-edit.html"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
-                  <a href="curso-edit.html"><span class="tag-category badge rounded-pill bg-dark">Eliminar</span></a>
+                  @if($curso->publicado == 1)
+                    Sí
+                  @else
+                    No
+                  @endif
+                </td>
+                <td>
+                  <form method="POST" action="{{ route('cursos.destroy', $curso->id) }}" >
+                    @csrf
+                    @method('DELETE')
+                    <a href="{{ route('cursos.show', $curso->id) }}"><span class="tag-category badge rounded-pill bg-dark">Ver</span></a>
+                    <a href="{{ route('cursos.edit', $curso->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
+                    <button type="submit" class="border-0"><span class="tag-category badge rounded-pill bg-dark ">Eliminar</span></a>
+                  </form>
+                  
                 </td>
               </tr>
               @endforeach

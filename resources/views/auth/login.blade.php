@@ -7,12 +7,19 @@
       <!-- col morada -->
       <div class="col-morada col-12 col-md-5 bg-lavanda">
         <div class="col-morada_content">
-          <img class="auth-logo" src="{{asset('img/base/logo-bn.png')}}" alt="">
+          <a href="{{route('home')}}"><img class="auth-logo" src="{{asset('img/base/logo-bn.png')}}" alt=""></a>
           <img class="auth-img" src="{{asset('img/base/login.svg')}}" alt="">
         </div>
       </div>
       <!-- col blanca -->
       <div class="col-12 col-md-7 col-blanca-log">
+          @if(session('error'))
+          <div class="alert bg-lavanda alert-dismissible fade show text-center" role="alert">
+            <p class="">Para agregar cursos a tu carrito por favor <strong class="text-rosa">inicia sesión</strong></p>
+            <p>¿No tienes cuenta? <a class="text-rosa" href="{{ route('register') }}"><strong>Regístrate aquí</strong></a></p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
         <p class="sin_cuenta-top">¿No tienes cuenta? <a class=" a_azul" href="{{ route('register') }}">Regístrate aquí</a></p>
         <form class="auth-form container"  method="POST" action="{{ route('login') }}">
             @csrf

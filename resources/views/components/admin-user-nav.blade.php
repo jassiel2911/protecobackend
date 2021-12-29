@@ -9,7 +9,7 @@
                         <a class="nav-link active" aria-current="page" href="{{route('admin.index')}}">Asistentes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('becarios')}}">Becarios</a>
+                        <a class="nav-link" href="{{route('users.becarios')}}">Becarios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('admins')}}">Admins</a>
