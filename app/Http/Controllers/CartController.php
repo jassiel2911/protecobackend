@@ -40,13 +40,31 @@ class CartController extends Controller
     public function store(Request $request)
     {
         if (Auth::check()) {
-            $cart = new Cart;
-            $cart->user_id=auth()->user()->id;
-            $cart->curso_id=$request->curso_id;
-            $cart->save();
+            // La variable "cartsBefore" obtiene el carrito ANTES de agregar el nuevo curso, después, 
+            // el condicional IF comprueba si existe o no el id del curso dentro del carrito del usuario, 
+            // en caso de existir, se nos regresará el modelo, sin embargo, si no se encuentra en la base de datos, 
+            // se nos regresará “null”.
 
-            $carts = Cart::where('user_id', auth()->user()->id)->get();
-            return redirect()->back()->with('success','success');
+            // El condicional comprueba si es  null y si se cumple se ejecuta el código que guarda el nuevo curso en el carrito, 
+            // en el else, se ejecuta el código necesario para mostrar un mensaje de error en la pagina principal.
+
+            $cartsBefore = Cart::where('user_id', auth()->user()->id)->get();
+            if($cartsBefore->get($request->curso_id) == NULL){
+                $cart = new Cart;
+                $cart->user_id=auth()->user()->id;
+                $cart->curso_id=$request->curso_id;
+                $cart->save();
+
+                $carts = Cart::where('user_id', auth()->user()->id)->get();
+                return redirect()->back()->with('success','success');
+            }else{
+                
+                return redirect()->back()->with('mistake','mistake');
+            }
+            
+            // $user = $carts->find($request->curso_id);
+            
+            
         }
         else{
             return redirect('/login')->with('error','Para agregar cursos a tu carrito por favor inicia sesión');
@@ -100,6 +118,9 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $carts = Cart::where('user_id', auth()->user()->id)
+        ->where('curso_id',$id)->delete();
+
+        return redirect()->back()->with('success','success');
     }
 }

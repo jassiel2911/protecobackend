@@ -3,6 +3,12 @@
 @section('content')
 
 <main>
+<!-- Muestrea un mensaje cuando se elimina el curso, indicando que se eliminó correctamente. -->
+    @if(session('success'))
+        <div class="alert bg-lavanda alert-dismissible fade show text-center" role="alert">
+            <p class="">Se elimino correctamente</p>
+        </div>
+    @endif
     <div class="container mx-auto mt-5 mb-5">
        <h2 class="text-rosa text-center">Tu carrito</h2><br>
        <div class="mx-auto text-center">
@@ -17,15 +23,35 @@
                         <p class="d-none">{{$i = $i+1}}</p>
                         @if(auth()->user()->origin == "Comunidad UNAM")
                         <p class="text-end">$500</p>
-                        <p class="d-none">{{$total = $total + 500}}</p>
+                        <!-- Se comprueba si el índice del ciclo está en la posición 3 y en caso de ser verdadero, 
+                        no se suma el precio del curso al total, esto se repite para cada tipo de usuario (estudiante, público en general, otro) -->
+                            @if($loop->index == 2)
+                            
+                            @else
+                            <p class="d-none">{{$total = $total + 500}}</p>
+                            @endif
+                        
                         @elseif(auth()->user()->origin == "Alumno externo")
                         <p class="text-end">$600</p>
-                        <p class="d-none">{{$total = $total + 600}}</p>
+                            @if($loop->index == 2)
+                            
+                            @else
+                            <p class="d-none">{{$total = $total + 600}}</p>
+                            @endif
                         @elseif(auth()->user()->origin == "Publico en general")
                         <p class="text-end">$700</p>
-                        <p class="d-none">{{$total = $total + 700}}</p>
+                            @if($loop->index == 2)
+                            
+                            @else
+                            <p class="d-none">{{$total = $total + 700}}</p>
+                            @endif
+                        
                         @endif
-                        <p class="mx-3">Eliminar</p>
+                        <form action="{{route('cart.destroy',$cart->curso_id)}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <input class="mx-3" type="submit" value="Eliminar">
+                        </form>
                     </div>
                 </div>
             </div><br>
