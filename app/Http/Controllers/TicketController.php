@@ -8,6 +8,9 @@ use App\Models\Ticket;
 use App\Models\TicketItem;
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Ficha;
+use App\Models\Curso;
+
 
 
 class TicketController extends Controller
@@ -50,7 +53,7 @@ class TicketController extends Controller
         // $ticket->ficha_id = 000;
         // $ticket->comprobante_id = 000;
 
-        $ticket->status = "Pendiente de ficha";
+        $ticket->status = "Pendiente de pago";
         $ticket->total = $request->total;
         $ticket->semestre = "22-1";
 
@@ -67,7 +70,6 @@ class TicketController extends Controller
             }else if(auth()->user()->origin == "Publico en general"){
                 $ticket_item->precio = 700;
             }
-
             $ticket_item->save();
         }
         $total=0;
@@ -76,7 +78,21 @@ class TicketController extends Controller
 
         $ticket_items = TicketItem::all()->where('ticket_id',$ticket->id);
 
-        return view('ticket-success', ['ticket_items'=>$ticket_items, 'total'=>$total, 'i'=>$i]);
+        foreach($ticket_items as $ticket_item){
+            $curso = Curso::all()->where('id', $ticket_item->curso_id)->first();
+            $curso->cupo = $curso->cupo-1;
+            $curso->save();
+        }
+
+        $ficha = Ficha::all()->where('ticket_id',NULL)->first();
+        $ficha->ticket_id = $ticket->id;
+
+        $ficha->save();
+
+        $fichas = Ficha::all()->where('ticket_id',$ticket->id);
+
+
+        return view('ticket-success', ['fichas'=>$fichas, 'ticket_items'=>$ticket_items, 'total'=>$total, 'i'=>$i, 'ticket'=>$ticket]);
     }
 
     /**
@@ -110,7 +126,21 @@ class TicketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $ticket = Ticket::findOrFail($id);
+         $ticket->status="Pagado";
+         $ticket->update();
+
+        $ticket_items = TicketItem::all()->where('ticket_id',$ticket->id);
+
+        foreach($ticket_items as $ticket_item){
+            $curso = Curso::all()->where('id', $ticket_item->curso_id)->first();
+            $curso->inscritos = $curso->inscritos+1;
+            $curso->save();
+        }
+
+        
+
+        return redirect()->back()->with('success', 'Ticket aprobado');
     }
 
     /**

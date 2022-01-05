@@ -46,6 +46,9 @@
               <li class="nav-menu_item">
                   <a href="{{route('cursos.index')}}" class="nav-menu_link nav-link" >Cursos</a>
               </li>
+            <li class="nav-menu_item">
+                  <a href="{{route('admintickets.index')}}" class="nav-menu_link nav-link" id="nav-asesorias">Tickets</a>
+              </li>
               <li class="nav-menu_item">
                   <a href="#asesorias-proteco" class="nav-menu_link nav-link" id="nav-asesorias">Reporte</a>
               </li>

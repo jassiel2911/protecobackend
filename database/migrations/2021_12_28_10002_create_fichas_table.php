@@ -22,9 +22,7 @@ class CreateFichasTable extends Migration
 
             $table->unsignedBigInteger('ticket_id')->nullable();
 
-            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
-
-
+            $table->foreign('ticket_id')->references('id')->on('tickets');
 
             $table->timestamps();
         });

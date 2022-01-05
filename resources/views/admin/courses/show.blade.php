@@ -34,6 +34,7 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Correo</th>
                     <th scope="col">Procedencia</th>
                     <th scope="col">Calificacion</th>
                     <th scope="col">Constancia</th>
@@ -43,24 +44,7 @@
                     <tr>
                         <td>1</td>
                         <td>Juan Pérez</td>
-                        <td>UNAM</td>
-                        <td>
-                            <form action="">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <input type="number" min="0" max="10" name="cal" id="" class="bg-light border-dark">
-                                    </div>
-                                    <div class="col-6">
-                                        <button type="text" class="submit btn-form btn-rosa w-50" >Guardar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </td>
-                        <td>En proceso</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Juan Pérez</td>
+                        <td>@</td>
                         <td>UNAM</td>
                         <td>
                             <form action="">

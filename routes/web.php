@@ -7,6 +7,13 @@ use App\Http\Controllers\BecariosController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\ComprobanteController;
+use App\Http\Controllers\ComprobantePagoController;
+use App\Http\Controllers\AdminTicketController;
+
+
+
 
 
 
@@ -34,7 +41,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/users/becarios', [App\Http\Controllers\AdminUserController::class, 'becarios'])->name('users.becarios');
 Route::get('/admins', [App\Http\Controllers\AdminUserController::class, 'admins'])->name('admins');
 
-
+Route::get('/admins/tickets/sin-aprobar', [App\Http\Controllers\AdminTicketController::class, 'sinaprobar'])->name('sinaprobar');
+Route::get('/admins/tickets/pagados', [App\Http\Controllers\AdminTicketController::class, 'pagados'])->name('pagados');
 
 Route::resource('admin', AdminUserController::class);
 Route::resource('admincursos', AdminCursosController::class);
@@ -42,6 +50,19 @@ Route::resource('admincursos', AdminCursosController::class);
 Route::resource('cursos', CursoController::class);
 Route::resource('becarios', BecariosController::class);
 Route::resource('ticket', TicketController::class);
+Route::resource('perfil', PerfilController::class);
+Route::resource('comprobante', ComprobanteController::class);
+
+Route::resource('admintickets', AdminTicketController::class);
+
+
+Route::get('/depositobbva/{id}', [App\Http\Controllers\ComprobantePagoController::class, 'depositobbva']);
+Route::get('/appbbva/{id}', [App\Http\Controllers\ComprobantePagoController::class, 'appbbva']);
+Route::get('/otrobanco/{id}', [App\Http\Controllers\ComprobantePagoController::class, 'otrobanco']);
+
+
+
+
 
 
 Route::get('/cursos/inters', [App\Http\Controllers\CursoController::class, 'inters'])->name('cursos.inters');

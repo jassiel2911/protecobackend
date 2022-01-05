@@ -20,13 +20,13 @@ class CreateComprobantesTable extends Migration
             $table->string('metodo_pago');
             $table->string('banco');
             $table->string('no_ficha');
-            $table->integer('ultimos_digitos');
-            $table->integer('cie');
+            $table->integer('ultimos_digitos')->nullable();
+            $table->string('cie');
             $table->integer('monto');
             $table->string('captura');
 
             $table->unsignedBigInteger('ficha_id');
-            $table->foreign('ficha_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('ficha_id')->references('id')->on('fichas')->onDelete('cascade');
 
             $table->timestamps();
         });

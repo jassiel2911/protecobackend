@@ -52,12 +52,12 @@
                 <li class="nav-menu_item">
                     <a href="#cursos-proteco" class="nav-menu_link nav-link" >Cursos</a>
                 </li>
-                <li class="nav-menu_item">
+                <!-- <li class="nav-menu_item">
                     <a href="#talleres-proteco" class="nav-menu_link nav-link" >Talleres</a>
-                </li>
-                <li class="nav-menu_item">
+                </li> -->
+                <!-- <li class="nav-menu_item">
                     <a href="#asesorias-proteco" class="nav-menu_link nav-link" id="nav-asesorias">Asesorías</a>
-                </li>
+                </li> -->
                 <li class="nav-menu_item">
                     <a href="#contacto-proteco" class="nav-menu_link nav-link" id="nav-contacto">Contacto</a>
                 </li>
@@ -87,7 +87,7 @@
                     {{auth()->user()->fname}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li><a class="dropdown-item" href="{{route('perfil.index')}}">Perfil</a></li>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">

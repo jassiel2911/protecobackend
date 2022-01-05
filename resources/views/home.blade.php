@@ -51,7 +51,11 @@
             </div>
             <div class="d-flex justify-content-end">
                 <a href="{{route('cart.show', auth()->user()->id)}}" class="btn-form text-center text-dark bg-light mx-3">Ver carrito</a>
-                <a href="" class="btn-form text-center text-white bg-rosa mx-3">Generar comprobante</a>
+                <form action="{{route('ticket.store')}}" method="POST">
+                     @csrf
+                    <input type="hidden" name="total" value="{{$total}}">
+                    <button type="submit" class="btn-form text-center text-white bg-rosa mx-3">Generar ticket</a>
+                 </form>
             </div>
           </div>
         </div>
@@ -171,6 +175,7 @@
                                     <p class="p"><span>Antecedentes:</span> {{$curso->antecedentes}}</p>
                                     <p class="p"><span>Equipo:</span>{{$curso->equipo}}</p>
                                     <p class="p"><span>Días:</span> {{$curso->dias}}</p>
+                                    <p class="p"><span>Cupo:</span> {{$curso->cupo}}</p>
                                     <hr>
                                     <p class="p-grande text-center text-azul">Precios</p>
                                     <p class="p"><span>Comunidad UNAM:</span> ${{$curso->precio_unam}}</p>
