@@ -8,6 +8,14 @@
     </button> -->
 
     <!-- Modal -->
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Muestra un mensaje que indica que el curso ya está en el carrito. -->
+    @if(session('mistake'))
+        <div class="alert bg-lavanda alert-dismissible fade show text-center" role="alert">
+            <p class="">{{session('mistake')}}</p>
+        </div>
+    @endif
     @if(session('success'))
      <script>
         window.onload = function() {
@@ -43,6 +51,11 @@
                     <p class="d-none">{{$total = $total + 700}}</p>
                     @endif
                 </div><br>
+                <form action="{{route('cart.destroy',$cart->curso_id)}}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <input class="mx-3" type="submit" value="Eliminar">
+                </form>
 
             @endforeach
             <hr>

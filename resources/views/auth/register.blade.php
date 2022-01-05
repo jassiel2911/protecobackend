@@ -1,5 +1,12 @@
 @extends('layouts.auth')
 @section('content')
+
+<!-- @if(session('aviso.required'))
+    <div class="alert bg-warning">
+        <p>{{session('aviso.required')}}</p>
+    </div>
+@endif -->
+
 <main class="main_auth">
   <div class="container-fluid">
     <div class="row auth-row">
@@ -51,7 +58,7 @@
  
           <!-- Procedencia y género -->
           <div class="input-div row">
-            <div class="col-6">
+            <!-- <div class="col-6">
               <label for="">Procedencia*</label>
               <select class="form-select"  name="origin" id="auth-select">
                 <option value="Comunidad UNAM">Comunidad UNAM</option>
@@ -63,7 +70,7 @@
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror 
-            </div>
+            </div> -->
             <div class="col-6">
               <div class="row">
                 <label class="col" for="">Género*</label>
