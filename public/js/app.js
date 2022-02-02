@@ -37,7 +37,7 @@ window.addEventListener('load', function(){
 	    autoplay:true,
 	    lazyLoad:true,
 	    dots:false,
-	    nav:true,
+	    nav:false,
 	    responsiveClass:true,
 	    responsive:{
 	        0:{

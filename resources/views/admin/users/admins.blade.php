@@ -4,7 +4,8 @@
 <main>
   <x-admin-user-nav/>
 
-  <section class="home-cursos container my-5">
+  <section class="home-cursos container my-3">
+    <h2 class="text-azul">Administradores</h2>
       <section class="container show-curso_lista">
           <table class="table table-hover">
             <thead>

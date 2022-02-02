@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('css/glider.css')}}">
-    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles3.css')}}">
     <link rel="stylesheet" href="{{asset('css/mediaqueries.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
 

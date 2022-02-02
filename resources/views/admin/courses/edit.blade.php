@@ -70,6 +70,7 @@
                 <option value="Programación" {{ $curso->cat == "Programación" ? 'selected' : '' }}>Programación</option>
                 <option value="Bases de Datos"  {{ $curso->cat == "Bases de Datos" ? 'selected' : '' }}>Bases de datos</option>
               <option value="Hardware"  {{ $curso->cat == "Hardware" ? 'selected' : '' }}>Hardware</option>
+              <option value="Desarrollo"  {{ $curso->cat == "Desarrollo" ? 'selected' : '' }}>Desarrollo</option>
               <option value="Otros"  {{ $curso->cat == "Otros" ? 'selected' : '' }}>Otros</option>
 
 
@@ -94,9 +95,9 @@
            <div class="col-4">
               <label for="name" class="form-label">Nivel</label>
               <select class="form-select" name="nivel" id="auth-select">
-                  <option value="Básico" >Básico</option>
-                  <option value="Intermedio"  >Intermedio</option>
-                <option value="Avanzado"  >Avanzado</option>
+                  <option value="Básico" @if ($curso->nivel == "Básico") {{ 'selected' }} @endif>Básico</option>
+                  <option value="Intermedio"  @if ($curso->nivel == "Intermedio") {{ 'selected' }} @endif>Intermedio</option>
+                <option value="Avanzado"  @if ($curso->nivel == "Avanzado") {{ 'selected' }} @endif>Avanzado</option>
               </select>
           </div>
           <div class="col-4">
@@ -113,13 +114,37 @@
         </div>
         <div class="input-div row mt-3">
            <div class="col-4">
-            <input type="number" class="auth-submit" value="{{$curso->publicado}}" name="publicado">
+            <label for="name" class="form-label">Publicado</label>
+            <select class="form-select" name="publicado" id="auth-select">
+                <option value="1" @if ($curso->publicado == 1) {{ 'selected' }} @endif>Sí</option>
+                <option value="0" @if ($curso->publicado == 0) {{ 'selected' }} @endif>No</option>
+            </select>
+          </div>
+            <div class="col-4">
+            <label for="name" class="form-label">Titular</label>
+             <select class="form-select" name="titular" id="auth-select">
+                @foreach($becarios as $becario)
+                  <option value="{{$becario->id}}" @if ($curso->titular == $becario->id) {{ 'selected' }} @endif>{{$becario->fname." ".$becario->lname}}</option>
+                @endforeach
+            </select>
           </div>
           <div class="col-4">
-            <input type="submit" class="auth-submit btn btn-rosa" value="Actualizar">
+            <label for="name" class="form-label">Turno</label>
+            <select class="form-select" name="turno" id="auth-select">
+              <option value="AM"  @if ($curso->turno == "AM") {{ 'selected' }} @endif>Matutino</option>
+              <option value="PM" @if ($curso->turno == "PM") {{ 'selected' }} @endif>Vespertino</option>
+
+            </select>
           </div>
+           <div class="col-4">
+            <label for="name" class="form-label">Classroom</label>
+            <input type="text" name="classroom" value="{{$curso->classroom}}">    
+          </div>
+         
         </div>
-        
+        <div class="row mt-3"><br>
+          <input type="submit" class="auth-submit btn-min btn-rosa" value="Actualizar">
+        </div>
        
         <input type="hidden" name="precio_unam" value="500">
         <input type="hidden" name="precio_ext" value="700">

@@ -5,6 +5,7 @@
   <x-ticket-nav/>
 
   <section class="home-cursos container my-5">
+      <h2 class="text-azul">Pagados</h2>
       <section class="container show-curso_lista">
           <table class="table table-hover">
             <thead>
@@ -21,7 +22,7 @@
               @foreach($tickets as $ticket)
               <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
                 <th scope="row">{{$ticket->id}}</th>
-                <td></td>
+                <td>{{$ticket->user->fname." ".$ticket->user->lname}}</td>
                 <td>{{$ticket->semestre}}</td>
                 <td>{{$ticket->status}}</td>
                 <td>{{$ticket->total}}</td>
@@ -37,8 +38,10 @@
               </tr>
               <tr>
               </tr>
+              <p class="d-none">{{$total = $total + $ticket->total}}</p>
               @endforeach
             </tbody>
+            <h4 class="text-end">{{$total}}</h4>
 
           </table>
       </section>

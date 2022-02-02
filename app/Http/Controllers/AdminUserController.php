@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 class AdminUserController extends Controller
 {
     /**
@@ -74,6 +75,8 @@ class AdminUserController extends Controller
         $user=User::findOrFail($id);
         $user->fname=$request->fname;
         $user->lname=$request->lname;
+        $user->password=Hash::make($request->password);
+
 
         $user->email=$request->email;
         $user->origin=$request->origin;
@@ -112,5 +115,21 @@ class AdminUserController extends Controller
     {
         $admins = User::all()->where('role','2');
         return view('admin.users.admins', compact('admins'));
+    }
+
+    public function unam()
+    {
+        $users = User::all()->where('origin','Comunidad UNAM');
+        return view('admin.users.unam', compact('users'));
+    }
+    public function nounam()
+    {
+        $users = User::all()->where('origin','Alumno externo');
+        return view('admin.users.nounam', compact('users'));
+    }
+    public function publicogeneral()
+    {
+        $users = User::all()->where('origin','Publico en general');
+        return view('admin.users.publicogeneral', compact('users'));
     }
 }

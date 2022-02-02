@@ -20,7 +20,8 @@
           </div>
       </div>
   </section>
-  <section class="home-cursos container my-5">
+  <section class="home-cursos container my-3">
+      <h2 class="text-azul">Semestrales</h2><br>
       <section class="container show-curso_lista">
           <table class="table table-hover">
             <thead>

@@ -69,6 +69,7 @@
                 <option value="Programación" >Programación</option>
                 <option value="Bases de Datos"  >Bases de datos</option>
               <option value="Hardware"  >Hardware</option>
+              <option value="Desarrollo"  >Desarrollo</option>
               <option value="Otros"  >Otros</option>
 
 
@@ -104,6 +105,28 @@
             </select>
           </div>
          <input type="hidden" name="publicado" value="1">
+        </div>
+        <div class="input-div row">
+          <div class="col-4">
+            <label for="classroom" class="form-label">Link de Classroom</label>
+            <input type="text" name="classroom">
+          </div>
+          <div class="col-4">
+            <label for="classroom" class="form-label">Titular</label>
+            <select class="form-select" name="titular" id="auth-select">
+                @foreach($becarios as $becario)
+                  <option value="22-1" >{{$becario->fname." ".$becario->lname}}</option>
+                @endforeach
+            </select>
+          </div>
+          <div class="col-4">
+            <label for="name" class="form-label">Turno</label>
+            <select class="form-select" name="turno" id="auth-select">
+                <option value="AM" >Matutino</option>
+              <option value="PM" >Vespertino</option>
+
+            </select>
+          </div>
         </div>
          <div class="input-div mx-auto mt-3 col-4">
           <input type="submit" class="auth-submit btn btn-rosa" value="Crear">

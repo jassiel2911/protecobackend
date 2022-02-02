@@ -4,7 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use App\Models\User;
+use App\Models\Ticket;
+
+use App\Models\TicketItem;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class CursoController extends Controller
 {
@@ -16,7 +23,10 @@ class CursoController extends Controller
     public function index()
     {
         $cursos = Curso::all()->where('tipo','Intersemestral');
-        return view('admin.courses.index',compact('cursos'));
+        $becarios = User::all()->where('role','<>','0');
+        $tickets = TicketItem::all();
+        $i=0;
+        return view('admin.courses.index',['cursos'=>$cursos, 'becarios'=>$becarios, 'tickets'=>$tickets, 'i'=>$i]);
     }
 
     public function semestrales()
@@ -33,7 +43,10 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return view('admin.courses.create');
+        // $becarios = User::all()->where('role',1)->where('role',2);
+        $becarios = User::where('role',1)->orWhere('role',2)->get();
+        
+        return view('admin.courses.create', ['becarios'=>$becarios]);
     }
 
     /**
@@ -60,19 +73,24 @@ class CursoController extends Controller
         $curso->semestre = $request->semestre;
         $curso->titular = auth()->user()->id;
         $curso->publicado = $request->publicado;
+        $curso->classroom = $request->classroom;
+        $curso->turno = $request->turno;
+
 
         $curso->precio_unam = $request->precio_unam;
         $curso->precio_ext = $request->precio_ext;
         $curso->precio_gral = $request->precio_gral;
 
         $temario = $request->temario;
-        $nameTemario = "Temario_".$curso->nombre."_".$curso->semestre;
+        $extTemario = $temario->getClientOriginalExtension(); // method returns extension.
+        $nameTemario = "Temario_".$curso->nombre."_".$curso->semestre.".".$extTemario;
         $ruta = public_path().'/temarios';
         $temario->move($ruta, $nameTemario);
         $curso->temario=$nameTemario;
 
         $imagen = $request->imagen;
-        $nameImagen = "Imagen".$curso->nombre;
+        $extImagen = $imagen->getClientOriginalExtension(); // method returns extension.
+        $nameImagen = "Imagen".$curso->nombre.".".$extImagen;
         $rutaImagen = public_path().'/img/logos/';
         $imagen->move($rutaImagen, $nameImagen);
         $curso->imagen=$nameImagen;
@@ -91,7 +109,12 @@ class CursoController extends Controller
     public function show($id)
     {
         $curso=Curso::findOrFail($id);
-        return view('admin.courses.show', compact('curso'));
+        $ticket_items = TicketItem::where('curso_id',$id)->get();
+        $ticket = Ticket::all();
+        $i=0;
+
+
+        return view('admin.courses.show', ['curso'=>$curso, 'ticket_items'=>$ticket_items, 'ticket'=>$ticket, 'i'=>$i]);
     }
 
     /**
@@ -102,8 +125,9 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
+        $becarios = User::where('role',1)->orWhere('role',2)->get();
         $curso=Curso::findOrFail($id);
-        return view('admin.courses.edit', compact('curso'));
+        return view('admin.courses.edit', ['curso'=>$curso, 'becarios'=>$becarios]);
 
     }
 
@@ -131,6 +155,9 @@ class CursoController extends Controller
         $curso->cupo = $request->cupo;
         $curso->semestre = $request->semestre;
         $curso->publicado = $request->publicado;
+        $curso->titular = $request->titular;
+        $curso->turno = $request->turno;
+        $curso->classroom = $request->classroom;
 
 
 

@@ -14,5 +14,5 @@ class Ficha extends Model
         return $this->belongsTo('App\Models\Ticket');
     }
 
-     protected $fillable = ['ticket_id'];
+     protected $fillable = ['ticket_id', 'file_ficha','monto'];
 }

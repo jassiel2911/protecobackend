@@ -38,7 +38,13 @@ class ComprobanteController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'no_ficha' => 'min:20|max:20',
+        ]);
+
         $ficha = Ficha::all()->where('id',$request->ficha_id)->first();
+        $ficha->comprobante=1;
+        $ficha->save();
 
         $comprobante = new Comprobante();
         $comprobante->fecha = $request->fecha;
@@ -49,6 +55,7 @@ class ComprobanteController extends Controller
         $comprobante->cie = $request->cie;
         $comprobante->monto = $ficha->monto;
         $comprobante->ficha_id = $request->ficha_id;
+        $comprobante->ticket_id =  $request->ticket_id;
 
         $captura = $request->captura;
         $name=auth()->user()->fname.auth()->user()->lname."Comprobante".$request->ficha_id;
@@ -58,10 +65,19 @@ class ComprobanteController extends Controller
 
         $comprobante->save();
 
-        $ticket_update = Ticket::all()->where('id', $ficha->ticket_id)->first();
-        $ticket_update->status = "Pago recibido. Pendiente de aprobación";
-        $ticket_update->save();
+        // $ticket_update = Ticket::all()->where('id', $request->ticket_id)->first();
 
+        // contar fichas del ticket
+        $fichas_ticket = Ficha::where('ticket_id', $request->ticket_id)->get()->count();
+        
+        // contar comprobantes del ticket
+        $comprobantes_ticket = Comprobante::where('ticket_id', $request->ticket_id)->get()->count();
+
+        if($fichas_ticket==$comprobantes_ticket){
+            $ticket_update = Ticket::all()->where('id', $ficha->ticket_id)->first();
+            $ticket_update->status = "Pago recibido. Pendiente de aprobación";
+            $ticket_update->save();
+        }
         // return $ficha;
 
         return redirect()->route('perfil.index')->with('success', 'Información enviada exitosamente');

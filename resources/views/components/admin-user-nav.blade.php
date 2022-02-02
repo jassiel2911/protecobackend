@@ -8,6 +8,15 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{route('admin.index')}}">Asistentes</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('unam')}}">Comunidad UNAM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('nounam')}}">Alumnos externos</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('publicogeneral')}}">Publico general</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('users.becarios')}}">Becarios</a>
                     </li>

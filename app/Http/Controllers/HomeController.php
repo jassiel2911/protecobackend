@@ -28,14 +28,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::all()->where('tipo','Intersemestral');
+        $cursos = Curso::all()->where('publicado','1');
+        
+
         $carts=0;
 
          if (Auth::check()) {
             $carts = Cart::all()->where('user_id', auth()->user()->id);
         }
+        $subtotal=0;
         $total=0;
         $i=0;
-        return view('home', compact('cursos','carts','total','i'));
+        return view('home', compact('cursos','carts','total','i', 'subtotal'));
+    }
+
+    public function inscripcion(){
+        return view('inscripcion');
     }
 }

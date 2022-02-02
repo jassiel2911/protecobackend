@@ -17,14 +17,13 @@
                     <div class="d-flex align-content-center align-items-center justify-content-between"> 
                         <p class="d-none">{{$i = $i+1}}</p>
                         <p class="text-end">{{$ticket_item->precio}}</p>
-                        <p class="d-none">{{$total = $total + $ticket_item->precio}}</p>
                     </div>
                 </div>
             </div><br>
         @endforeach
         <hr>
          <div class="d-flex flex-column align-content-end align-items-end">
-            <p><strong>Total: </strong>$ {{$total}}</p>
+            <p><strong>Total: </strong>$ {{$ticket->total}}</p>
         </div>
         <p>A continuación encontrarás la(s) ficha(s) de pago con las que podrás hacer depósito o transferencia según sea tu caso. También podrás descargarlas en la sección de <b><a href="{{route('perfil.index')}}">Mi perfil</a></b></p>
         @foreach($fichas as $ficha)

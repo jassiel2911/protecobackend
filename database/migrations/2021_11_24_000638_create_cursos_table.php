@@ -34,6 +34,9 @@ class CreateCursosTable extends Migration
             $table->string('cat');
             $table->string('nivel');
             $table->integer('cupo');
+            $table->string('turno');
+            $table->string('classroom')->nullable();
+
             $table->unsignedBigInteger('titular');
             $table->integer('inscritos')->default(0);
             $table->boolean('publicado')->default(0);

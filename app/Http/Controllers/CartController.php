@@ -47,20 +47,40 @@ class CartController extends Controller
 
             // El condicional comprueba si es  null y si se cumple se ejecuta el código que guarda el nuevo curso en el carrito, 
             // en el else, se ejecuta el código necesario para mostrar un mensaje de error en la pagina principal.
-
+            $i=0;
             $cartsBefore = Cart::where('user_id', auth()->user()->id)->get();
-            if($cartsBefore->get($request->curso_id) == NULL){
-                $cart = new Cart;
-                $cart->user_id=auth()->user()->id;
-                $cart->curso_id=$request->curso_id;
-                $cart->save();
-
-                $carts = Cart::where('user_id', auth()->user()->id)->get();
-                return redirect()->back()->with('success','success');
-            }else{
-                
-                return redirect()->back()->with('mistake','mistake');
+            foreach($cartsBefore as $cartBefore){
+                if($cartBefore->curso_id == $request->curso_id){
+                    // ya está en el carrito
+                    $i=1;
+                }
+                else{
+                    // $i=0;
+                }
             }
+            if($i==0){
+                    $cart = new Cart;
+                    $cart->user_id=auth()->user()->id;
+                    $cart->curso_id=$request->curso_id;
+                    $cart->save();
+
+                    $carts = Cart::where('user_id', auth()->user()->id)->get();
+                    return redirect()->back()->with('success','success');
+            }else{
+                    return redirect()->back()->with('success','1');
+            }
+            // if($cartsBefore->get($request->curso_id) == NULL){
+            //     $cart = new Cart;
+            //     $cart->user_id=auth()->user()->id;
+            //     $cart->curso_id=$request->curso_id;
+            //     $cart->save();
+
+            //     $carts = Cart::where('user_id', auth()->user()->id)->get();
+            //     return redirect()->back()->with('success','success');
+            // }else{
+                
+            //     return redirect()->back()->with('mistake','mistake');
+            // }
             
             // $user = $carts->find($request->curso_id);
             
@@ -84,7 +104,12 @@ class CartController extends Controller
         $carts = Cart::where('user_id', auth()->user()->id)->get();
         $i=0;
         $total=0;
-        return view('cart', compact('carts','i','total'));
+        $subtotal=0;
+        $bandera=0;
+        if($carts=="[]"){
+            $bandera=1;
+        }
+        return view('cart', compact('carts','i','total','subtotal', 'bandera'));
     }
 
     /**

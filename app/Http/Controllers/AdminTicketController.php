@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use App\Models\TicketItem;
 use App\Models\Comprobante;
 use App\Models\Ficha;
+use App\Models\User;
 
 
 class AdminTicketController extends Controller
@@ -19,7 +20,9 @@ class AdminTicketController extends Controller
     public function index()
     {
         $tickets = Ticket::all();
-        return view('admin.tickets.index', ['tickets'=>$tickets]);
+
+        $total = 0;
+        return view('admin.tickets.index', ['tickets'=>$tickets, 'total'=>$total]);
     }
 
     public function sinaprobar()
@@ -30,8 +33,23 @@ class AdminTicketController extends Controller
 
     public function pagados()
     {
-        $tickets = Ticket::all()->where('status', "Pagado");;
-        return view('admin.tickets.pagados', ['tickets'=>$tickets]);
+        $tickets = Ticket::all()->where('status', "Pagado");
+        $total = 0;
+        return view('admin.tickets.pagados', ['tickets'=>$tickets, 'total'=>$total]);
+    }
+
+     public function sinficha()
+    {
+        $tickets = Ticket::all()->where('status', "Sin ficha");
+        $total = 0;
+        return view('admin.tickets.sinficha', ['tickets'=>$tickets, 'total'=>$total]);
+    }
+
+     public function pendientepago()
+    {
+        $tickets = Ticket::all()->where('status', "Pendiente de pago");
+        $total = 0;
+        return view('admin.tickets.pendientepago', ['tickets'=>$tickets, 'total'=>$total]);
     }
 
     /**
@@ -64,11 +82,13 @@ class AdminTicketController extends Controller
     public function show($id)
     {
         $ticket = Ticket::findOrFail($id);
+        $user = User::findOrFail($ticket->user_id);
+
         $ticket_items = TicketItem::all()->where('ticket_id', $id);
         $fichas = Ficha::all()->where('ticket_id', $id);
         $comprobantes = Comprobante::all();
 
-        return view('admin.tickets.show', ['ticket'=>$ticket, 'ticket_items'=>$ticket_items, 'fichas'=>$fichas, 'comprobantes'=>$comprobantes]);
+        return view('admin.tickets.show', ['user'=>$user,'ticket'=>$ticket, 'ticket_items'=>$ticket_items, 'fichas'=>$fichas, 'comprobantes'=>$comprobantes]);
     }
 
     /**
@@ -79,7 +99,15 @@ class AdminTicketController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+
+        $user = User::findOrFail($ticket->user_id);
+        $ticket_items = TicketItem::all()->where('ticket_id', $id);
+        $fichas = Ficha::all()->where('ticket_id', $id);
+        $comprobantes = Comprobante::all();
+
+        return view('admin.tickets.edit', ['user'=>$user,'ticket'=>$ticket, 'ticket_items'=>$ticket_items, 'fichas'=>$fichas, 'comprobantes'=>$comprobantes]);
+
     }
 
     /**
@@ -91,7 +119,14 @@ class AdminTicketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        $ticket->status = $request->status;
+        $ticket->total = $request->total;
+        $ticket->semestre = $request->semestre;
+        $ticket->update();
+
+        return redirect()->back()->with('success', 'Se ha actualizado correctamente');
+
     }
 
     /**
@@ -102,6 +137,9 @@ class AdminTicketController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $ticket = Ticket::findOrFail($id);
+         $ticket->delete();
+
+         return redirect()->back()->with('success', 'Se ha eliminado correctamente');
     }
 }

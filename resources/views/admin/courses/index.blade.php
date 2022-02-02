@@ -7,7 +7,7 @@
       <div class="d-flex justify-content-end">
         <a class="btn btn-rosa d-inline-block" href="{{route('cursos.create')}}">Crear curso</a>
       </div>
-      <div class="row">
+      <!-- <div class="row">
           <div class="col">
               <ul class="nav">
                   <li class="nav-item">
@@ -18,19 +18,22 @@
                   </li>
               </ul>
           </div>
-      </div>
+      </div> -->
   </section>
-  <section class="home-cursos container my-5">
+  <section class="home-cursos container my-3">
+      <h2 class="text-azul">Intersemestrales</h2><br>
       <section class="container show-curso_lista">
           <table class="table table-hover table-striped table-bordered">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Semestre</th>
+                <th scope="col">Titular</th>
                 <th scope="col">Fecha</th>
+                <th scope="col">Inscritos</th>
                 <th scope="col">No. Asistentes</th>
                 <th scope="col">Publicado</th>
+                <th scope="col">Link de Classroom</th>
               </tr>
             </thead>
             <tbody>
@@ -38,8 +41,19 @@
               <tr>
                 <th scope="row">{{$curso->id}}</th>
                 <td>{{$curso->nombre}}</td>
-                <td>{{$curso->semestre}}</td>
+                @foreach($becarios as $becario)
+                  @if($becario->id == $curso->titular)
+                  <td>{{$becario->fname." ".$becario->lname}}</td>
+                  @endif
+                @endforeach
                 <td>{{\Carbon\Carbon::parse($curso->fecha_inicio)->format('j F, Y') }} - {{\Carbon\Carbon::parse($curso->fecha_fin)->format('j F, Y') }}</td>
+                @foreach($tickets as $ticket)
+                  @if($ticket->curso_id == $curso->id)
+                  <p class="d-none">{{$i=$i+1}}</p>
+                  @endif
+                @endforeach
+                <td>{{$i}}</td>
+                <p class="d-none">{{$i=0}}</p>
                 <td>{{$curso->inscritos}}</td>
                 <td>
                   @if($curso->publicado == 1)
@@ -48,6 +62,7 @@
                     No
                   @endif
                 </td>
+                <td><a href="{{$curso->classroom}}">{{$curso->classroom}}</a></td>
                 <td>
                   <form method="POST" action="{{ route('cursos.destroy', $curso->id) }}" >
                     @csrf
