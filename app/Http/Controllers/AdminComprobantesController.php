@@ -13,20 +13,25 @@ class AdminComprobantesController extends Controller
      */
     public function index()
     {
+        $total = 0;
         $comprobantes = Comprobante::all()->where('metodo_pago','depositoBBVA');
-        return view('admin.comprobantes.index',['comprobantes'=>$comprobantes]);
+        return view('admin.comprobantes.index',['total'=>$total,'comprobantes'=>$comprobantes]);
     }
 
      public function comprobanteappbbva()
     {
+        $total = 0;
+
         $comprobantes = Comprobante::all()->where('metodo_pago','appBBVA');
-        return view('admin.comprobantes.appbbva',['comprobantes'=>$comprobantes]);
+        return view('admin.comprobantes.appbbva',['total'=>$total,'comprobantes'=>$comprobantes]);
     }
 
     public function comprobanteotrobanco()
     {
+        $total = 0;
+
         $comprobantes = Comprobante::all()->where('metodo_pago','otroBanco');
-        return view('admin.comprobantes.otrobanco',['comprobantes'=>$comprobantes]);
+        return view('admin.comprobantes.otrobanco',['total'=>$total,'comprobantes'=>$comprobantes]);
     }
 
     /**

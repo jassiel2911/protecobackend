@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comprobante extends Model
 {
     use HasFactory;
+    public function ficha(){
+        return $this->belongsTo('App\Models\Ficha');
+    }
 }

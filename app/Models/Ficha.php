@@ -10,9 +10,9 @@ class Ficha extends Model
 {
     use HasFactory;
 
-    public function user(){
+    public function ticket(){
         return $this->belongsTo('App\Models\Ticket');
     }
 
-     protected $fillable = ['ticket_id', 'file_ficha','monto'];
+    protected $fillable = ['ticket_id', 'file_ficha','monto'];
 }

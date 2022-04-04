@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
 <main> 
   <x-comprobantes/>
  
@@ -12,8 +14,10 @@
         </div>
     @endif -->
     <h2 class="text-azul">Depósito BBVA</h2>
+      <button id="btnExport" onclick="fnExportToExcel('xlsx', 'ComprobantesDepositoBBVA')" class="btn btn-azul d-inline">Exportar lista a xlsx</button>
+
       <section class="container-fluid show-curso_lista">
-          <table class="table table-hover">
+          <table id="lista" class="table table-hover">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -28,20 +32,30 @@
               @foreach($comprobantes as $comprobante)
               <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
                 <th scope="row">{{$comprobante->id}}</th>
+                <td scope="row">{{$comprobante->ficha->ticket->user->lname." ".$comprobante->ficha->ticket->user->fname}}</td>
                 <td scope="row">{{$comprobante->fecha}}</td>
                 <td scope="row">{{$comprobante->no_ficha}}</td>
                 <td scope="row">{{$comprobante->cie}}</td>
                 <td scope="row">{{$comprobante->monto}}</td>
                 <td scope="row">
+                  {{$comprobante->captura}}
                   <img src="{{asset("comprobantes/$comprobante->captura")}}" alt="" width="700">
                   <a target="_blank" href="{{asset("comprobantes/$comprobante->captura")}}">Ver archivo</a>
                 </th>
               </tr>
+              <p class="d-none">{{$total = $total + $comprobante->monto}}</p>
               @endforeach
             </tbody>
+            <h4 class="text-end">{{$total}}</h4>
           </table>
       </section>
   </section>
 </main>
-
+<script>
+    function fnExportToExcel(fileExtension,fileName){
+        var elt=document.getElementById("lista");
+        var wb = XLSX.utils.table_to_book(elt, {sheet:"sheet1"});
+        return XLSX.writeFile(wb, fileName+"."+fileExtension || ('Lista.'+(fileExtension || 'xlsx')));
+    }
+</script>
 @endsection
