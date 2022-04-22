@@ -350,7 +350,9 @@
                                       <summary><b>Equipo: </b></summary>
                                       <p>{{$curso->equipo}}</p>
                                     </details>
-                                    <p class="p"><span>Cupo:</span> {{$curso->cupo}}</p>
+                                    <details>
+                                      <summary><b>Cupo: {{$curso->cupo}}</b></summary>
+                                    </details>
                                     <hr>
                                     <p class="p-grande text-center text-azul">Precios</p>
                                     
@@ -397,18 +399,19 @@
     </section>
 
     <!-- Asesorias queda pendiente -->
-    <!-- <section class="home-asesorias">
-        <div class="banner-asesorias bg-lavanda">
-            <div class="">
-                <h3 class=""></h3>
-                <h2 class="text-center">¿Necesitas ayuda? <span class="text-rosa"> Asesorías gratuitas</span></h2>
-                <p>PROTECO está para ayudarte y ponemos a tu disposición nuestras asesorías gratuitas de programación donde te ofrecemos un espacio de 30 minutos para ayudarte a resolver tus dudas.</p>
-            </div>
-            <div class="video-asesorias">
-                <iframe  src="https://www.youtube.com/embed/LABgLlfEGNA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section> -->
+    <section class="home-asesorias">
+			<div class="banner-asesorias bg-lavanda">
+				<div class="talleres-perdiste container">
+					<h2 class="text-center">¿Necesitas ayuda? <span class="text-rosa"> Asesorías gratuitas</span></h2>
+					<p>PROTECO está para ayudarte y ponemos a tu disposición nuestras asesorías gratuitas de programación donde te ofrecemos un espacio de 30 minutos para ayudarte a resolver tus dudas.</p>
+					<br>
+					<div class="talleres-perdiste_iframe iframe-responsive-yt">
+						<iframe  class="img-fluid" src="https://www.youtube.com/embed/S8dmq6mKiSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+				</div>
+			
+			</div>
+		</section>
 
 
 

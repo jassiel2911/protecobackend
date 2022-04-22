@@ -38,7 +38,6 @@
                 <td scope="row">{{$comprobante->cie}}</td>
                 <td scope="row">{{$comprobante->monto}}</td>
                 <td scope="row">
-                  <!-- <img src="{{asset("comprobantes/$comprobante->captura")}}" alt="" width="700"> -->
                   <iframe src="{{asset("comprobantes/$comprobante->captura")}}" width="100%" height="500px">
                   </iframe>
                   <a target="_blank" href="{{asset("comprobantes/$comprobante->captura")}}">Ver archivo</a>
