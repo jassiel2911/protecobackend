@@ -17,7 +17,7 @@ class VerCursosController extends Controller
      */
     public function index()
     {
-        $todos = Curso::all();
+        $todos = Curso::all()->where('publicado', '1');
         // $programacion = Curso::all()->where('cat','Programación');
         $programacion = Curso::all()->where('cat', 'Programación')
          ->where('publicado', '1');

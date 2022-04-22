@@ -3,7 +3,6 @@
 @section('content')
 <main> 
   <x-ticket-nav/>
- 
   <section class="home-cursos container my-5">
     @if(session('success'))
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -27,7 +26,8 @@
             </thead>
             <tbody>
               @foreach($tickets as $ticket)
-              <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
+              @if($ticket->semestre == "22-2")
+               <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
                 <th scope="row">{{$ticket->id}}</th>
                 <td>{{$ticket->user->fname." ".$ticket->user->lname}}</td>
                 <td>{{$ticket->user->email}}</td>
@@ -48,6 +48,7 @@
               <tr>
               </tr>
               <p class="d-none">{{$total = $total + $ticket->total}}</p>
+              @endif
               @endforeach
             </tbody>
 

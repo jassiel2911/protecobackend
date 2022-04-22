@@ -25,6 +25,7 @@ window.addEventListener('load', function(){
 		]
 	});
 
+
 });
 
 // Carousel Owl

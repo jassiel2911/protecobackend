@@ -31,6 +31,7 @@
             </thead>
             <tbody>
               @foreach($tickets as $ticket)
+              @if($ticket->semestre == "22-2")
               <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
                 <th scope="row">{{$ticket->id}}</th>
                 <td>{{$ticket->user->fname." ".$ticket->user->lname}}</td>
@@ -53,6 +54,7 @@
               <tr>
               </tr>
               <p class="d-none">{{$total = $total + $ticket->total}}</p>
+              @endif
               @endforeach
             </tbody>
 

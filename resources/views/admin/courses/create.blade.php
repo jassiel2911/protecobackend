@@ -101,7 +101,7 @@
           <div class="col-4">
             <label for="name" class="form-label">Semestre</label>
             <select class="form-select" name="semestre" id="auth-select">
-                <option value="22-1" >22-1</option>
+                <option value="22-2" >22-2</option>
             </select>
           </div>
          <input type="hidden" name="publicado" value="1">
@@ -132,9 +132,9 @@
           <input type="submit" class="auth-submit btn btn-rosa" value="Crear">
         </div>
        
-        <input type="hidden" name="precio_unam" value="500">
+        <input type="hidden" name="precio_unam" value="600">
         <input type="hidden" name="precio_ext" value="700">
-        <input type="hidden" name="precio_gral" value="900">
+        <input type="hidden" name="precio_gral" value="800">
       
       <!-- Submit -->
       

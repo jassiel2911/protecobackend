@@ -104,7 +104,7 @@
     <!-- modal ex -->
 
     <section class="container py-5">
-        <h1 class="text-azul text-center">Cursos intersemestrales</h1><br>
+        <h1 class="text-azul text-center">Cursos semestrales</h1><br>
         <ul class="nav bg-azul nav-pills nav-pills-cursos mb-3 d-flex justify-content-between" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="pills-todos-tab" data-bs-toggle="pill" data-bs-target="#pills-todos" type="button" role="tab" aria-controls="pills-todos" aria-selected="true">Todos</button>

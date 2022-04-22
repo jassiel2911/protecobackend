@@ -22,11 +22,12 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::all()->where('tipo','Intersemestral');
+        $inters = Curso::all()->where('tipo','Intersemestral');
+        $semestrales = Curso::all()->where('tipo','Semestral');
         $becarios = User::all()->where('role','<>','0');
         $tickets = TicketItem::all();
         $i=0;
-        return view('admin.courses.index',['cursos'=>$cursos, 'becarios'=>$becarios, 'tickets'=>$tickets, 'i'=>$i]);
+        return view('admin.courses.index',['semestrales'=>$semestrales, 'inters'=>$inters, 'becarios'=>$becarios, 'tickets'=>$tickets, 'i'=>$i]);
     }
 
     public function semestrales()

@@ -58,7 +58,7 @@ class ComprobanteController extends Controller
         $comprobante->ticket_id =  $request->ticket_id;
 
         $captura = $request->captura;
-        $name=auth()->user()->fname.auth()->user()->lname."Comprobante".$request->ficha_id;
+        $name=utf8_encode(auth()->user()->fname.auth()->user()->lname)."Comprobante".$request->ficha_id.".".$captura->getClientOriginalExtension();
         $destination = public_path() . '/comprobantes/';
         $captura->move($destination, $name);
         $comprobante->captura=$name;
