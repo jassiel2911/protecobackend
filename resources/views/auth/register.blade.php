@@ -11,7 +11,7 @@
   <div class="container-fluid">
     <div class="row auth-row">
       <!-- col morada -->
-      <div class="col-morada col-12 col-md-5 bg-lavanda">
+      <div class="col-morada col-12 col-md-5 bg-azulfuerte">
         <div class="col-morada_content">
           <a href="{{route('home')}}"><img class="auth-logo" src="{{asset('img/base/logo-bn.png')}}" alt=""></a>
           <img class="auth-img" src="{{asset('img/base/register.svg')}}" alt="">
