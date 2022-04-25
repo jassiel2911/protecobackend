@@ -22,7 +22,9 @@
     <link rel="stylesheet" href="{{asset('css/mediaqueries.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
 
@@ -35,18 +37,18 @@
 			<div class="">
 				<div class="d-flex">
 					<a title="Programa de Tecnología en Cómputo" href="{{route('home')}}">
-						<img class="nav-logo_desk d-none d-xl-block" src="./img/logo_blanco.png" alt="Programa de Tecnología en Cómputo">
+						<img class="nav-logo_desk d-none d-xl-block" src="{{asset('img/logo_blanco.png')}}" alt="Programa de Tecnología en Cómputo">
 					</a>
 					<a title="Universidad Nacional Autónoma de México" target="_blank" href="https://www.unam.mx/">
-						<img id="logo-unam" class="nav-logo_desk d-none d-xl-block" src="./img/UNAM.png" alt="UNAM">
+						<img id="logo-unam" class="nav-logo_desk d-none d-xl-block" src="{{asset('img/UNAM.png')}}" alt="UNAM">
 					</a>
 				</div>
 				<a class="d-xl-none" title="Programa de Tecnología en Cómputo" href="{{route('home')}}">
-					<img class="nav-logo_mob" src="./img/logo_blanco.png" alt="PROTECO">
+					<img class="nav-logo_mob" src="{{asset('img/logo_blanco.png')}}" alt="PROTECO">
 				</a>
 			</div>
 			<button class="nav-toggle" aria-label="Abrir menú">
-				<img src="img/menu.png" alt="">
+				<img src="{{asset('img/menu.png')}}" alt="">
 			</button>
 			<!-- Menu -->
 			<ul class="nav-menu nav-home_menu container">

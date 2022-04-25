@@ -2,23 +2,60 @@
 
 @font-face {
     font-family: 'Open';
-    src: url('../font/OpenSans-VariableFont_wdth.ttf'); /* IE9 Compat Modes */
+    src: url('./fonts/OpenSans-VariableFont_wdth.ttf'); /* IE9 Compat Modes */
     src: local(''),
-         url('../font/OpenSans-VariableFont_wdth.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/OpenSans-VariableFont_wdth.ttf') format('truetype'), /* Safari, Android, iOS */
   }
 
 @font-face {
     font-family: 'Lora';
-    src: url('../font/Lora-VariableFont_wght.ttf'); /* IE9 Compat Modes */
+    src: url('./fonts/Lora-VariableFont_wght.ttf'); /* IE9 Compat Modes */
     src: local(''),
-         url('../font/Lora-VariableFont_wght.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/Lora-VariableFont_wght.ttf') format('truetype'), /* Safari, Android, iOS */
   }
   @font-face {
-    font-family: 'Rubik';
-    src: url('../font/Rubik-VariableFont_wght.ttf'); /* IE9 Compat Modes */
+    font-family: 'Rubisk';
+    src: url('./fonts/Rubik-VariableFont_wght.ttf'); /* IE9 Compat Modes */
     src: local(''),
-         url('../font/Rubik-VariableFont_wght.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('./fonts/Rubik-VariableFont_wght.ttf') format('truetype'), /* Safari, Android, iOS */
   }
+@font-face {
+  font-family: 'SpaceMonoRegular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/space-mono-regular.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/space-mono-regular.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../fonts/space-mono-regular.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/space-mono-regular.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/space-mono-regular.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/space-mono-regular.svg#SpaceMono') format('svg');
+  /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'MulishRegular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/mulish-v5-latin-regular.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/mulish-v5-latin-regular.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../fonts/mulish-v5-latin-regular.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/mulish-v5-latin-regular.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/mulish-v5-latin-regular.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/mulish-v5-latin-regular.svg#Mulish') format('svg');
+  /* Legacy iOS */
+}
 
 /* Colores */
   
@@ -46,7 +83,8 @@
     font-size: 100%;
     min-height: 100vh;
     /*background-color: var(--blanco);*/
-    font-family: 'Open', sans-serif;
+    font-family: 'MulishRegular',   sans-serif;
+    
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -69,10 +107,13 @@
     text-align: center;
     color: var(--rosa);
   }
+  
   h1,h2,h3,h4,h5,h6{
-    font-family: 'Rubik', sans-serif;
+    font-family: 'SpaceMonoRegular',    sans-serif !important;
   }
-
+  p,a,.landing_text_p{
+    font-family: 'MulishRegular',  sans-serif !important;
+  }
 /* Facil */
   .bg-azulfuerte{
     background-color: var(--azulfuerte);

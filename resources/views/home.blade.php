@@ -127,7 +127,7 @@
                 <img class="img-fluid" src="img/Software code testing-bro.png" alt="">
             </div>
             <div class="home-landing_text">
-                <h1 class="landing_text_titulo1">Programa de <span>Tecnología</span> en Cómputo</h1>
+                <h1 class="landing_text_titulo1">Programa de <span><b>Tecnología</b></span> en Cómputo</h1>
                 <p class="landing_text_p">A través de nuestros cursos, talleres y asesorías, te ayudamos a crecer en el mundo de la computación.</p>
                 <div class="landing_text_botones">
                     <a href="#cursos" class="btn btn-rosa landing-btn">Ver cursos</a>
@@ -192,16 +192,16 @@
                                 <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
                                 <p class="card-text_p">
                                     <span class="material-symbols-outlined">calendar_month</span>
-                                    {{\Carbon\Carbon::parse($curso->fecha_inicio)->translatedFormat('j F') }} - 
+                                    {{\Carbon\Carbon::parse($curso->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($curso->fecha_fin)->translatedFormat('j F') }}
                                 </p>
                                 <p class="card-text_p">
                                     <span class="material-symbols-outlined">schedule</span>
-                                    De {{Carbon\Carbon::parse($curso->hora_inicio)->format('g:i a')}} a {{\Carbon\Carbon::parse($curso->fecha_fin)->translatedFormat('j F') }}
+                                    {{Carbon\Carbon::parse($curso->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($curso->hora_fin)->format('g:i a')}}
                                 </p>
                                 <hr>
                                 <div class="card-links">
                                     <div class="card-links-botones">
-                                        <a target="_blank" class="link-temario" href="">Ver temario</a>
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$curso->temario")}}">Ver temario</a>
                                     </div>
                                     <div class="d-flex">
                                         <form class="d-flex" action="{{route('cart.store')}}" method="POST">
@@ -254,7 +254,7 @@
     <section class="aprende">
         <h2 class="home-subtitulo">¿Por qué tomar cursos con nosotros?</h2>
         <div class="container">
-            <img class="img-fluid" src="img/softwareTesting.png" alt="">
+            <img class="img-fluid" src="img/cursos.svg" alt="">
 
             <!-- accordion -->
             <div class="accordion">

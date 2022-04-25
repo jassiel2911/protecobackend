@@ -81,7 +81,7 @@
             <form action="{{route('ticketsficha.store')}}" method="POST" class="d-flex justify-content-end my-4">
                 @csrf
                 <input type="hidden" name="total" value="{{$total}}">
-                <a href="{{route('ver-cursos.index')}}" class="btn btn-lavanda mx-auto">Ver más cursos</a>
+                <a href="{{route('ver-cursos.index')}}" class="btn btn-amarillo mx-auto">Ver más cursos</a>
                 <button type="submit" class="btn btn-rosa ">Generar ticket</button>
             </form>
 
