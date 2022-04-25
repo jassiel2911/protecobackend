@@ -56,7 +56,7 @@
 					<a href="{{route('home')}}" class="nav-menu_link nav-link active" >Inicio</a>
 				</li>
                 <li class="nav-menu_item">
-                    <a href="{{route('inscripcion')}}" class="nav-menu_link nav-link active" >¿Cómo me inscribo?</a>
+                    <a href="{{route('inscripcion')}}" class="nav-menu_link nav-link" >¿Cómo me inscribo?</a>
                 </li>
                 @guest
                 <li class="nav-menu_item menu_item-btn">

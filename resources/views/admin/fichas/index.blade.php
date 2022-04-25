@@ -8,7 +8,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
   @endif
-  <section class="home-cursos container my-5">
+  <section class="container my-5">
     <div class="d-flex justify-content-between my-5">
       <h1 class="text-rosa">Fichas</h1><br>
     <form class="ml-auto" action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">

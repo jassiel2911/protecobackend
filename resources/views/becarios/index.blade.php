@@ -17,10 +17,10 @@
               <div class="card">
                       <div class="card-body">
                           <div class="card-img">
-                              <img src="img/C.png" alt="">
+                              <img src="{{asset('/img/logos/'.$curso->imagen)}}" alt="">
                           </div>
                           <div class="card-text">
-                              <h3 class="card-text_titulo">{{$curso->nombre}}</h3>
+                              <h4 class="card-text_titulo">{{$curso->nombre}}</h4>
                               <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
                               <p class="card-text_p">
                                   <span class="material-symbols-outlined">calendar_month</span>

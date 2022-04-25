@@ -8,12 +8,6 @@ No media query for `xs` since this is the default in Bootstrap
 
 /*// Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) { 
-    main{
-        margin-top: 100px;
-    }
-    body{
-        background-color: var(--blanco);
-    }
     /* auth  */
         .col-morada{
             height: 100vh;
@@ -58,7 +52,7 @@ No media query for `xs` since this is the default in Bootstrap
         }
     .home-landing{
       background-repeat: no-repeat;
-      background-image: url('../img/Group 2.svg');
+      /* background-image: url('../img/Group 2.svg'); */
       background-size: 120%;
       padding: 0;
       padding-top: 1rem;
@@ -79,6 +73,7 @@ No media query for `xs` since this is the default in Bootstrap
 
 /*// Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
+    
     .home-landing{
         background-color: transparent;
         background-repeat: no-repeat;
@@ -86,7 +81,7 @@ No media query for `xs` since this is the default in Bootstrap
         background-size: cover;
         height: 70vh;
         background-position: 0 120%;
-        padding: 10rem 0 0;
+        padding: 1rem 0 0;
     }
      .home-landing .container{
         display: flex;
@@ -130,7 +125,18 @@ No media query for `xs` since this is the default in Bootstrap
 
 /*// X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1100px) {
-    
+    main {
+        margin-top: 100px;
+    }
+    .home-landing {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        /*padding: 10rem 0 4rem;*/
+        background-size: cover;
+        height: 70vh;
+        background-position: 0 120%;
+        padding: 5% 0 0;
+    }
     /* Navbar */
         .nav-toggle{
             display: none;

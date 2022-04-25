@@ -180,15 +180,15 @@
             </div>
         
             <!-- Cursos -->
-            <div class="home-cursos-cards">
+            <div class="home-cursos-cards mt-seccion">
                 @foreach($cursos as $curso)
-                <div class="card">
+                <div class="card shadow-lg">
                         <div class="card-body">
                             <div class="card-img">
-                                <img src="img/C.png" alt="">
+                                <img src="{{asset('/img/logos/'.$curso->imagen)}}" alt="">
                             </div>
                             <div class="card-text">
-                                <h3 class="card-text_titulo">{{$curso->nombre}}</h3>
+                                <h4 class="card-text_titulo">{{$curso->nombre}}</h4>
                                 <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
                                 <p class="card-text_p">
                                     <span class="material-symbols-outlined">calendar_month</span>
@@ -199,49 +199,50 @@
                                     {{Carbon\Carbon::parse($curso->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($curso->hora_fin)->format('g:i a')}}
                                 </p>
                                 <hr>
-                                <div class="card-links">
-                                    <div class="card-links-botones">
-                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$curso->temario")}}">Ver temario</a>
-                                    </div>
-                                    <div class="d-flex">
-                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
-                                        @csrf
-                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                            <input type="hidden" name="curso_id" value="{{$curso->id}}">
-                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
-                                                <span class="material-symbols-outlined">add_shopping_cart</span>
-                                            </button>
-                                            <span class="flip d-block">
-                                                <span class="material-symbols-outlined">more_vert</span>
-                                            </span>    
-                                            <!-- atras -->
-                                            <div class="panel">
-                                                <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
-                                                </p>
-                                                <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
-                                                </p>
-                                                <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
-                                                </p>
-                                                <h4 class="card-list_precios text-rosa">Precios</h4>
-                                                <p class="panel-p">
-                                                    <span>Comunidad UNAM:</span> $600  
-                                                </p>
-                                                <p class="panel-p">
-                                                    <span>Alumnos externos:</span> $700  
-                                                </p>
-                                                <p class="panel-p">
-                                                    <span>Publico general:</span> $800  
-                                                </p>
+                               
+                            </div>
+                             <div class="card-links">
+                                <div class="card-links-botones">
+                                    <a target="_blank" class="link-temario" href="{{asset("temarios/$curso->temario")}}">Ver temario</a>
+                                </div>
+                                <div class="d-flex">
+                                    <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                    @csrf
+                                        <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                        <input type="hidden" name="curso_id" value="{{$curso->id}}">
+                                        <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                            <span class="material-symbols-outlined">add_shopping_cart</span>
+                                        </button>
+                                        <span class="flip d-block" title="Ver detalles">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </span>    
+                                        <!-- atras -->
+                                        <div class="panel">
+                                            <p class="panel-p">
+                                                <span>Antecedentes:</span> Ninguno  
+                                            </p>
+                                            <p class="panel-p">
+                                                <span>Equipo:</span> Computadora con acceso a internet  
+                                            </p>
+                                            <p class="panel-p">
+                                                <span>Cupo:</span> 20  
+                                            </p>
+                                            <h5 class="card-list_precios text-white">Precios</h5>
+                                            <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                <span >Comunidad UNAM:</span> $600  
+                                            </p>
+                                            <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                <span >Alumnos externos:</span> $700  
+                                            </p>
+                                            <p class="panel-p">
+                                                <span>Publico general:</span> $800  
+                                            </p>
 
-                                                </div>
-                                        </form>
-                                
-                                    </div>
+                                            </div>
+                                    </form>
                                 
                                 </div>
+                                
                             </div>
                         </div>
                 </div>    
@@ -252,52 +253,65 @@
     </section>
 
     <section class="aprende">
-        <h2 class="home-subtitulo">¿Por qué tomar cursos con nosotros?</h2>
-        <div class="container">
-            <img class="img-fluid" src="img/cursos.svg" alt="">
+        <h2 class="home-subtitulo">Aprende con nosotros</h2>
+        <h3 class="home-sub-sub">Te ofrecemos: </h3>
+        <div class="container mt-seccion">
+            <img class="img-fluid" src="img/softwareTesting.png" alt="">
 
             <!-- accordion -->
-            <div class="accordion">
-                <section class="accordion-item ">
+            <div class="collapse-aprende">
+                <button class=""  data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
                     <div class="accordion-pill">
                         <span class="material-symbols-outlined">devices</span>
                         <p>15 horas de clases en vivo</p>
                         <span class="aprende-cards_flecha material-symbols-outlined">keyboard_arrow_up</span>
                     </div>
-                    <div class="accordion-item-content">
-                      <p>Las clases se imparten vía Zoom y son grabadas para que puedas acceder cuando tú quieras. <img src="img/zoom.svg" alt=""></p>
-                    </div>
-                </section>
-                <section class="accordion-item">
+                 </button>
+                <div class="collapse" id="collapse1">
+                  <div class="card card-body">
+                        <p>Por el momento todos nuestros curso son en línea a través de Zoom. <img src="{{asset('img/zoom.svg')}}" alt=""></p>
+
+                  </div>
+                </div>
+                <button data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                     <div class="accordion-pill">
                         <span class="material-symbols-outlined">workspace_premium</span>
                         <p>Constancia al finalizar</p>
                         <span class="aprende-cards_flecha material-symbols-outlined">keyboard_arrow_up</span>
                     </div>
-                    <div class="accordion-item-content">
-                      <p>Constancia digital firmada por autoridades del departamento de Computación de la Facultad de Ingeniería para aquellos que acrediten con calificación mayor o igual a 8. <img class="img-fluid mt-5" src="img/constancia.svg" alt=""></p>
-                    </div>
-                </section>
-                <section  class="accordion-item">
+                 </button>
+                <div class="collapse" id="collapse2">
+                  <div class="card card-body">
+                        <p>Constancia digital firmada por autoridades del departamento de Computación de la Facultad de Ingeniería para aquellos que acrediten con calificación mayor o igual a 8. </p>
+                        <img class="img-fluid constancia" src="{{asset('img/constanciaR.png')}}" alt="">
+                  </div>
+                </div>
+                <button data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
                     <div class="accordion-pill">
                         <span class="material-symbols-outlined">face</span>
                         <p>Atención personalizada</p>
                         <span class="aprende-cards_flecha material-symbols-outlined">keyboard_arrow_up</span>
                     </div>
-                    <div class="accordion-item-content">
-                      <p><b>¡Estamos para ayudarte!</b> Nos caracterizamos por brindar un servicio de calidad llevando en alto el nombre y los valores de la Máxima Casa de Estudios. <img src="img/biblio.jpg" class="img-fluid mt-5" alt=""></p>
-                    </div>
-                </section>
-                <section class="accordion-item">
+                 </button>
+                <div class="collapse" id="collapse3">
+                  <div class="card card-body">
+                        <p><b>¡Estamos para ayudarte!</b> Nos caracterizamos por brindar un servicio de calidad llevando en alto el nombre y los valores de la Máxima Casa de Estudios. </p>
+                        <img src="img/biblio.jpg" class="constancia" alt="">
+                  </div>
+                </div>
+                <button data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
                     <div class="accordion-pill">
                         <span class="material-symbols-outlined">videocam</span>
                         <p>Clases grabadas</p>
                         <span class="aprende-cards_flecha material-symbols-outlined">keyboard_arrow_up</span>
                     </div>
-                    <div class="accordion-item-content">
-                      <p>¿No pudiste asistir a la clase? No te preocupes, todas las sesiones se graban para que la revises cuando tu quieras.</p>
-                    </div>
-                </section>
+                 </button>
+                <div class="collapse" id="collapse4">
+                  <div class="card card-body">
+                    <p>¿No pudiste asistir a la clase? No te preocupes, todas las sesiones se graban para que la revises cuando tu quieras.</p>
+
+                  </div>
+                </div>
             </div>
 
         </div>
@@ -305,7 +319,7 @@
 
     <section class="talleres">
         <h2 class="home-subtitulo">Talleres gratuitos</h2>
-        <p>Cada semana ofrecemos talleres de 2 horas completamente gratis. ¡No te los pierdas!</p>
+        <p class="text-center">Cada semana ofrecemos talleres de 2 horas completamente gratis. ¡No te los pierdas!</p>
         <div id="carouselExampleIndicators" class="carousel carousel-fade" data-bs-ride="carousel">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

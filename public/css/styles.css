@@ -82,7 +82,7 @@
   body{
     font-size: 100%;
     min-height: 100vh;
-    /*background-color: var(--blanco);*/
+    background-color: var(--blanco);
     font-family: 'MulishRegular',   sans-serif;
     
     overflow-x: hidden;
@@ -252,7 +252,7 @@
       display: block;
     }
     .nav-menu_link.active{
-      color: var(--rosa);
+      color: var(--amarillo);
       text-decoration: underline;
     }
     .nav-menu_link:hover{
@@ -271,28 +271,28 @@
     }
     .btn-nav_amarillo_outline{
       background-color: transparent;
-      border: 2px solid var(--rosa);
+      border: 2px solid var(--amarillo);
     }
     .btn-nav_amarillo_outline:hover{
       transform: translateY(-4px);
       color: #fff;
     }
     .btn-nav_amarillo{
-      background-color: var(--rosa);
-      border: 2px solid var(--rosa);
-      color: var(--grisea);
+      background-color: var(--amarillo);
+      border: 2px solid var(--amarillo);
+      color: var(--negro20);
     }
     .btn-nav_amarillo:hover{
       transform: translateY(-4px);
-      color: var(--grisea);
+      color: var(--negro20);
     }
     
 /* landing */
   .home-landing{
     background-repeat: no-repeat;
-    /*background-image: url('../img/Group 2.svg');*/
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(37,37,107,1) 100%);
+    background-image: url('../img/Group 2.svg');
+    /* background: rgb(255,255,255); */
+    /* background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(37,37,107,1) 100%); */
     background-size: 120%;
     padding: 0;
     padding-top: 1rem;
@@ -312,10 +312,9 @@
     justify-content: center;
   }
   .home-landing_img img{
-    width: 90%;
+    width: 80%;
     z-index: 10;
-    max-width: 500px;
-    position: relative;
+    max-width: 700px;
   }
   .home-landing_text{
     /*background-color: var(--fe);*/
@@ -335,9 +334,7 @@
   }
 
 /* Carousel logos */
-  .home-logos{
-    background-color: #fff;
-  }
+ 
   .home-logos .owl-carousel{
     margin: 2rem auto;
     /*z-index: -100 !important;*/
@@ -362,7 +359,7 @@
   .home-cursos{
     margin: 4rem 0;
     padding: 2rem 0;
-    background-color: var(--blanco);
+    background-color: #fff;
   }
   .home-cursos .home-subtitulo{
     margin-bottom: 0;
@@ -387,6 +384,12 @@
     width: 16rem;
     margin: 0rem 1rem 1rem;
     border: none;
+    height: 25rem;
+  }
+  .home-cursos .card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   }
   .home-cursos .btn{
     display: block;
@@ -498,22 +501,38 @@
   }
 
 /* aprende  */
-  .aprende{
+  .aprende {
     margin: 4rem 0;
   }
-  .accordion{
-    margin: 1rem 0;
+ 
+  .collapse-aprende button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 100%;
   }
-  .aprende .container{
+  
+  .collapse-aprende button:hover {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 100%;
+    outline: 0;
+  }
+  
+  .aprende .container {
     display: grid;
+    margin: 1rem auto;
   }
-  .aprende .container>img{
+  
+  .aprende .container>img {
     width: 80%;
     display: block;
-    margin: 2rem auto 0;
+    margin: 1rem auto;
     max-width: 500px;
   }
-  .aprende-cards_flecha{
+  
+  .aprende-cards_flecha {
     transition: all .8s ease;
     position: absolute;
     right: 0;
@@ -521,25 +540,8 @@
     font-size: 2rem;
     margin-right: 5%;
   }
-  .accordion:hover .accordion-item:hover .accordion-item-content,
-  .accordion .accordion-item--default .accordion-item-content {
-      height: auto;
-  }
-  .accordion:hover .accordion-item:hover .aprende-cards_flecha{
-      transform: rotate(0);
-  }
-
-  .accordion-item-content,
-  .accordion:hover .accordion-item-content {
-      height: 0;
-      overflow: hidden;
-      transition: height .25s;
-  }
-  .accordion-item{
-    background-color: transparent;
-    border: none;
-  }
-  .accordion-pill{
+  
+  .accordion-pill {
     position: relative;
     display: flex;
     align-content: center;
@@ -552,18 +554,39 @@
     background-color: var(--azulfuerte);
     color: var(--blanco);
   }
-  .accordion-pill p{
+  
+  .accordion-pill p {
     margin-bottom: 0;
   }
-  .accordion-pill span:nth-child(1){
+  
+  .accordion-pill span:nth-child(1) {
     font-size: 2.5rem;
     margin-right: 5%;
   }
-  .accordion-item-content{
-    padding:  0 1rem ;
+  
+  .accordion-item-content {
+    padding: 0 1rem;
   }
-  .accordion-item-content p{
+  
+  .accordion-item-content p {
     padding: 2rem 0;
+  }
+  
+  .collapse-aprende .collapse .card-body {
+    border: none;
+    background-color: transparent;
+  }
+  
+  .collapse-aprende .collapsing .card-body {
+    border: none;
+    background-color: transparent;
+  }
+  
+  .constancia {
+    width: 90%;
+    max-width: 600px;
+    display: block;
+    margin: auto;
   }
 
 /* carousel talleres */
@@ -772,4 +795,8 @@
 
     .card-info{
       padding: 1rem;
+    }
+
+    .mt-seccion{
+      margin-top: 3rem;
     }
