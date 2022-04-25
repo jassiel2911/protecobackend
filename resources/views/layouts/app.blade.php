@@ -41,7 +41,7 @@
 						<img id="logo-unam" class="nav-logo_desk d-none d-xl-block" src="./img/UNAM.png" alt="UNAM">
 					</a>
 				</div>
-				<a class="d-xl-none" title="Programa de Tecnología en Cómputo" href="index.html">
+				<a class="d-xl-none" title="Programa de Tecnología en Cómputo" href="{{route('home')}}">
 					<img class="nav-logo_mob" src="./img/logo_blanco.png" alt="PROTECO">
 				</a>
 			</div>

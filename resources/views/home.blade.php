@@ -316,19 +316,19 @@
             <div class="carousel-item active">
               <div>
                 <img src="img/Talleres/T025_ Introducción a Java Script.png" class="d-block" alt="...">
-                <a class="btn btn-rosa" href="">Registrate aquí</a>
+                <a class="btn btn-rosa" target="_blank" href="https://linktr.ee/proteco">Registrate aquí</a>
               </div>
             </div>
             <div class="carousel-item">
               <div>
                 <img src="img/Talleres/T026_ Manejo de archivos en Python.png" class="d-block" alt="...">
-                <a class="btn btn-rosa" href="">Registrate aquí</a>
+                <a class="btn btn-rosa" target="_blank" href="https://linktr.ee/proteco">Registrate aquí</a>
               </div>
             </div>
             <div class="carousel-item">
               <div>
                 <img src="img/Talleres/T027_ Introducción a la criptografía.png" class="d-block" alt="...">
-                <a class="btn btn-rosa" href="">Registrate aquí</a>
+                <a class="btn btn-rosa" target="_blank" href="https://linktr.ee/proteco">Registrate aquí</a>
               </div>
             </div>
           </div>
