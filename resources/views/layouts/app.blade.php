@@ -148,19 +148,19 @@
                 <div class="redes col-lg-4 col-md-12">
                     <h5 class="">Síguenos</h5>
                    	<div class="d-flex">
-                   		<a href="">
+                   		<a target="_blank" href="https://es-la.facebook.com/proteco/">
                    			<img src="img/fb.png" alt="">
                    		</a>
-                   		<a href="">
+                   		<a target="_blank" href="https://www.youtube.com/c/PROTECOCursos/featured?app=desktop">
                    			<img src="img/yb.png" alt="">
                    		</a>
-                   		<a href="">
+                   		<a target="_blank" href="https://www.instagram.com/protecounam/?hl=es">
                    			<img src="img/ig.png" alt="">
                    		</a>
-                   		<a href="">
+                   		<a target="_blank" href="https://twitter.com/proteco?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
                    			<img src="img/tw.png" alt="">
                    		</a>
-                   		<a href="">
+                   		<a target="_blank" href="https://www.linkedin.com/company/proteco">
                    			<img src="img/in.png" alt="">
                    		</a>
                    	</div>
