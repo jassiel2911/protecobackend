@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="container mt-5">
+<main class="container" style="margin-top:100px; padding-top:70px;">
 
      @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -10,6 +10,7 @@
         </div>
     @endif
 
+    <a href="{{route('perfil.index')}}" class="text-rosa">Regresar a mi perfil</a>
     <section class="container py-3 ">
         <h1 class="text-rosa text-center">Editar información personal</h1>
         <form class="edit-form container mx-auto" action="{{route('editar-perfil.update', $user->id)}}" method="POST">

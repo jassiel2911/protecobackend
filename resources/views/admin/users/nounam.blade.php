@@ -6,9 +6,9 @@
 <main>
   <x-admin-user-nav/>
 
-  <section class="home-cursos container my-3">
+  <section class="container my-3">
       <h2 class="text-azul">Alumnos externos</h2>
-      <button  id="btnExport" onclick="fnExportToExcel('xlsx', 'Asistentes')" class="btn btn-azul d-inline">Exportar lista a xlsx</button>
+      <button  id="btnExport" onclick="fnExportToExcel('xlsx', 'Asistentes')" class="btn btn-rosa my-5 d-inline">Exportar lista a xlsx</button>
 
       <section class="container show-curso_lista">
           <table id="lista" class="table table-hover">

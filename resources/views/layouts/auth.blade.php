@@ -15,13 +15,12 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('css/glider.css')}}">
-    <link rel="stylesheet" href="{{asset('css/styles3.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('css/mediaqueries.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
-
-    <link rel="shortcut icon" href="{{asset('img/icons/personales/logo.png')}}">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
 
 
 

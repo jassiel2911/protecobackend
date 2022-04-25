@@ -6,7 +6,7 @@
 <main> 
   <x-ticket-nav/>
  
-  <section class="home-cursos container my-5">
+  <section class="container my-5">
     @if(session('success'))
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <p>{{session('success')}}</p>

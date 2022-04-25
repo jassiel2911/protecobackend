@@ -1,130 +1,149 @@
 /*X-Small devices (portrait phones, less than 576px)
 No media query for `xs` since this is the default in Bootstrap
 */
-// Small devices (landscape phones, 576px and up)
+/*// Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) { 
 
 }
 
 /*// Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) { 
-    .col-morada{
-        height: 100vh;
+    main{
+        margin-top: 100px;
     }
-    .col-morada_content{
-        display: block;
+    body{
+        background-color: var(--blanco);
     }
-    .col-blanca-reg{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100vh;
-        padding-top: 0vh;
-    }
-    .sin_cuenta-top{
-      display: block;
-      position: absolute;
-      top: 2vh;
-      right: 2vw;
-    }
-    .sin_cuenta-bottom{
-      display: none;
-    }
-    .col-blanca-log{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        height: 90vh;
-        padding-top: 20vh;
-    }
-
+    /* auth  */
+        .col-morada{
+            height: 100vh;
+        }
+        .col-morada_content{
+            display: block;
+        }
+        .col-blanca-reg{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            padding-top: 0vh;
+        }
+        .sin_cuenta-top{
+          display: block;
+          position: absolute;
+          top: 2vh;
+          right: 2vw;
+        }
+        .sin_cuenta-bottom{
+          display: none;
+        }
+        .col-blanca-log{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 90vh;
+            padding-top: 20vh;
+        }
     /* Carousel logos */
+        .home-logos{
+            background-color: transparent;
+        }
+        .home-logos .owl-carousel{
+          margin: 0;
+          /*z-index: -100 !important;*/
+        }
         .cursos-home .owl-carousel img{
             max-height: 80px;
             margin: auto;
         }
+    .home-landing{
+      background-repeat: no-repeat;
+      background-image: url('../img/Group 2.svg');
+      background-size: 120%;
+      padding: 0;
+      padding-top: 1rem;
+      width: 100vw;
+    }
+    .home-landing_text{
+        max-width: 600px;
+    }
+    .landing_text_titulo1 span{
+        color: var(--amarillo);
+      }
+    .home-landing .btn-rosa{
+        background-color: var(--amarillo);
+        color: var(--azulfuerte);
+    }
 
-    
-    /* Porque? */
-        .container-porque{
-            margin: 6rem auto;
-            display: flex;
-            flex-direction: column;
-        }
-        .card-porque{
-            height: 12rem;
-        }
-        .card-porque-2{
-            transform: translateY(-20%);
-        }
 }
 
 /*// Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
-        
-        /* Home */
-            .section-presentacion{
-                /*background-color: var(--lavanda);*/
-                background-image: url(../img/fondos/wave2.svg);
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-            div.row.presentacion{
-                /*padding: 0 5vw;*/
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-            }
-            .presentacion .item-1, .contacto .item-2{
-                order: 0;
-            }
-
-            .presentacion .item-2, .contacto .item-1{
-                order: -1;
-            }
-           
-            .presentacion .item-2 div, .presentacion .item-2 .container-btn{
-                justify-content: flex-start;
-            }
-
-            .presentacion .item-2 div h1, .presentacion .item-2 div p{
-                text-align: left;
-                width: 85%;
-            }
-            .presentacion .item-1 img{
-                max-height: 600px;
-            }
-
+    .home-landing{
+        background-color: transparent;
+        background-repeat: no-repeat;
+        /*padding: 10rem 0 4rem;*/
+        background-size: cover;
+        height: 70vh;
+        background-position: 0 120%;
+        padding: 10rem 0 0;
     }
+     .home-landing .container{
+        display: flex;
+        flex-direction: row-reverse;
+        align-content: center;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .home-landing_text{
+        background-color: transparent;
+        border-radius: 0;
+        padding: 0;
+        position: relative;
+        bottom: 0;
+        max-width: auto;
+        text-align: left;
+        align-items: flex-start;
+      }
+    .landing_text_titulo1{
+        color: var(--grisea);
+        margin-bottom: 1rem;
+      }
+      .landing_text_p{
+        color: var(--grisea);
+        margin-bottom: 2rem;
+      }
+
+    /* cursos */
+        .home-cursos{
+          margin: 2rem 0;
+          padding: 4rem 0;
+          /*background-color: var(--grisea);*/
+        }
+        
+    /* aprende */
+        .aprende .container{
+          display: grid;
+          grid-template-columns: 40% 60%;
+        }
+}
 
 /*// X-Large devices (large desktops, 1200px and up)*/
 @media (min-width: 1100px) {
-    /*main{
-        padding: 0 10vw;
-    }*/
-    /* Display */
-        .desktop-none{
-            display: none;
-        }
-        .mobile-none{
-            display: block;
-        }
-
+    
     /* Navbar */
-        main{
-            top:100px;
-        }
         .nav-toggle{
             display: none;
         }
-        .nav-logo_blanco{
-            display: none;
-        }
-        .nav-logo_color{
+        .nav-logo_desk{
             display: block;
+            height: 70px;
+            margin: 0 4px;
+        }
+        #logo-unam{
+            filter: invert(100%);
         }
         .nav-home{
-            background-color: var(--lavanda);
             height: 100px;
             min-width: 100vw;
             position: fixed;
@@ -133,11 +152,9 @@ No media query for `xs` since this is the default in Bootstrap
             justify-content: space-between;
             align-content: center;
             align-items: center;
-            padding: 0 5vw;
         }
         .nav-home_menu {
             display: flex;
-            list-style: none;
             flex-direction: row;
             align-content: center;
             align-items: center;
@@ -146,22 +163,57 @@ No media query for `xs` since this is the default in Bootstrap
             width: auto;
             height: 100px;
             min-height: auto;
+            margin: 0;
         }
         .nav-logo{
             height: 80px;
             margin-top: 0;
         }
 
-    /* Home */
-        div.row.presentacion{
-            /*padding: 0 5vw;*/
-        }
+        /* dropdown */
+            .dropbtn {
+            background-color: transparent;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            color: #fff
+            }
+            .dropbtn img{
+            filter: invert(100%);
+            }
+            .dropbtn:hover{
+            color: var(--amarillo);
+            text-decoration: underline;
+            }
 
-    
-    /* cursos primer */
-        .cursos-primero-1{
-            padding: 0 3rem;
-        }
+            .dropdown-nav {
+            position: relative;
+            display: inline-block;
+            }
+
+            .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--azulfuerte);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            }
+
+            .dropdown-content a {
+            color: #fff;
+            padding: 6px 16px;
+            text-decoration: none;
+            display: block;
+            }
+
+            .dropdown-content a:hover {
+            background-color: var(--amarillo);
+            color: #202020;
+            }
+
+            .dropdown-nav:hover .dropdown-content {display: block;}
+
     /* home aprende */
             .home-aprende{
                 display: grid;
@@ -169,28 +221,7 @@ No media query for `xs` since this is the default in Bootstrap
             }
             .home-aprende img{
             }
-    /* talleres */
-        .home-talleres{
-            
-        }
-        .carousel-talleres div .img-carousel-talleres{
-            width: 75% !important;
-            margin: auto;
-            margin-bottom: 2rem;
-        }
-    /* Ifrane */
-        .iframe-responsive-yt iframe, .iframe-responsive-yt object, .iframe-responsive-yt embed {
-            height: 80%;
-            left: 10%;
-            position: absolute;
-            top: 0;
-            width: 80%;
-        }
 
-    /* footer */
-        .home-footer{
-            padding: 3rem;
-        }
 }
 
 /*// X-Large devices (large desktops, 1200px and up)*/

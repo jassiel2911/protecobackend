@@ -17,77 +17,61 @@
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/glider.min.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('css/glider.css')}}">
-    <link rel="stylesheet" href="{{asset('css/styles3.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('css/mediaqueries.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    <link rel="shortcut icon" href="{{asset('img/icons/personales/logo.png')}}">
+
+    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
 
 </head>
 <body>
     <!-- Header -->
-    <header class="header header-home">
-        <!-- Navbar -->
-        <nav class="nav nav-home container">
-            <div class="nav-ico">
-                <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/logo_color.png" alt="PROTECO"> -->
-                <div class="d-flex">
-                    <a href="{{route('home')}}"><img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/logo_negro.png')}}" alt="PROTECO"></a>
-                    <a href="{{route('home')}}"><img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/fi_negro.svg')}}" alt="PROTECO"></a>
-                    
-                </div>
-                <img class="logo ico-proteco nav-logo nav-logo_blanco" src="{{asset('img/icons/personales/logo_blanco.png')}}" alt="PROTECO">
-            </div>
-            <button class="nav-toggle" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-menu nav-home_menu">
+	<header class="header header-home">
+		<!-- Navbar -->
+		<nav class="nav nav-home container">
+			<div class="">
+				<div class="d-flex">
+					<a title="Programa de Tecnología en Cómputo" href="{{route('home')}}">
+						<img class="nav-logo_desk d-none d-xl-block" src="./img/logo_blanco.png" alt="Programa de Tecnología en Cómputo">
+					</a>
+					<a title="Universidad Nacional Autónoma de México" target="_blank" href="https://www.unam.mx/">
+						<img id="logo-unam" class="nav-logo_desk d-none d-xl-block" src="./img/UNAM.png" alt="UNAM">
+					</a>
+				</div>
+				<a class="d-xl-none" title="Programa de Tecnología en Cómputo" href="index.html">
+					<img class="nav-logo_mob" src="./img/logo_blanco.png" alt="PROTECO">
+				</a>
+			</div>
+			<button class="nav-toggle" aria-label="Abrir menú">
+				<img src="img/menu.png" alt="">
+			</button>
+			<!-- Menu -->
+			<ul class="nav-menu nav-home_menu container">
+				<li class="nav-menu_item">
+					<a href="{{route('home')}}" class="nav-menu_link nav-link active" >Inicio</a>
+				</li>
                 <li class="nav-menu_item">
-                    <a href="{{route('home')}}" class="nav-menu_link nav-link active" >Inicio</a>
+                    <a href="{{route('inscripcion')}}" class="nav-menu_link nav-link active" >¿Cómo me inscribo?</a>
                 </li>
-                <li class="nav-menu_item">
-                    <a href="{{route('ver-cursos.index')}}" class="nav-menu_link nav-link" >Cursos</a>
-                </li>
-                <li class="nav-menu_item">
-                    <a href="{{route('inscripcion')}}" class="nav-menu_link nav-link" >¿Cómo me inscribo?</a>
-                </li>
-                <!-- <li class="nav-menu_item">
-                    <a href="{{route('ver-cursos.index')}}" class="nav-menu_link nav-link" >Talleres</a>
-                </li>
-                <li class="nav-menu_item">
-                    <a href="{{route('ver-cursos.index')}}" class="nav-menu_link nav-link" >Asesorías</a>
-                </li> -->
                 @guest
                 <li class="nav-menu_item menu_item-btn">
-                    <a href="{{route('register')}}" class="nav-menu_link nav-link btn-form btn-azul-outline" id="nav-contacto">Crear cuenta</a>
+                    <a href="{{route('register')}}" class="btn-nav nav-menu_link nav-link btn-nav_amarillo_outline" id="nav-contacto">Crear cuenta</a>
                 </li>
                 <li class="nav-menu_item menu_item-btn">
-                    <a href="{{route('login')}}" class="nav-menu_link nav-link btn-form btn-azul text-blanco" id="nav-contacto">Iniciar sesión</a>
+                    <a href="{{route('login')}}" class="btn-nav nav-menu_link nav-link btn-nav_amarillo" id="nav-contacto">Iniciar sesión</a>
                 </li>
                 @else
-                    <!-- para admins -->
-                    <li class="nav-menu_item">
-                        <a href="{{route('cart.show', auth()->user()->id)}}" class="nav-menu_link nav-link" id="nav-contacto">Carrito</a>
-                    </li>
-                    <!-- @if(auth()->user()->role==2)
-                    <li class="nav-menu_item">
-                        <a href="{{route('admin.index')}}" class="nav-menu_link nav-link" id="nav-asesorias">Panel de administrador</a>
-                    </li>
-                     <li class="nav-menu_item">
-                        <a href="{{route('becarios.index')}}" class="nav-menu_link nav-link" id="nav-contacto">Panel de becario</a>
-                    </li>
-                    @elseif(auth()->user()->role==1)
-                    <li class="nav-menu_item">
-                        <a href="{{route('becarios.index')}}" class="nav-menu_link nav-link" id="nav-contacto">Panel de becario</a>
-                    </li>
-                    @endif -->
-                    <!-- desktop -->
-                    <li class="nav-item dropdown nav-menu_item d-none d-md-block">
-                      <div class="dropdown-nav">
-                      <button class="dropbtn d-flex justify-content-center align-items-center align-content-center">{{auth()->user()->fname}} <img class="d-block mx-2" src="img/icons/generales/flecha.png" alt="" width="20"></button>
-                      <div class="dropdown-content">
+				<li class="nav-menu_item">
+					<a href="{{route('cart.show', auth()->user()->id)}}" class="nav-menu_link nav-link" >Carrito</a>
+				</li>
+					<!-- desktop -->
+					<li class="nav-item dropdown nav-menu_item d-none d-xl-block">
+			          <div class="dropdown-nav">
+			          <button class="dropbtn d-flex justify-content-center align-items-center align-content-center">{{auth()->user()->fname}} <img class="d-block mx-2" src="img/icons/generales/flecha.png" alt="" width="20"></button>
+			          <div class="dropdown-content shadow-lg">
                         <a href="{{route('perfil.index')}}">Mi perfil</a>
                          @if(auth()->user()->role==2)
                             <a href="{{route('admin.index')}}">Administrador</a>
@@ -103,10 +87,10 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
-                      </div>
-                    </div>
-                    </li>
-                    <!-- mobile -->
+			          </div>
+			        </div>
+			        </li>
+			        <!-- mobile -->
                     <li class="nav-menu_item d-md-none">
                         <a href="{{route('perfil.index')}}" class="nav-menu_link nav-link" >Mi perfil</a>
                     </li>
@@ -133,46 +117,57 @@
                             @csrf
                         </form>
                     </li>
+				<!-- botones -->
                 @endguest
-            </ul>
-        </nav>
-    </header>
+
+			</ul>
+		</nav>
+	</header>
+    <!-- Header -->
    
     @yield('content')
 
     <!-- Footer -->
-    <footer class="home-footer container-fluid" id="contacto-proteco">
-        <div class="row home-footer_row">
-            <div class="col-12 col-lg-4 footer-col-logo">
-                <img class="img-fluid footer-logo mobile-none" src="{{asset('img/icons/personales/logo.png')}}" alt="Facultad de Ingenieria">
-            </div>
-            <!-- Boton de email -->
-            <div class="col-12 col-lg-4 footer-col-contacto">
-                <h4 class="text-azul">Contacto</h4>
-                <a class="text-negro" target="_blank" href="mailto:cursosproteco@gmail.com">cursosproteco@gmail.com</a>
-                <p>56 1839 4983</p>
-                <p>Anexo Facultad Ingeniería Edificio Q "Luis G. Valdés Vallejo Laboratorio Q220, C.U., 04510 Ciudad de México, CDMX</p>
-            </div>
-            <!-- Boton de telefono -->
-            <div class="col-12 col-lg-4 footer-col-redes d-none d-sm-block">
-                <a target="_blank" href="https://www.facebook.com/proteco">
-                    <img src="{{asset('img/icons/generales/fb-azul.svg')}}" alt="">
-                </a>
-                <a target="_blank" href="https://www.instagram.com/protecounam/">
-                    <img src="{{asset('img/icons/generales/ig-azul.svg')}}" alt="">
-                </a>
-                <a target="_blank" href="">
-                    <img src="{{asset('img/icons/generales/tw-azul.svg')}}" alt="https://twitter.com/proteco">
-                </a>
-                <a target="_blank" href="">
-                    <img src="{{asset('img/icons/generales/in-azul.svg')}}" alt="https://www.linkedin.com/company/proteco">
-                </a>
-                <a target="_blank" href="https://www.youtube.com/PROTECOCursos">
-                    <img src="{{asset('img/icons/generales/yt-azul.svg')}}" alt="">
-                </a>
+    <footer class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <img src="img/logo_blanco.png" class="footer-logo img-fluid" alt="">
+                    <img src="img/UNAM.png" class="footer-logo img-fluid unam" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="">Contacto</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="#">cursosproteco@gmail.com</a></li>
+                        <li><a href="#">56 1839 4983</a></li>
+                        <li><a href="#">Anexo Facultad Ingeniería Edificio Q "Luis G. Valdés Vallejo Laboratorio Q220, C.U., 04510 Ciudad de México, CDMX</a></li>
+                    </ul>
+                </div>
+                <div class="redes col-lg-4 col-md-12">
+                    <h5 class="">Síguenos</h5>
+                   	<div class="d-flex">
+                   		<a href="">
+                   			<img src="img/fb.png" alt="">
+                   		</a>
+                   		<a href="">
+                   			<img src="img/yb.png" alt="">
+                   		</a>
+                   		<a href="">
+                   			<img src="img/ig.png" alt="">
+                   		</a>
+                   		<a href="">
+                   			<img src="img/tw.png" alt="">
+                   		</a>
+                   		<a href="">
+                   			<img src="img/in.png" alt="">
+                   		</a>
+                   	</div>
+                </div>
             </div>
         </div>
     </footer>
+
+
     <!-- Messenger Plugin de chat Code -->
     <div id="fb-root"></div>
 

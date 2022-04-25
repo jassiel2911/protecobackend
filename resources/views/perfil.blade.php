@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="container mt-5">
+<main class="container" style="margin-top:100px; padding-top:70px;">
 
      @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -35,13 +35,13 @@
       </symbol>
     </svg>
 
-    <section class="container py-3">
+    <section class="container perfil py-3">
         <h1 class="text-rosa text-center">Bienvenido/a a tu perfil, {{$user->fname}} 👋</h1>
-        <h3 class="text-azul">Información personal</h3>
+        <h3 class="text-azul text-center">Información personal</h3>
 
        
-        <div class="card my-5 bg-lavanda" >
-          <div class="card-body p-2">
+        <div class="card my-5 bg-azulclaro card-info" >
+          <div class="card-body">
             <p><b>Nombre completo: </b>{{$user->fname}} {{$user->lname}}</p>
             <p><b>Correo: </b>{{$user->email}}</p>
             <p><b>Procedencia: </b>{{$user->origin}}</p>
@@ -67,25 +67,18 @@
                   <div class="d-flex my-3">
                     <input type="file" name="probatorio" id="" class="bg-grisclaro border-0" required>
                     <input type="hidden" name="origin" value="Alumno externo">
-                    <button type="submit" class="btn-delgado btn-rosa">Subir</button>
+                    <button type="submit" class="btn btn-rosa">Subir</button>
                   </div>
                 </form>
               </div>
                
             @endif
             <div class="d-flex my-2">
-                <a style="color: #fff" href="{{route('editar-perfil.edit', auth()->user()->id)}}" class="btn-delgado bg-azul">Editar</a>
+                <a href="{{route('editar-perfil.edit', auth()->user()->id)}}" class="btn btn-rosa">Editar</a>
             </div>
           </div>
         </div>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><h3 class="text-azul">Mis tickets</h3></button>
-          </li>
-         <!--  <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><h3 class="text-azul">Mis cursos</h3></button>
-          </li> -->
-        </ul>
+       <h2 class="home-subtitulo">Mis tickets</h2>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
               @if(auth()->user()->origin != "Comunidad UNAM")
@@ -110,7 +103,7 @@
                                         @method('PATCH')
                                         @csrf
                                         <input type="hidden" name="total" value="{{$ticket->total}}">
-                                        <button type="submit" class="btn-delgado text-center text-white bg-rosa">Generar ficha</button>
+                                        <button type="submit" class="btn btn-rosa text-center text-white bg-rosa">Generar ficha</button>
                                     </form>
                                 @endif
 
@@ -139,7 +132,7 @@
                                         @foreach($fichas as $ficha)
                                           @if($ficha->ticket_id == $ticket->id)
                                           <tr>
-                                            <td>Ficha {{$ficha->id}} <a download target="_blank" class="text-rosa" href="{{ asset("fichas/$ficha->monto/$ficha->file_ficha") }}">Descargar</a> <br><a  target="_blank" class="text-rosa" href="{{ asset("fichas/$ficha->monto/$ficha->file_ficha") }}">Abrir</a></td>
+                                            <td>Ficha {{$ficha->id}} <br><a download target="_blank" class="text-rosa" href="{{ asset("fichas/$ficha->monto/$ficha->file_ficha") }}">Descargar</a> <br><a  target="_blank" class="text-rosa" href="{{ asset("fichas/$ficha->monto/$ficha->file_ficha") }}">Abrir</a></td>
                                             <td>
                                               <div class="row">
                                                 <div class="col-12 col-md-6">
@@ -148,10 +141,10 @@
                                                 <div class="col-12 col-md-6">
                                                   @if($ficha->comprobante==0)
                                                    <div class="dropdown">
-                                                    <a style="color: #fff; " class="d-inline-block btn-delgado bg-azul dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <a style="color: #fff; " class="d-inline-block btn btn-amarillo dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                                       Subir comprobante
                                                     </a>
-                                                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                       <ul class="dropdown-menu bg-azulclaro" aria-labelledby="dropdownMenuLink">
                                                           <li><a class="dropdown-item" href="{{url("depositobbva/$ficha->id/$ticket->id")}}">Depósito BBVA</a></li>
                                                           <li><a class="dropdown-item" href="{{url("appbbva/$ficha->id/$ticket->id")}}">App BBVA o transferencia BBVA</a></li>
                                                           <li><a class="dropdown-item" href="{{url("otrobanco/$ficha->id/$ticket->id")}}">Otro banco</a></li>

@@ -16,7 +16,7 @@
         <br>
             <h5 class="text-center">Aún no tienes cursos en tu carrito</h5>
             <img src="{{asset('img/icons/generales/Empty-bro.png')}}" alt="" class="img-fluid">
-            <a class="d-block text-center text-rosa btn btn-rosa btn-min" href="{{route('ver-cursos.index')}}">Ver cursos</a>
+            <a class="d-block text-center text-rosa btn btn-rosa btn-min mx-auto" href="{{route('home')}}">Ver cursos</a>
         @else
             @foreach($carts as $cart)
                 <div class="d-flex my-5 align-content-center align-items-center justify-content-between">
@@ -27,24 +27,24 @@
                     <div class="d-flex align-content-center align-items-center justify-content-center">
                         <p class="d-none">{{$i = $i+1}}</p>
                         @if(auth()->user()->origin == "Comunidad UNAM")
-                        <p style="margin:0;" class="text-start mx-3">$500</p>
-                        <p class="d-none">{{$subtotal = $subtotal + 500}}</p>
+                        <p style="margin:0;" class="text-start mx-3">$600</p>
+                        <p class="d-none">{{$subtotal = $subtotal + 600}}</p>
                         <!-- Se comprueba si el índice del ciclo está en la posición 3 y en caso de ser verdadero, 
                         no se suma el precio del curso al total, esto se repite para cada tipo de usuario (estudiante, público en general, otro) -->
                             @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
                                     
                             @else
-                            <p class="d-none">{{$total = $total + 500}}</p>
+                            <p class="d-none">{{$total = $total + 600}}</p>
                             @endif
                                 
                         @elseif(auth()->user()->origin == "Alumno externo")
-                        <p style="margin:0;" class="text-start mx-3">$600</p>
-                        <p class="d-none">{{$subtotal = $subtotal + 600}}</p>
+                        <p style="margin:0;" class="text-start mx-3">$700</p>
+                        <p class="d-none">{{$subtotal = $subtotal + 700}}</p>
 
                             @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
                                     
                             @else
-                            <p class="d-none">{{$total = $total + 600}}</p>
+                            <p class="d-none">{{$total = $total + 700}}</p>
                             @endif
                         @elseif(auth()->user()->origin == "Publico en general")
                         <p style="margin:0;" class="text-start mx-3">$700</p>
@@ -81,7 +81,7 @@
             <form action="{{route('ticketsficha.store')}}" method="POST" class="d-flex justify-content-end my-4">
                 @csrf
                 <input type="hidden" name="total" value="{{$total}}">
-                <a href="{{route('ver-cursos.index')}}" class="btn btn-lavanda mx-3">Ver más cursos</a>
+                <a href="{{route('ver-cursos.index')}}" class="btn btn-lavanda mx-auto">Ver más cursos</a>
                 <button type="submit" class="btn btn-rosa ">Generar ticket</button>
             </form>
 

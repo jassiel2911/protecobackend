@@ -15,8 +15,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styles3.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mediaqueries.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="shortcut icon" href="{{asset('img/icons/personales/logo.png')}}">
 
@@ -111,6 +112,46 @@
       </nav>
   </header>
   @yield('content')
+
+    <!-- Footer -->
+    <footer class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <img src="img/logo_blanco.png" class="footer-logo img-fluid" alt="">
+                    <img src="img/UNAM.png" class="footer-logo img-fluid unam" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="">Contacto</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="#">cursosproteco@gmail.com</a></li>
+                        <li><a href="#">56 1839 4983</a></li>
+                        <li><a href="#">Anexo Facultad Ingeniería Edificio Q "Luis G. Valdés Vallejo Laboratorio Q220, C.U., 04510 Ciudad de México, CDMX</a></li>
+                    </ul>
+                </div>
+                <div class="redes col-lg-4 col-md-12">
+                    <h5 class="">Síguenos</h5>
+                    <div class="d-flex">
+                        <a href="">
+                            <img src="img/fb.png" alt="">
+                        </a>
+                        <a href="">
+                            <img src="img/yb.png" alt="">
+                        </a>
+                        <a href="">
+                            <img src="img/ig.png" alt="">
+                        </a>
+                        <a href="">
+                            <img src="img/tw.png" alt="">
+                        </a>
+                        <a href="">
+                            <img src="img/in.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
      <!-- Scripts -->
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 

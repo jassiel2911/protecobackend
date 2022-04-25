@@ -2,7 +2,7 @@
 
 @section('content')
  <main>
-  <section class="container mt-5">
+  <section class="container">
    <a href="{{route('admin.index')}}">Regresar</a><br><br>
     <h1 class="text-rosa">Editar usuario</h1><br>
     <form class="edit-form container ml-auto" action="{{route('admin.update', $user->id)}}" method="POST">

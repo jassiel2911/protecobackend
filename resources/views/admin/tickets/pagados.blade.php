@@ -4,7 +4,7 @@
 <main> 
   <x-ticket-nav/>
 
-  <section class="home-cursos container my-5">
+  <section class="container my-5">
       <h2 class="text-azul">Pagados</h2>
       <section class="container show-curso_lista">
           <table class="table table-hover">

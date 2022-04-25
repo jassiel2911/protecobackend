@@ -92,8 +92,8 @@
                         <form action="{{route('ticketsficha.store')}}" method="POST">
                             @csrf
                             <input type="hidden" name="total" value="{{$total}}">
-                            <a type="button" class="d-inline-block btn-delgado btn-lavanda" href="{{route('cart.show', auth()->user()->id)}}">Ver carrito</a>
-                            <button type="submit" class="d-inline-block  btn-delgado btn-rosa">Generar ticket</button>
+                            <a type="button" class="d-inline-block btn btn-amarillo" href="{{route('cart.show', auth()->user()->id)}}">Ver carrito</a>
+                            <button type="submit" class="d-inline-block btn btn-rosa">Generar ticket</button>
                         </form>
                         @endif
                         <!-- <form action="{{route('ticket.store')}}" method="POST">
@@ -121,298 +121,229 @@
     
 
     <!-- Presentacion -->
-    <section class="section-presentacion container-fluid" id="proteco">
-        <div class="row presentacion container mx-auto">
-            <div class="item-1 col-12 col-lg-6">
-                <!-- Imagen principal -->
-                <img class="img-principal img-fluid" src="./img/base/principal_1.png" alt="Explora nuestro contenido">
-            </div>
-            <div class="item-2 col-12 col-lg-6">
-                <!-- Titulo del programa -->
-                <div>
-                    <h1 class="display-5">Programa de <span class="text-azul">Tecnología</span> en Cómputo</h1>
-                </div>
-                <!-- Texto informativo -->
-                <div>
-                    <p class="p p-grande">
-                        En PROTECO <span>estamos para ayudarte</span> a sacar adelante tu carrera en el mundo de la computación
-                    </p>
-                </div>
-                <!-- Boton de cursos -->
-                <div class="container-btn presentacion-btn">
-                    <div class="btn btn-azul"><a style="color:#fff;" href="{{route('ver-cursos.index')}}">Ver cursos</a> </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-     <style>
-        @import url("https://fonts.googleapis.com/css?family=Modak");
-        .text {
-            height: 200px;
-            display: inline-block;
-            font-size: 300px;
-            line-height: 84%;
-            font-family: Modak;
-            padding-left: 7px;
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 7px 7px 0px #d2d2d22e;
-        }
-
-        .text-1 {
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='200px' height='200px' viewBox='0 0 400 400'%3e%3cdefs%3e%3cfilter id='filter' width='400px' height='400px' filterUnits='objectBoundingBox' primitiveUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-color='%23f5576c' flood-opacity='1' x='0' y='0' width='250px' height='250px' result='flood3'%3e%3c/feFlood%3e%3cfeFlood flood-color='%23f093fb' flood-opacity='1' x='150px' y='150px' width='250px' height='250px' result='flood4'%3e%3c/feFlood%3e%3cfeGaussianBlur stdDeviation='50 50' x='0%25' y='0%25' width='100%25' height='100%25' in='flood3' edgeMode='none' result='blur1'%3e%3c/feGaussianBlur%3e%3cfeGaussianBlur stdDeviation='50 50' x='0%25' y='0%25' width='100%25' height='100%25' in='flood4' edgeMode='none' result='blur2'%3e%3c/feGaussianBlur%3e%3cfeBlend mode='normal' x='0%25' y='0%25' width='100%25' height='100%25' in='blur2' in2='SourceGraphic' result='blend5'%3e%3c/feBlend%3e%3cfeBlend mode='normal' x='0%25' y='0%25' width='100%25' height='100%25' in='blur1' in2='blend5' result='blend6'%3e%3c/feBlend%3e%3c/filter%3e%3c/defs%3e%3crect width='400' height='400' x='0' y='0' fill='%23fee140' filter='url(%23filter)'%3e%3c/rect%3e%3c/svg%3e");
-        }
-
-        .text-2 {
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='200px' height='200px' viewBox='0 0 400 400'%3e%3cdefs%3e%3cfilter id='filter' width='400px' height='400px' filterUnits='objectBoundingBox' primitiveUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-color='%238fd3f4' flood-opacity='1' x='0' y='0' width='250px' height='250px' result='flood3'%3e%3c/feFlood%3e%3cfeFlood flood-color='%2396e6a1' flood-opacity='1' x='150px' y='150px' width='250px' height='250px' result='flood4'%3e%3c/feFlood%3e%3cfeGaussianBlur stdDeviation='50 50' x='0%25' y='0%25' width='100%25' height='100%25' in='flood3' edgeMode='none' result='blur1'%3e%3c/feGaussianBlur%3e%3cfeGaussianBlur stdDeviation='50 50' x='0%25' y='0%25' width='100%25' height='100%25' in='flood4' edgeMode='none' result='blur2'%3e%3c/feGaussianBlur%3e%3cfeBlend mode='normal' x='0%25' y='0%25' width='100%25' height='100%25' in='blur2' in2='SourceGraphic' result='blend5'%3e%3c/feBlend%3e%3cfeBlend mode='normal' x='0%25' y='0%25' width='100%25' height='100%25' in='blur1' in2='blend5' result='blend6'%3e%3c/feBlend%3e%3c/filter%3e%3c/defs%3e%3crect width='400' height='400' x='0' y='0' fill='%23d4fc79' filter='url(%23filter)'%3e%3c/rect%3e%3c/svg%3e");
-        }
-
-        .text-3 {
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='200px' height='200px' viewBox='0 0 400 400'%3e%3cdefs%3e%3cfilter id='filter' width='400px' height='400px' filterUnits='objectBoundingBox' primitiveUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-color='%23cd9cf2' flood-opacity='1' x='0' y='0' width='250px' height='250px' result='flood3'%3e%3c/feFlood%3e%3cfeFlood flood-color='%23c2e9fb' flood-opacity='1' x='150px' y='150px' width='250px' height='250px' result='flood4'%3e%3c/feFlood%3e%3cfeGaussianBlur stdDeviation='50 50' x='0%25' y='0%25' width='100%25' height='100%25' in='flood3' edgeMode='none' result='blur1'%3e%3c/feGaussianBlur%3e%3cfeGaussianBlur stdDeviation='50 50' x='0%25' y='0%25' width='100%25' height='100%25' in='flood4' edgeMode='none' result='blur2'%3e%3c/feGaussianBlur%3e%3cfeBlend mode='normal' x='0%25' y='0%25' width='100%25' height='100%25' in='blur2' in2='SourceGraphic' result='blend5'%3e%3c/feBlend%3e%3cfeBlend mode='normal' x='0%25' y='0%25' width='100%25' height='100%25' in='blur1' in2='blend5' result='blend6'%3e%3c/feBlend%3e%3c/filter%3e%3c/defs%3e%3crect width='400' height='400' x='0' y='0' fill='%2366a6ff' filter='url(%23filter)'%3e%3c/rect%3e%3c/svg%3e");
-        }
-
-        .text-4 {
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='200px' height='200px' viewBox='0 0 400 400'%3e%3cdefs%3e%3cfilter id='filter' width='400px' height='400px' filterUnits='objectBoundingBox' primitiveUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-color='%230fd850' flood-opacity='1' x='0' y='0' width='250px' height='250px' result='flood3'%3e%3c/feFlood%3e%3cfeFlood flood-color='%2320E2D7' flood-opacity='1' x='80px' y='160px' width='250px' height='250px' result='flood4'%3e%3c/feFlood%3e%3cfeGaussianBlur stdDeviation='50 50' x='0%25' y='0%25' width='100%25' height='100%25' in='flood3' edgeMode='none' result='blur1'%3e%3c/feGaussianBlur%3e%3cfeGaussianBlur stdDeviation='50 50' x='0%25' y='0%25' width='100%25' height='100%25' in='flood4' edgeMode='none' result='blur2'%3e%3c/feGaussianBlur%3e%3cfeBlend mode='normal' x='0%25' y='0%25' width='100%25' height='100%25' in='blur2' in2='SourceGraphic' result='blend5'%3e%3c/feBlend%3e%3cfeBlend mode='normal' x='0%25' y='0%25' width='100%25' height='100%25' in='blur1' in2='blend5' result='blend6'%3e%3c/feBlend%3e%3c/filter%3e%3c/defs%3e%3crect width='400' height='400' x='0' y='0' fill='%23fbed96' filter='url(%23filter)'%3e%3c/rect%3e%3c/svg%3e");
-        }
-        .text-3x2{
-            animation: beat .25s 6 alternate;
-            transform-origin: center;
-        }
-
-        @keyframes beat{
-            to { transform: scale(1.4); }
-        }
-
-       
-
-
-    </style>
-
-    <!-- Cursos-->
-    <section class="cursos-home container" id="cursos-proteco">
-       
-
-        <h2 class="text-center text-rosa">Cursos semestrales en línea</h2>
-        <div class="alert-info">
-        </div>
-        <!-- Carousel logos -->
-        <div class="owl-carousel carousel-logos" id="carousel-logos">
-            <!-- Python -->
-            <div><img class="padding-logo" src="./img/icons/carousel/python.svg" alt="Python" title="Python"> </div>
-            <!-- C -->
-            <div> <img class="" src="./img/icons/carousel/c.svg" alt="Lenguaje C"  title="Lenguaje C"> </div>
-            <!-- AWS -->
-            <div><img class="" src="./img/icons/carousel/aws.svg" alt="Amazon Web Services"  title="Amazon Web Services"></div>
-            <!-- Arduino -->
-            <div><img class="" src="./img/icons/carousel/arduino.svg" alt="Arduino"  title="Arduino"></div>
-            <!-- HTML -->
-            <div> <img class="" src="./img/icons/carousel/html.svg" alt="HTML"  title="HTML 5"> </div>
-            <!-- Excel -->
-            <div> <img class="" src="./img/icons/carousel/excel.svg" alt="Excel"  title="Excel"> </div>
-            <!-- Java -->
-            <div> <img class="padding-logo" src="./img/icons/carousel/java.svg" alt="Java"  title="Java"> </div>
-            <!-- C++ -->
-            <div> <img class="" src="./img/icons/carousel/cpp.svg" alt="Lenguaje C++"  title="C++"> </div>
-            <!-- machine learning -->
-            <div><img class="" src="./img/icons/carousel/machine-learning.svg" alt="Machine Learning"  title="Machine Learning"></div>
-            <!-- My SQL -->
-            <div> <img class="" src="./img/icons/carousel/mysql.svg" alt="Mysql"  title="MySQL"> </div>
-            <!-- latex -->
-            <div><img class="" src="./img/icons/carousel/latex.svg" alt="latex"  title="LaTeX"></div>
-            <!-- R -->
-            <div><img class="" src="./img/icons/carousel/r.svg" alt="R"  title="R"></div>
-            <!-- CSS -->
-            <div> <img class="" src="./img/icons/carousel/css.svg" alt="CSS"  title="CSS3"> </div>
-            <!-- bases de datos -->
-            <div><img class="padding-logo" src="./img/icons/carousel/db.svg" alt="Bases de Datos"  title="Bases de Datos"></div>
-        </div>
-
-        <!-- Aprende con nosotros -->
-        <div class="home-aprende">
-            <img class="img-fluid mobile-none" src="img/base/cursos.svg" alt="">
-            <div class="home-aprende-2">
-                <h2 class="text-azul mb-2">Te ofrecemos</h2>
-                <!-- <p>Lorem ipsum dolor, sit amet consectetur, adipisicing elit.</p> -->
-                <!-- Collapse con hover -->
-                <div class="home-aprende_cards">
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        <!-- Collapse 1 -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <button class="card aprende_cards shadow-sm" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <img class="img-fluid" src="img/icons/generales/videocall-rosa.png" alt="">
-                                    <p>15 horas de clases en vivo</p>
-                                    <img class="aprende-cards_flecha" src="img/icons/generales/flecha.png" alt="">
-                                </button>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body">
-                                    <p>Las clases se imparten vía Zoom <img class="img-fluid" src="img/icons/generales/zoom.svg" alt=""> y son grabadas para que puedas acceder cuando tú quieras</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Collapse 2 -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingTwo">
-                                <button class="card aprende_cards shadow-sm collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <img class="img-fluid" src="img/icons/generales/icons8-diploma-1-64.png" alt="">
-                                    <p>Constancia al finalizar</p>
-                                    <img class="aprende-cards_flecha" src="img/icons/generales/flecha.png" alt="">
-                                </button>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                <div class="panel-body">
-                                    <p>Constancia digital firmada por autoridades del departamento de Computación de la Facultad de Ingeniería para aquellos que acrediten con calificación mayor o igual a 8.</p>
-                                    <img class="img-fluid" src="img/publicaciones/constancia.svg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Collapse 3 -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingThree">
-                                <button class="card aprende_cards shadow-sm collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <img class="img-fluid" src="img/icons/generales/videocall-rosa.png" alt="">
-                                    <p>Atención personalizada</p>
-                                    <img class="aprende-cards_flecha" src="img/icons/generales/flecha.png" alt="">
-
-                                </button>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                <div class="panel-body">
-                                    <p><span class="text-bold">¡Estamos para ayudarte! </span>Nos caracterizamos por brindar un servicio de calidad llevando en alto el nombre y los valores de la Máxima Casa de Estudios.</p>
-                                    <img src="img/base/biblio.jpg" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                         <!-- Collapse 4     -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingThree">
-                                <button class="card aprende_cards shadow-sm collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <img class="img-fluid" src="img/icons/generales/videocall-rosa.png" alt="">
-                                    <p>Asesorías</p>
-                                    <img class="aprende-cards_flecha" src="img/icons/generales/flecha.png" alt="">
-                                </button>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                <div class="panel-body">
-                                    <p>Te ofrecemos asesorías personalizadas con nuestros instructores en caso de que te atores en algún ejercicio</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Cursos -->
+    <section class="home-landing">
         <div class="container">
-            <div class="row">
-                @foreach($cursos as $curso)
-                <div class="col">
-                    <div class="scene scene--card ">
-                        <div class="cursos-card shadow-lg" id="card-t">
-                            <div class="card__face card__face--front">
-                                <span class="span-horario">{{$curso->turno}}</span>
-                                <img class="iconos-cursos" src="{{asset('/img/logos/'.$curso->imagen)}}" alt="Java">
-                                <div class="c-body">
-                                    <h3 class="text-azul">{{$curso->nombre}}</h3>
-                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
-                                    <p>{{\Carbon\Carbon::parse($curso->fecha_inicio)->translatedFormat('j F') }} - {{\Carbon\Carbon::parse($curso->fecha_fin)->translatedFormat('j F') }} </p>
-                                    <p>De {{Carbon\Carbon::parse($curso->hora_inicio)->format('g:i a')}} a {{Carbon\Carbon::parse($curso->hora_fin)->format('g:i a')}} </p>
-                                </div>
-                                <div class="c-footer">
-                                    <div class="tag bg-rosa"><small>{{$curso->cat}}</small></div>
-                                    <div class="c-footer-links">
-                                        <form action="{{route('cart.store')}}" method="POST">
-                                        @csrf
-                                             <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                             <input type="hidden" name="curso_id" value="{{$curso->id}}">
-                                            <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
-                                                <img src="{{asset('img/icons/generales/add_cart.svg')}}" alt="">
-                                            </button>
-                                            
-                                        </form>
-                                        <button class="c-footer-link card__flip">
-                                            <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="">
-                                        </button>
-                                     </div>
-                                </div>
-                            </div>
-                            <div class="card__face card__face--back">
-                                <div class="back-body">
-                                    <details>
-                                      <summary><b>Antecedentes: </b></summary>
-                                      <p>{{$curso->antecedentes}}</p>
-                                    </details>
-                                    <details>
-                                      <summary><b>Equipo: </b></summary>
-                                      <p>{{$curso->equipo}}</p>
-                                    </details>
-                                    <details>
-                                      <summary><b>Cupo: {{$curso->cupo}}</b></summary>
-                                    </details>
-                                    <hr>
-                                    <p class="p-grande text-center text-azul">Precios</p>
-                                    
-                                    <p class="p"><span>Comunidad UNAM:</span> $600</p>
-                                    <p class="p"><span>Alumnos externos:</span> $700</p>
-                                    <p class="p"><span>Público general:</span> $800</p>
-                                </div>
-                                <div class="back-footer">
-                                    <div class="back-footer-links">
-                                        <a target="_blank" class="text-azul" href="{{asset("temarios/$curso->temario")}}">Ver temario</a>
-                                        <button class="c-footer-link card__flip">
-                                            <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="" width="30">
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                
-            </div><br><br><br>
-            <a class="d-block text-center text-rosa btn btn-rosa btn-min" href="{{route('ver-cursos.index')}}">Ver todos</a>
-        </div>
-        
-    </section>
-
-    <!-- Talleres -->
-    <section class="home-talleres " id="talleres-proteco">
-        <div class="container">
-            <div class="talleres-perdiste">
-                <h2 class="text-center text-rosa">Talleres gratuitos</h2>
-                <p class="text-center"><a class="text-rosa" target="_blank" href="https://www.youtube.com/c/PROTECOCursos/channels">Suscríbete</a> a nuestro canal de Youtube y repítelos cuando quieras</p>
-                <script src="https://apis.google.com/js/platform.js"></script>
-                <div class="mx-auto text-center">
-                    <div class="g-ytsubscribe" data-channelid="UCSEngCSxjHdCDFxK-gzwsxw" data-layout="full" data-count="hidden"></div>
-                </div>
-                <br>
-                <div class="talleres-perdiste_iframe iframe-responsive-yt">
-                    <iframe  src="https://www.youtube.com/embed/HLSttnSxiFA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="home-landing_img">
+                <img class="img-fluid" src="img/Software code testing-bro.png" alt="">
+            </div>
+            <div class="home-landing_text">
+                <h1 class="landing_text_titulo1">Programa de <span>Tecnología</span> en Cómputo</h1>
+                <p class="landing_text_p">A través de nuestros cursos, talleres y asesorías, te ayudamos a crecer en el mundo de la computación.</p>
+                <div class="landing_text_botones">
+                    <a href="#cursos" class="btn btn-rosa landing-btn">Ver cursos</a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Asesorias queda pendiente -->
-    <section class="home-asesorias">
-			<div class="banner-asesorias bg-lavanda">
-				<div class="talleres-perdiste container">
-					<h2 class="text-center">¿Necesitas ayuda? <span class="text-rosa"> Asesorías gratuitas</span></h2>
-					<p>PROTECO está para ayudarte y ponemos a tu disposición nuestras asesorías gratuitas de programación donde te ofrecemos un espacio de 30 minutos para ayudarte a resolver tus dudas.</p>
-					<br>
-					<div class="talleres-perdiste_iframe iframe-responsive-yt">
-						<iframe  class="img-fluid" src="https://www.youtube.com/embed/S8dmq6mKiSs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-			
+    
+    <div class="home-logos container">
+			<!-- Carousel logos -->
+			<div class="owl-carousel carousel-logos">
+				<!-- Python -->
+				<div><img class="padding-logo" src="./img/icons/carousel/python.svg" alt="Python" title="Python"> </div>
+				<!-- C -->
+				<div> <img class="" src="./img/icons/carousel/c.svg" alt="Lenguaje C"  title="Lenguaje C"> </div>
+				<!-- AWS -->
+				<div><img class="" src="./img/icons/carousel/aws.svg" alt="Amazon Web Services"  title="Amazon Web Services"></div>
+				<!-- Arduino -->
+				<div><img class="" src="./img/icons/carousel/arduino.svg" alt="Arduino"  title="Arduino"></div>
+				<!-- HTML -->
+				<div> <img class="" src="./img/icons/carousel/html.svg" alt="HTML"  title="HTML 5"> </div>
+				<!-- Excel -->
+				<div> <img class="" src="./img/icons/carousel/excel.svg" alt="Excel"  title="Excel"> </div>
+				<!-- Java -->
+				<div> <img class="padding-logo" src="./img/icons/carousel/java.svg" alt="Java"  title="Java"> </div>
+				<!-- C++ -->
+				<div> <img class="" src="./img/icons/carousel/cpp.svg" alt="Lenguaje C++"  title="C++"> </div>
+				<!-- machine learning -->
+				<div><img class="" src="./img/icons/carousel/machine-learning.svg" alt="Machine Learning"  title="Machine Learning"></div>
+				<!-- My SQL -->
+				<div> <img class="" src="./img/icons/carousel/mysql.svg" alt="Mysql"  title="MySQL"> </div>
+				<!-- latex -->
+				<div><img class="" src="./img/icons/carousel/latex.svg" alt="latex"  title="LaTeX"></div>
+				<!-- R -->
+				<div><img class="" src="./img/icons/carousel/r.svg" alt="R"  title="R"></div>
+				<!-- CSS -->
+				<div> <img class="" src="./img/icons/carousel/css.svg" alt="CSS"  title="CSS3"> </div>
+				<!-- bases de datos -->
+				<div><img class="padding-logo" src="./img/icons/carousel/db.svg" alt="Bases de Datos"  title="Bases de Datos"></div>
 			</div>
-		</section>
+	</div>
+    
+    
+    <!-- Cursos-->
+    <section class="home-cursos" id="cursos-proteco">
+        <div class="container">
+            <h2 class="home-subtitulo">Próximos cursos</h2>
+            <p>*En línea</p>
+            <div class="alert-info">
+            </div>
+        
+            <!-- Cursos -->
+            <div class="home-cursos-cards">
+                @foreach($cursos as $curso)
+                <div class="card">
+                        <div class="card-body">
+                            <div class="card-img">
+                                <img src="img/C.png" alt="">
+                            </div>
+                            <div class="card-text">
+                                <h3 class="card-text_titulo">{{$curso->nombre}}</h3>
+                                <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                <p class="card-text_p">
+                                    <span class="material-symbols-outlined">calendar_month</span>
+                                    {{\Carbon\Carbon::parse($curso->fecha_inicio)->translatedFormat('j F') }} - 
+                                </p>
+                                <p class="card-text_p">
+                                    <span class="material-symbols-outlined">schedule</span>
+                                    De {{Carbon\Carbon::parse($curso->hora_inicio)->format('g:i a')}} a {{\Carbon\Carbon::parse($curso->fecha_fin)->translatedFormat('j F') }}
+                                </p>
+                                <hr>
+                                <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="">Ver temario</a>
+                                    </div>
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$curso->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                                            </button>
+                                            <span class="flip d-block">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h4 class="card-list_precios text-rosa">Precios</h4>
+                                                <p class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Alumnos externos:</span> $700  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $800  
+                                                </p>
 
+                                                </div>
+                                        </form>
+                                
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                </div>    
+                @endforeach
+            </div>
+            <!-- <a class="d-block text-center text-rosa btn btn-rosa btn-min" href="{{route('ver-cursos.index')}}">Ver todos</a> -->
+        </div>
+    </section>
+
+    <section class="aprende">
+        <h2 class="home-subtitulo">¿Por qué tomar cursos con nosotros?</h2>
+        <div class="container">
+            <img class="img-fluid" src="img/softwareTesting.png" alt="">
+
+            <!-- accordion -->
+            <div class="accordion">
+                <section class="accordion-item ">
+                    <div class="accordion-pill">
+                        <span class="material-symbols-outlined">devices</span>
+                        <p>15 horas de clases en vivo</p>
+                        <span class="aprende-cards_flecha material-symbols-outlined">keyboard_arrow_up</span>
+                    </div>
+                    <div class="accordion-item-content">
+                      <p>Las clases se imparten vía Zoom y son grabadas para que puedas acceder cuando tú quieras. <img src="img/zoom.svg" alt=""></p>
+                    </div>
+                </section>
+                <section class="accordion-item">
+                    <div class="accordion-pill">
+                        <span class="material-symbols-outlined">workspace_premium</span>
+                        <p>Constancia al finalizar</p>
+                        <span class="aprende-cards_flecha material-symbols-outlined">keyboard_arrow_up</span>
+                    </div>
+                    <div class="accordion-item-content">
+                      <p>Constancia digital firmada por autoridades del departamento de Computación de la Facultad de Ingeniería para aquellos que acrediten con calificación mayor o igual a 8. <img class="img-fluid mt-5" src="img/constancia.svg" alt=""></p>
+                    </div>
+                </section>
+                <section  class="accordion-item">
+                    <div class="accordion-pill">
+                        <span class="material-symbols-outlined">face</span>
+                        <p>Atención personalizada</p>
+                        <span class="aprende-cards_flecha material-symbols-outlined">keyboard_arrow_up</span>
+                    </div>
+                    <div class="accordion-item-content">
+                      <p><b>¡Estamos para ayudarte!</b> Nos caracterizamos por brindar un servicio de calidad llevando en alto el nombre y los valores de la Máxima Casa de Estudios. <img src="img/biblio.jpg" class="img-fluid mt-5" alt=""></p>
+                    </div>
+                </section>
+                <section class="accordion-item">
+                    <div class="accordion-pill">
+                        <span class="material-symbols-outlined">videocam</span>
+                        <p>Clases grabadas</p>
+                        <span class="aprende-cards_flecha material-symbols-outlined">keyboard_arrow_up</span>
+                    </div>
+                    <div class="accordion-item-content">
+                      <p>¿No pudiste asistir a la clase? No te preocupes, todas las sesiones se graban para que la revises cuando tu quieras.</p>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="talleres">
+        <h2 class="home-subtitulo">Talleres gratuitos</h2>
+        <p>Cada semana ofrecemos talleres de 2 horas completamente gratis. ¡No te los pierdas!</p>
+        <div id="carouselExampleIndicators" class="carousel carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div>
+                <img src="img/Talleres/T025_ Introducción a Java Script.png" class="d-block" alt="...">
+                <a class="btn btn-rosa" href="">Registrate aquí</a>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div>
+                <img src="img/Talleres/T026_ Manejo de archivos en Python.png" class="d-block" alt="...">
+                <a class="btn btn-rosa" href="">Registrate aquí</a>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div>
+                <img src="img/Talleres/T027_ Introducción a la criptografía.png" class="d-block" alt="...">
+                <a class="btn btn-rosa" href="">Registrate aquí</a>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+    </section>
+
+    
 
 
 </main>

@@ -6,7 +6,7 @@
 <main> 
   <x-comprobantes/>
  
-  <section class="home-cursos container my-5">
+  <section class="container my-5">
     <!-- @if(session('success'))
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <p>{{session('success')}}</p>
@@ -16,7 +16,7 @@
     <h2 class="text-azul">Depósito BBVA</h2>
       <button id="btnExport" onclick="fnExportToExcel('xlsx', 'ComprobantesDepositoBBVA')" class="btn btn-azul d-inline">Exportar lista a xlsx</button>
 
-      <section class="container-fluid show-curso_lista">
+      <section class="container-fluid ">
           <table id="lista" class="table table-hover">
             <thead>
               <tr>

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('css/glider.css')}}">
-    <link rel="stylesheet" href="{{asset('css/styles3.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('css/mediaqueries.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
 
@@ -40,16 +40,19 @@
   <header class="header header-home">
       <!-- Navbar -->
       <nav class="nav nav-home container">
-          <div class="nav-ico">
-              <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/logo_color.png" alt="PROTECO"> -->
-              <div class="d-flex">
-                  <img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/logo_negro.png')}}" alt="PROTECO">
-                  <img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/UNAM_logobn1.png')}}" alt="PROTECO">
-                  <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/fi_negro.svg" alt="PROTECO"> -->
-              </div>
-
-              <img class="logo ico-proteco nav-logo nav-logo_blanco" src="{{asset('img/icons/personales/logo_blanco.png')}}" alt="PROTECO">
-          </div>
+        <div class="">
+            <div class="d-flex">
+                <a title="Programa de Tecnología en Cómputo" href="{{route('home')}}">
+                    <img class="nav-logo_desk d-none d-xl-block" src="./img/logo_blanco.png" alt="Programa de Tecnología en Cómputo">
+                </a>
+                <a title="Universidad Nacional Autónoma de México" target="_blank" href="https://www.unam.mx/">
+                    <img id="logo-unam" class="nav-logo_desk d-none d-xl-block" src="./img/UNAM.png" alt="UNAM">
+                </a>
+            </div>
+            <a class="d-xl-none" title="Programa de Tecnología en Cómputo" href="index.html">
+                <img class="nav-logo_mob" src="./img/logo_blanco.png" alt="PROTECO">
+            </a>
+        </div>
           <button class="nav-toggle" aria-label="Abrir menú">
               <i class="fas fa-bars"></i>
           </button>
@@ -127,6 +130,47 @@
       </nav>
   </header>
   @yield('content')
+
+
+     <!-- Footer -->
+    <footer class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <img src="img/logo_blanco.png" class="footer-logo img-fluid" alt="">
+                    <img src="img/UNAM.png" class="footer-logo img-fluid unam" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="">Contacto</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="#">cursosproteco@gmail.com</a></li>
+                        <li><a href="#">56 1839 4983</a></li>
+                        <li><a href="#">Anexo Facultad Ingeniería Edificio Q "Luis G. Valdés Vallejo Laboratorio Q220, C.U., 04510 Ciudad de México, CDMX</a></li>
+                    </ul>
+                </div>
+                <div class="redes col-lg-4 col-md-12">
+                    <h5 class="">Síguenos</h5>
+                    <div class="d-flex">
+                        <a href="">
+                            <img src="img/fb.png" alt="">
+                        </a>
+                        <a href="">
+                            <img src="img/yb.png" alt="">
+                        </a>
+                        <a href="">
+                            <img src="img/ig.png" alt="">
+                        </a>
+                        <a href="">
+                            <img src="img/tw.png" alt="">
+                        </a>
+                        <a href="">
+                            <img src="img/in.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
      <!-- Scripts -->
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
