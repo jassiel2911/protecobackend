@@ -48,7 +48,8 @@
             @if($user->origin == "Publico en general")
               <div class="bg-grisclaro p-2" style="max-width: 30rem;">
                 <p>
-                  ¿Eres comunidad UNAM o estudiante de otra escuela? Sube aquí tu credencial o comprobante y recibe un descuento
+                  ¿Eres comunidad UNAM o estudiante de otra escuela? Sube aquí tu credencial o comprobante y recibe un descuento <br>
+                  *Comunidad UNAM incluye estudiantes, ex-alumnos y trabajadores
                 </p>
                 <form action="{{route('estudiante.update', auth()->user()->id)}}" class="" method="POST" enctype="multipart/form-data">
                   @method('PATCH')
@@ -57,7 +58,7 @@
                   <div class="d-flex my-3">
                     <input type="file" name="probatorio" id="" class="bg-grisclaro border-0" required>
                     <input type="hidden" name="origin" value="Comunidad UNAM">
-                    <button type="submit" class="btn-delgado btn-rosa">Subir</button>
+                    <button type="submit" class="btn btn-rosa">Subir</button>
                   </div>
                 </form>
                  <form action="{{route('estudiante.update', auth()->user()->id)}}" class="" method="POST" enctype="multipart/form-data">
@@ -82,9 +83,9 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
               @if(auth()->user()->origin != "Comunidad UNAM")
-                <div class="alert alert-warning" role="alert">
+                <!-- <div class="alert alert-warning" role="alert">
                   <p>Si eres egresado de la UNAM o trabajador, también cuentas como comunidad UNAM, manda correo a cursosproteco@gmail.com antes de hacer el pago y puedo cambiar el total de tu ticket :) </p>
-                </div>
+                </div> -->
               @endif
                 @foreach($tickets as $ticket)
                 <div class="card my-5 bg-grisclaro" >
