@@ -20,6 +20,17 @@
             </div>
         </div>
     </form>
+    <!-- crear ficha -->
+      <form class="ml-auto" action="{{ route('adminfichas.store') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
+              <div class="custom-file text-left">
+                <input placeholder="archivo" type="text" name="file_ficha">
+                <input placeholder="monto" type="text" name="monto">
+                <button type="submit" class="btn btn-delgado btn-rosa">Crear Ficha</button>
+              </div>
+          </div>
+      </form>
     </div>
     <!-- @if(session('success'))
         <div class="alert alert-warning alert-dismissible fade show" role="alert">

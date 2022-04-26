@@ -26,7 +26,7 @@ class FichasController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,7 +37,11 @@ class FichasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $ficha = new Ficha();
+        $ficha->file_ficha = $request->file_ficha;
+        $ficha->monto = $request->monto;
+         $ficha->save();
+        return redirect()->back()->with('success','Ficha creada existosamente');
     }
 
     /**
