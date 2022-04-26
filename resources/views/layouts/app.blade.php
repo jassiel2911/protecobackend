@@ -110,7 +110,7 @@
                     @endif
                    
                     <li class="nav-menu_item d-md-none">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="text-white" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                             Cerrar sesión
