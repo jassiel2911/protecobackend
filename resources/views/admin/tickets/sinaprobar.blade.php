@@ -20,7 +20,6 @@
             </thead>
             <tbody>
               @foreach($tickets as $ticket)
-              @if($ticket->semestre == "22-2")
               <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
                 <th scope="row">{{$ticket->id}}</th>
                 <td></td>
@@ -39,7 +38,6 @@
               </tr>
               <tr>
               </tr>
-              @endif
               @endforeach
             </tbody>
 
