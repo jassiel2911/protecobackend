@@ -122,7 +122,7 @@
                                     </ul>
                                    
                                     @endforeach -->
-                                     <table class="table" >
+                                     <table class="table">
                                       <thead>
                                         <tr>
                                           <th scope="col"></th>
@@ -140,28 +140,33 @@
                                                   ${{$ficha->monto}}
                                                 </div>
                                                 <div class="col-12 col-md-6">
-                                                  @if($ficha->comprobante==0)
-                                                   <div class="dropdown">
+                                                  @foreach($comprobantes as $comprobante)
+                                                    @if($comprobante->ficha_id == $ficha->id)
+                                                      <p class="d-none">{{$bandera = 1}}</p>
+                                                      <!-- <p class="">{{$bandera}}</p> -->
+                                                      <!-- <p>{{$comprobante->id}}</p> -->
+                                                    @endif
+                                                  @endforeach
+                                                  @if($bandera == 1)
+                                                     <p>Ya has subido el comprobante</p>
+                                                  @else
+                                                  <div class="dropdown">
                                                     <a style="color: #fff; " class="d-inline-block btn btn-amarillo dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                                       Subir comprobante
                                                     </a>
-                                                       <ul class="dropdown-menu bg-azulclaro" aria-labelledby="dropdownMenuLink">
+                                                      <ul class="dropdown-menu bg-azulclaro" aria-labelledby="dropdownMenuLink">
                                                           <li><a class="dropdown-item" href="{{url("depositobbva/$ficha->id/$ticket->id")}}">Depósito BBVA</a></li>
                                                           <li><a class="dropdown-item" href="{{url("appbbva/$ficha->id/$ticket->id")}}">App BBVA o transferencia BBVA</a></li>
                                                           <li><a class="dropdown-item" href="{{url("otrobanco/$ficha->id/$ticket->id")}}">Otro banco</a></li>
                                                       </ul>
                                                   </div>
-                                                  @else
-                                                    <p>Ya has subido el comprobante</p>
                                                   @endif
                                                 </div>
                                               </div>
                                             </td>
-                                            <!-- <td>
-                                              
-                                            </td> -->
                                           </tr>
                                           @endif
+                                        <p class="d-none">{{$bandera = 0}}</p>
                                         @endforeach
                                       </tbody>
                                     </table>

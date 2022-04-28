@@ -20,7 +20,6 @@ class AdminTicketController extends Controller
     public function index()
     {
         $tickets = Ticket::all();
-
         $total = 0;
         return view('admin.tickets.index', ['tickets'=>$tickets, 'total'=>$total]);
     }

@@ -104,112 +104,104 @@ class TicketController extends Controller
             $ficha->ticket_id = $ticket->id;
             $ficha->save();
         }
-        else if($total==800){
-            $ficha = Ficha::where('monto', 800)
-             ->where('ticket_id', NULL)->first();
-            if($ficha==NULL){
-                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
-            }
-            $ficha->ticket_id = $ticket->id;
-            $ficha->save();
-        }
+        // else if($total==800){
+        //     $ficha = Ficha::where('monto', 800)
+        //      ->where('ticket_id', NULL)->first();
+        //     if($ficha==NULL){
+        //         return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+        //     }
+        //     $ficha->ticket_id = $ticket->id;
+        //     $ficha->save();
+        // }
         else if($total==1200){
-            $ficha = Ficha::where('monto', 1200)
-             ->where('ticket_id', NULL)->first();
-            if($ficha==NULL){
-                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
-            }
-            $ficha->ticket_id = $ticket->id;
-            $ficha->save();
-        }
-        else if($total==1400){
-            $ficha = Ficha::where('monto', 1400)
-             ->where('ticket_id', NULL)->first();
-            if($ficha==NULL){
-                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
-            }
-            $ficha->ticket_id = $ticket->id;
-            $ficha->save();
-        }
-        else if($total==1600){
-            $fichas = Ficha::where('monto', 1600)
+             $fichas = Ficha::where('monto', 600)
              ->where('ticket_id', NULL)->take(2)->get();
-            
+           
+            if($fichas==NULL){
+                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+            }
+
             foreach($fichas as $ficha){
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
-            
         }
-        else if($total==1800){
-            $ficha1000 = Ficha::where('monto', 1800)
-             ->where('ticket_id', NULL)->first();
-            if($ficha1000==NULL){
-                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
-            }
-            $ficha1000->ticket_id = $ticket->id;
-            $ficha1000->save();
-
-
-            $ficha500 = Ficha::where('monto', 500)
-             ->where('ticket_id', NULL)->first();
-            if($ficha500==NULL){
-                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
-            }
-            $ficha500->ticket_id = $ticket->id;
-            $ficha500->save();
+        else if($total==1400){
+             $fichas = Ficha::where('monto', 700)
+             ->where('ticket_id', NULL)->take(2)->get();
            
-        }
-        else if($total==2100){
-            $fichas = Ficha::where('monto', 2100)
-             ->where('ticket_id', NULL)->take(3)->get();
             if($fichas==NULL){
                 return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
             }
+
+            foreach($fichas as $ficha){
+                $ficha->ticket_id = $ticket->id;
+                $ficha->save();
+            }
+        }
+       
+        else if($total==1800){
+             $fichas = Ficha::where('monto', 600)
+             ->where('ticket_id', NULL)->take(3)->get();
+           
+            if($fichas==NULL){
+                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+            }
+
+            foreach($fichas as $ficha){
+                $ficha->ticket_id = $ticket->id;
+                $ficha->save();
+            }
+           
+        }
+        else if($total==2100){
+             $fichas = Ficha::where('monto', 700)
+             ->where('ticket_id', NULL)->take(3)->get();
+           
+            if($fichas==NULL){
+                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+            }
+
             foreach($fichas as $ficha){
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
         }
         else if($total==2400){
-            $fichas = Ficha::where('monto', 1000)
-             ->where('ticket_id', NULL)->take(2)->get();
+              $fichas = Ficha::where('monto', 600)
+             ->where('ticket_id', NULL)->take(4)->get();
+           
             if($fichas==NULL){
                 return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
             }
+
             foreach($fichas as $ficha){
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
         }
         else if($total==2800){
-            $fichas = Ficha::where('monto', 1200)
-             ->where('ticket_id', NULL)->take(2)->get();
+              $fichas = Ficha::where('monto', 700)
+             ->where('ticket_id', NULL)->take(4)->get();
+           
             if($fichas==NULL){
                 return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
             }
-            foreach($fichas as $ficha){
-                $ficha->ticket_id = $ticket->id;
-                $ficha->save();
-            }
-        }
-        else if($total==3200){
-            $fichas = Ficha::where('monto', 1400)
-             ->where('ticket_id', NULL)->take(2)->get();
-            if($fichas==NULL){
-                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
-            }
+
             foreach($fichas as $ficha){
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
         }
          else if($total==3000){
-            $fichas = Ficha::where('monto', 1000)
-             ->where('ticket_id', NULL)->take(3)->get();
+        
+              $fichas = Ficha::where('monto', 600)
+             ->where('ticket_id', NULL)->take(5)->get();
+           
             if($fichas==NULL){
                 return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
             }
+
             foreach($fichas as $ficha){
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();

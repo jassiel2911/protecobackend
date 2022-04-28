@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Ticket;
 use App\Models\TicketItem;
 use App\Models\Ficha;
+use App\Models\Comprobante;
+
 
 
 class PerfilController extends Controller
@@ -23,9 +25,11 @@ class PerfilController extends Controller
         $tickets = Ticket::all()->where('user_id',auth()->user()->id);
         $ticket_items = TicketItem::all();
         $fichas = Ficha::all();
+        $comprobantes = Comprobante::all();
+        $bandera = 0;
 
         $user = User::all()->where('id', auth()->user()->id)->first();
-        return view('perfil', ['user'=>$user, 'tickets'=>$tickets, 'ticket_items'=>$ticket_items, 'fichas'=>$fichas]);
+        return view('perfil', ['user'=>$user, 'tickets'=>$tickets, 'ticket_items'=>$ticket_items, 'fichas'=>$fichas, 'comprobantes'=>$comprobantes, 'bandera'=>$bandera]);
     }
 
     /**
