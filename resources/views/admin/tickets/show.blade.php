@@ -76,7 +76,7 @@
                                     <td>{{$comprobante->cie}}</td>
                                     <td>{{$comprobante->monto}}</td>
                                     <td>
-                                        <img src="{{asset("comprobantes/$comprobante->captura")}}" alt="" width="700">
+                                        <img class="img-fluid" src="{{asset("comprobantes/$comprobante->captura")}}" alt="" width="700">
                                         <a target="_blank" href="{{asset("comprobantes/$comprobante->captura")}}">Ver archivo</a>
                                     </td>
                                 </tr>
