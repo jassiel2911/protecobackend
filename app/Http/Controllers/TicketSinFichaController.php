@@ -128,7 +128,7 @@ class TicketSinFichaController extends Controller
             }
             $ficha->ticket_id = $ticket->id;
             $ficha->save();
-            return redirect()->route('perfil.index')->with('ficha', 'q pez');
+            // return redirect()->route('perfil.index')->with('ficha', 'q pez');
         }
         else if($total==800){
             $ficha = Ficha::where('monto', 800)
