@@ -130,6 +130,15 @@ class TicketSinFichaController extends Controller
             $ficha->save();
             return redirect()->route('perfil.index')->with('ficha', 'q pez');
         }
+        else if($total==800){
+            $ficha = Ficha::where('monto', 800)
+            ->where('ticket_id', NULL)->first();
+            if($ficha==NULL){
+                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+            }
+            $ficha->ticket_id = $ticket->id;
+            $ficha->save();
+        }
         else if($total==700){
             $ficha = Ficha::where('monto', 700)
             ->where('ticket_id', NULL)->first();
@@ -154,6 +163,19 @@ class TicketSinFichaController extends Controller
         }
         else if($total==1400){
              $fichas = Ficha::where('monto', 700)
+             ->where('ticket_id', NULL)->take(2)->get();
+           
+            if($fichas==NULL){
+                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+            }
+
+            foreach($fichas as $ficha){
+                $ficha->ticket_id = $ticket->id;
+                $ficha->save();
+            }
+        }
+        else if($total==1600){
+             $fichas = Ficha::where('monto', 800)
              ->where('ticket_id', NULL)->take(2)->get();
            
             if($fichas==NULL){
@@ -194,8 +216,8 @@ class TicketSinFichaController extends Controller
             }
         }
         else if($total==2400){
-              $fichas = Ficha::where('monto', 600)
-             ->where('ticket_id', NULL)->take(4)->get();
+              $fichas = Ficha::where('monto', 800)
+             ->where('ticket_id', NULL)->take(3)->get();
            
             if($fichas==NULL){
                 return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');

@@ -62,11 +62,11 @@
                                     @endif
                                 @elseif(auth()->user()->origin == "Publico en general")
                                     <p style="margin:0; padding-right:8px;" class="text-start">$700</p>
-                                    <p class="d-none">{{$subtotal = $subtotal + 700}}</p>
+                                    <p class="d-none">{{$subtotal = $subtotal + 800}}</p>
                                     @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
                                     
                                     @else
-                                    <p class="d-none">{{$total = $total + 700}}</p>
+                                    <p class="d-none">{{$total = $total + 800}}</p>
                                     @endif
                                 @endif
                                 <form action="{{route('cart.destroy',$cart->curso_id)}}" method="POST">

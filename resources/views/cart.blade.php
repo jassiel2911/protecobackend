@@ -47,13 +47,13 @@
                             <p class="d-none">{{$total = $total + 700}}</p>
                             @endif
                         @elseif(auth()->user()->origin == "Publico en general")
-                        <p style="margin:0;" class="text-start mx-3">$700</p>
-                            <p class="d-none">{{$subtotal = $subtotal + 700}}</p>
+                        <p style="margin:0;" class="text-start mx-3">$800</p>
+                            <p class="d-none">{{$subtotal = $subtotal + 800}}</p>
 
                             @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
                                     
                             @else
-                            <p class="d-none">{{$total = $total + 700}}</p>
+                            <p class="d-none">{{$total = $total + 800}}</p>
                             @endif
                                 
                         @endif
