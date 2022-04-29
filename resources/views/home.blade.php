@@ -130,7 +130,7 @@
                 <h1 class="landing_text_titulo1">Programa de <span><b>Tecnología</b></span> en Cómputo</h1>
                 <p class="landing_text_p">A través de nuestros cursos, talleres y asesorías, te ayudamos a crecer en el mundo de la computación.</p>
                 <div class="landing_text_botones">
-                    <a href="#cursos" class="btn btn-rosa landing-btn">Ver cursos</a>
+                    <a href="#cursos-proteco" class="btn btn-rosa landing-btn">Ver cursos</a>
                 </div>
             </div>
         </div>

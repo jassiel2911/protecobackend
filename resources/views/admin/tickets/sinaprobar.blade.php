@@ -22,7 +22,7 @@
               @foreach($tickets as $ticket)
               <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
                 <th scope="row">{{$ticket->id}}</th>
-                <td></td>
+                <td>{{$ticket->user->fname." ".$ticket->user->lname}}</td>
                 <td>{{$ticket->semestre}}</td>
                 <td>{{$ticket->status}}</td>
                 <td>{{$ticket->total}}</td>
