@@ -28,12 +28,12 @@
                 <td>{{$ticket->total}}</td>
                 <td>
                   <!-- <a href="admin-user-show.html"><span class="tag-category badge rounded-pill bg-dark">Ver</span></a> -->
-                  <form action="{{route('admintickets.destroy', $ticket->id)}}" method="POST">
+                  <!-- <form action="{{route('admintickets.destroy', $ticket->id)}}" method="POST">
                     @csrf
-                    @method('DELETE')
+                    @method('DELETE') -->
                     <a href="{{route('admintickets.show',$ticket->id)}}"><span class="tag-category badge rounded-pill bg-dark">Ver</span></a>
                     <!-- <button style="background-color:transparent; border:none;" type="submit"><span class="tag-category badge rounded-pill bg-dark">Eliminar</span></ style="background-color:transparent; border:none;"> -->
-                  </form>
+                  <!-- </form> -->
                 </td>
               </tr>
               <tr>

@@ -37,7 +37,7 @@
                  <form method="POST" action="{{ route('ticket.update', $ticket->id) }}" >
                      @method('PATCH')
                     @csrf
-                    <button type="submit" class="btn-form w-25 btn-rosa">Aprobar</button>
+                    <button type="submit" class="btn w-25 btn-rosa">Aprobar</button>
                   </form>
                 @endif
             </div>
@@ -60,6 +60,7 @@
                                 <th scope="col">Últimos digitos</th>
                                 <th scope="col">CIE</th>
                                 <th scope="col">Monto</th>
+                                <th scope="col">Archivo</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -74,13 +75,17 @@
                                     <td>{{$comprobante->ultimos_digitos}}</td>
                                     <td>{{$comprobante->cie}}</td>
                                     <td>{{$comprobante->monto}}</td>
+                                    <td>
+                                        <img src="{{asset("comprobantes/$comprobante->captura")}}" alt="" width="700">
+                                        <a target="_blank" href="{{asset("comprobantes/$comprobante->captura")}}">Ver archivo</a>
+                                    </td>
                                 </tr>
                                 @endif
                             @endforeach
                           </tbody>
                         </table>
-                        <img src="{{asset("comprobantes/$comprobante->captura")}}" alt="" width="700">
-                        <a target="_blank" href="{{asset("comprobantes/$comprobante->captura")}}">Ver archivo</a>
+                        <!-- <img src="{{asset("comprobantes/$comprobante->captura")}}" alt="" width="700">
+                        <a target="_blank" href="{{asset("comprobantes/$comprobante->captura")}}">Ver archivo</a> -->
                     </div>
                     </div>
                 @endforeach
