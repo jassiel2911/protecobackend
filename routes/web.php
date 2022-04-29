@@ -71,7 +71,7 @@ Route::resource('becarios', BecariosController::class);
 Route::resource('ticket', TicketController::class);
 Route::resource('ticketsficha', TicketSinFichaController::class);
 
-Route::resource('perfil', PerfilController::class);
+Route::resource('perfil', PerfilController::class)->middleware('auth');
 Route::resource('comprobante', ComprobanteController::class);
 
 Route::resource('admintickets', AdminTicketController::class)->middleware('admin');
@@ -79,11 +79,11 @@ Route::resource('admintickets', AdminTicketController::class)->middleware('admin
 Route::resource('ver-cursos', VerCursosController::class);
 
 Route::resource('estudiante', EstudianteController::class);
-Route::resource('cart', CartController::class);
+Route::resource('cart', CartController::class)->middleware('auth');
 Route::resource('adminfichas', FichasController::class)->middleware('admin');
 
-Route::resource('editar-perfil', EditarPerfilController::class);
-Route::resource('cart-cursos', CartCursosController::class);
+Route::resource('editar-perfil', EditarPerfilController::class)->middleware('auth');
+Route::resource('cart-cursos', CartCursosController::class)->middleware('auth');
 
 Route::resource('ticket-item', TicketItemController::class);
 Route::resource('admincomprobantes', AdminComprobantesController::class)->middleware('admin');
