@@ -60,7 +60,7 @@
             <input value="Entrar" type="submit" class="auth-submit btn btn-rosa">
           </div>
         @if (Route::has('password.request'))
-         <!-- <p class="text-end">¿Olvidaste tu contraseña? <a class=" a_azul" href="{{ route('password.request') }}">Click aquí</a></p> -->
+         <p class="text-end">¿Olvidaste tu contraseña? <a class=" a_azul" href="{{ route('password.request') }}">Click aquí</a></p>
         @endif
          <p class="sin_cuenta-bottom text-end">¿No tienes cuenta? <a class=" a_azul" href="{{ route('password.request') }}">Regístrate aquí</a></p>
         </form>
