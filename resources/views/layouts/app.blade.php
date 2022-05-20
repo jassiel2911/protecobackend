@@ -58,6 +58,9 @@
                 <li class="nav-menu_item">
                     <a href="{{route('inscripcion')}}" class="nav-menu_link nav-link" >¿Cómo me inscribo?</a>
                 </li>
+                <li class="nav-menu_item">
+                    <a href="{{route('convocatoria')}}" class="nav-menu_link nav-link" >Convocatoria</a>
+                </li>
                 @guest
                 <li class="nav-menu_item menu_item-btn">
                     <a href="{{route('register')}}" class="btn-nav nav-menu_link nav-link btn-nav_amarillo_outline" id="nav-contacto">Crear cuenta</a>

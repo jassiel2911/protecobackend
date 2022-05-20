@@ -45,4 +45,8 @@ class HomeController extends Controller
     public function inscripcion(){
         return view('inscripcion');
     }
+
+    public function convocatoria(){
+        return view('convocatoria');
+    }
 }

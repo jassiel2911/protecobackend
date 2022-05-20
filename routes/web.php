@@ -54,6 +54,8 @@ Route::get('/publicogeneral', [App\Http\Controllers\AdminUserController::class, 
 
 
 Route::get('/inscripcion', [App\Http\Controllers\HomeController::class, 'inscripcion'])->name('inscripcion');
+Route::get('/convocatoria', [App\Http\Controllers\HomeController::class, 'convocatoria'])->name('convocatoria');
+
 
 
 Route::get('/admins/tickets/sin-aprobar', [App\Http\Controllers\AdminTicketController::class, 'sinaprobar'])->name('sinaprobar')->middleware('admin');
