@@ -92,7 +92,7 @@
           </div>
         </div>
         <div class="conv">
-          <img style="max-width:700px; width:90vw;" class="img-fluid" src="{{asset('img/convocatoria/Convocatoria_Gen43.jpg')}}" alt="">
+          <img style="max-width:700px; width:91vw;" class="img-fluid" src="{{asset('img/convocatoria/Convocatoria_Gen43.jpg')}}" alt="">
           <a href="{{asset('docs/convocatoria/Convocatoria_Gen43.pdf')}}"  class="btn btn-azul my-3 mx-auto" target="_blank">Descargar convocatoria</a>
         </div>
     </div>
