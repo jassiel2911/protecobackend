@@ -48,31 +48,31 @@
                 <img src="{{asset('img/convocatoria/1.png')}}" class="d-block" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('img/convocatoria/2.png')}}." class="d-block" alt="...">
+                <img src="{{asset('img/convocatoria/2.png')}}" class="d-block" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('img/convocatoria/3.png')}}." class="d-block" alt="...">
+                <img src="{{asset('img/convocatoria/3.png')}}" class="d-block" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('img/convocatoria/4.png')}}." class="d-block" alt="...">
+                <img src="{{asset('img/convocatoria/4.png')}}" class="d-block" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('img/convocatoria/5.png')}}." class="d-block" alt="...">
+                <img src="{{asset('img/convocatoria/5.png')}}" class="d-block" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('img/convocatoria/6.png')}}." class="d-block" alt="...">
+                <img src="{{asset('img/convocatoria/6.png')}}" class="d-block" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('img/convocatoria/7.png')}}." class="d-block" alt="...">
+                <img src="{{asset('img/convocatoria/7.png')}}" class="d-block" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('img/convocatoria/8.png')}}." class="d-block" alt="...">
+                <img src="{{asset('img/convocatoria/8.png')}}" class="d-block" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('img/convocatoria/9.png')}}." class="d-block" alt="...">
+                <img src="{{asset('img/convocatoria/9.png')}}" class="d-block" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="{{asset('img/convocatoria/10.png')}}." class="d-block" alt="...">
+                <img src="{{asset('img/convocatoria/10.png')}}" class="d-block" alt="...">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -92,7 +92,7 @@
           </div>
         </div>
         <div class="conv">
-          <img style="max-width:700px" class="img-fluid" src="{{asset('img/convocatoria/Convocatoria_Gen43.jpg')}}" alt="">
+          <img style="max-width:700px; width:90vw;" class="img-fluid" src="{{asset('img/convocatoria/Convocatoria_Gen43.jpg')}}" alt="">
           <a href="{{asset('docs/convocatoria/Convocatoria_Gen43.pdf')}}"  class="btn btn-azul my-3 mx-auto" target="_blank">Descargar convocatoria</a>
         </div>
     </div>
