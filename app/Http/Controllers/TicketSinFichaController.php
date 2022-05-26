@@ -63,9 +63,12 @@ class TicketSinFichaController extends Controller
             if(auth()->user()->origin == "Comunidad UNAM"){
                 $ticket_item->precio = 600;
             }else if(auth()->user()->origin == "Alumno externo"){
-                $ticket_item->precio = 700;
-            }else if(auth()->user()->origin == "Publico en general"){
                 $ticket_item->precio = 800;
+            }
+            else if(auth()->user()->origin == "Ex-alumno UNAM"){
+                $ticket_item->precio = 900;
+            }else if(auth()->user()->origin == "Publico en general"){
+                $ticket_item->precio = 1000;
             }
             $ticket_item->save();
         }
@@ -128,6 +131,8 @@ class TicketSinFichaController extends Controller
             }
             $ficha->ticket_id = $ticket->id;
             $ficha->save();
+            $ticket->status = "Pendiente de pago";
+
             // return redirect()->route('perfil.index')->with('ficha', 'q pez');
         }
         else if($total==800){
@@ -138,18 +143,33 @@ class TicketSinFichaController extends Controller
             }
             $ficha->ticket_id = $ticket->id;
             $ficha->save();
+            $ticket->status = "Pendiente de pago";
+
         }
-        else if($total==700){
-            $ficha = Ficha::where('monto', 700)
+        else if($total==900){
+            $ficha = Ficha::where('monto', 900)
             ->where('ticket_id', NULL)->first();
             if($ficha==NULL){
                 return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
             }
             $ficha->ticket_id = $ticket->id;
             $ficha->save();
+            $ticket->status = "Pendiente de pago";
+
+        }
+        else if($total==1000){
+            $ficha = Ficha::where('monto', 1000)
+            ->where('ticket_id', NULL)->first();
+            if($ficha==NULL){
+                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+            }
+            $ficha->ticket_id = $ticket->id;
+            $ficha->save();
+            $ticket->status = "Pendiente de pago";
+
         }
         else if($total==1200){
-             $fichas = Ficha::where('monto', 600)
+             $fichas = Ficha::where('monto', 1200)
              ->where('ticket_id', NULL)->take(2)->get();
            
             if($fichas==NULL){
@@ -160,19 +180,8 @@ class TicketSinFichaController extends Controller
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
-        }
-        else if($total==1400){
-             $fichas = Ficha::where('monto', 700)
-             ->where('ticket_id', NULL)->take(2)->get();
-           
-            if($fichas==NULL){
-                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
-            }
+            $ticket->status = "Pendiente de pago";
 
-            foreach($fichas as $ficha){
-                $ficha->ticket_id = $ticket->id;
-                $ficha->save();
-            }
         }
         else if($total==1600){
              $fichas = Ficha::where('monto', 800)
@@ -186,8 +195,9 @@ class TicketSinFichaController extends Controller
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
+            $ticket->status = "Pendiente de pago";
+
         }
-       
         else if($total==1800){
              $fichas = Ficha::where('monto', 600)
              ->where('ticket_id', NULL)->take(3)->get();
@@ -200,11 +210,13 @@ class TicketSinFichaController extends Controller
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
+            $ticket->status = "Pendiente de pago";
+
            
         }
-        else if($total==2100){
-             $fichas = Ficha::where('monto', 700)
-             ->where('ticket_id', NULL)->take(3)->get();
+        else if($total==2000){
+             $fichas = Ficha::where('monto', 1000)
+             ->where('ticket_id', NULL)->take(2)->get();
            
             if($fichas==NULL){
                 return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
@@ -214,6 +226,8 @@ class TicketSinFichaController extends Controller
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
+            $ticket->status = "Pendiente de pago";
+
         }
         else if($total==2400){
               $fichas = Ficha::where('monto', 800)
@@ -227,9 +241,11 @@ class TicketSinFichaController extends Controller
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
+            $ticket->status = "Pendiente de pago";
+
         }
-        else if($total==2800){
-              $fichas = Ficha::where('monto', 700)
+        else if($total==2700){
+              $fichas = Ficha::where('monto', 900)
              ->where('ticket_id', NULL)->take(4)->get();
            
             if($fichas==NULL){
@@ -240,6 +256,8 @@ class TicketSinFichaController extends Controller
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
+            $ticket->status = "Pendiente de pago";
+
         }
          else if($total==3000){
         
@@ -254,9 +272,61 @@ class TicketSinFichaController extends Controller
                 $ficha->ticket_id = $ticket->id;
                 $ficha->save();
             }
+            $ticket->status = "Pendiente de pago";
+
+        }
+         else if($total==3200){
+        
+              $fichas = Ficha::where('monto', 800)
+             ->where('ticket_id', NULL)->take(4)->get();
+           
+            if($fichas==NULL){
+                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+            }
+
+            foreach($fichas as $ficha){
+                $ficha->ticket_id = $ticket->id;
+                $ficha->save();
+            }
+            $ticket->status = "Pendiente de pago";
+
+        }
+         else if($total==3600){
+        
+              $fichas = Ficha::where('monto', 900)
+             ->where('ticket_id', NULL)->take(4)->get();
+           
+            if($fichas==NULL){
+                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+            }
+
+            foreach($fichas as $ficha){
+                $ficha->ticket_id = $ticket->id;
+                $ficha->save();
+            }
+            $ticket->status = "Pendiente de pago";
+
+        }
+        else if($total==4000){
+        
+              $fichas = Ficha::where('monto', 1000)
+             ->where('ticket_id', NULL)->take(4)->get();
+           
+            if($fichas==NULL){
+                return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
+            }
+
+            foreach($fichas as $ficha){
+                $ficha->ticket_id = $ticket->id;
+                $ficha->save();
+            }
+            $ticket->status = "Pendiente de pago";
+
+        }
+        else{
+            return redirect()->route('perfil.index')->with('ficha', 'Tu ficha aún no está lista. Por favor manda correo a cursosproteco@gmail.com con el # de ticket. Gracias!');
         }
 
-        $ticket->status = "Pendiente de pago";
         $ticket->update();
         
         return redirect()->route('perfil.index')->with('ficha', 'Ya puedes descargar la(s) ficha(s).');

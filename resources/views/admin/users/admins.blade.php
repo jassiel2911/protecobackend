@@ -6,7 +6,7 @@
   
   <section class="container my-3">
     <h2 class="text-azul">Administradores</h2>
-      <section class="container">
+      <section class="container table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>

@@ -102,9 +102,14 @@
         }
     </script>
     <!-- modal ex -->
-
-    <section class="container py-5">
-        <h1 class="text-azul text-center">Cursos semestrales</h1><br>
+        <style>
+            .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+                color: #fff;
+                background-color: var(--rosa);
+            }
+        </style>
+    <section class="container  py-5">
+        <h1 class="text-rosa text-center mb-4">Cursos semestrales</h1><br>
         <ul class="nav bg-azul nav-pills nav-pills-cursos mb-3 d-flex justify-content-between" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="pills-todos-tab" data-bs-toggle="pill" data-bs-target="#pills-todos" type="button" role="tab" aria-controls="pills-todos" aria-selected="true">Todos</button>
@@ -114,9 +119,6 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-bases-tab" data-bs-toggle="pill" data-bs-target="#pills-bases" type="button" role="tab" aria-controls="pills-bases" aria-selected="false">Bases de datos</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-hardware-tab" data-bs-toggle="pill" data-bs-target="#pills-hardware" type="button" role="tab" aria-controls="pills-hardware" aria-selected="false">Hardware</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-desarrollo-tab" data-bs-toggle="pill" data-bs-target="#pills-desarrollo" type="button" role="tab" aria-controls="pills-desarrollo" aria-selected="false">Desarrollo</button>
@@ -130,8 +132,11 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-vespertinos-tab" data-bs-toggle="pill" data-bs-target="#pills-vespertinos" type="button" role="tab" aria-controls="pills-vespertinos" aria-selected="false">Vespertinos</button>
             </li>
+             <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-hardware-tab" data-bs-toggle="pill" data-bs-target="#pills-hardware" type="button" role="tab" aria-controls="pills-hardware" aria-selected="false">Presencial</button>
+            </li>
         </ul>
-        <div class="tab-content" id="pills-tabContent">
+        <div class="tab-content   home-cursos bg-transparent" id="pills-tabContent" style="margin:0; padding:0">
             <div class="tab-pane fade show active py-3" id="pills-todos" role="tabpanel" aria-labelledby="pills-todos-tab">
                 <!-- <form class="d-flex justify-content-end">
                     <input class="form-control me-2 w-25" type="search" placeholder="Buscar" aria-label="Search">
@@ -140,63 +145,74 @@
                 <div class="row">
                     <!-- <h3>Semana 1</h3> -->
                     @foreach($todos as $todo)
-                    <div class="col">
-                        <div class="scene scene--card mx-auto">
-                            <div class="cursos-card shadow-lg" id="card-t">
-                                <div class="card__face card__face--front">
-                                    <span class="span-horario">{{$todo->turno}}</span>
-                                    <img class="iconos-cursos" src="{{asset('/img/logos/'.$todo->imagen)}}" alt="Java">
-                                    <div class="c-body">
-                                        <h3 class="text-azul">{{$todo->nombre}}</h3>
-                                        <p>Del {{\Carbon\Carbon::parse($todo->fecha_inicio)->translatedFormat('j F') }} al {{\Carbon\Carbon::parse($todo->fecha_fin)->translatedFormat('j F') }} </p>
-                                        <p>De {{Carbon\Carbon::parse($todo->hora_inicio)->format('g:i a')}} a {{Carbon\Carbon::parse($todo->hora_fin)->format('g:i a')}} </p>
-                                    </div>
-                                    <div class="c-footer">
-                                        <div class="tag bg-rosa"><small>{{$todo->cat}}</small></div>
-                                        <div class="c-footer-links">
-                                            <form action="{{route('cart-cursos.store')}}" method="POST">
-                                            @csrf
-                                                 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                                 <input type="hidden" name="curso_id" value="{{$todo->id}}">
-                                                <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
-                                                    <img src="{{asset('img/icons/generales/add_cart.svg')}}" alt="">
-                                                </button>
-                                            
-                                            </form>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
+                    <div class="col-3">
+                        <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$todo->imagen)}}" alt="">
                                 </div>
-                                <div class="card__face card__face--back">
-                                    <div class="back-body">
-                                         <details>
-                                          <summary><b>Antecedentes: </b></summary>
-                                          <p>{{$todo->antecedentes}}</p>
-                                        </details>
-                                        <details>
-                                          <summary><b>Equipo: </b></summary>
-                                          <p>{{$todo->equipo}}</p>
-                                        </details>
-                                        <p class="p"><span>Cupo:</span> {{$todo->cupo}}</p>
-                                        <hr>
-                                        <p class="p-grande text-center text-azul">Precios</p>
-                                        <p class="p"><span>Comunidad UNAM:</span> $500</p>
-                                        <p class="p"><span>Alumnos externos:</span> $600</p>
-                                        <p class="p"><span>Público general:</span> $700</p>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$todo->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($todo->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($todo->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($todo->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($todo->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
+                            
+                                </div>
+                                    <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$todo->temario")}}">Ver temario</a>
                                     </div>
-                                    <div class="back-footer">
-                                        <div class="back-footer-links">
-                                            <a class="text-azul" target="_blank" href="{{asset("temarios/$todo->temario")}}">Ver temario</a>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="img/icons/generales/menu_puntos.png" alt="">
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$todo->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
-                                        </div>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
+
+                                                </div>
+                                        </form>
+                            
                                     </div>
+                            
                                 </div>
                             </div>
-                        </div>
+                        </div>   
                     </div>
                     @endforeach
                 </div>
@@ -205,62 +221,73 @@
                 <div class="row">
                     @foreach($programacion as $progra)
                     <div class="col">
-                        <div class="scene scene--card ">
-                            <div class="cursos-card shadow-lg" id="card-t">
-                                <div class="card__face card__face--front">
-                                    <img class="iconos-cursos" src="{{asset('/img/logos/'.$progra->imagen)}}" alt="Java">
-                                    <div class="c-body">
-                                        <h3 class="text-azul">{{$progra->nombre}}</h3>
-                                        <p>Del {{\Carbon\Carbon::parse($progra->fecha_inicio)->translatedFormat('j F') }} al {{\Carbon\Carbon::parse($progra->fecha_fin)->translatedFormat('j F') }} </p>
-                                        <p>De {{Carbon\Carbon::parse($progra->hora_inicio)->format('g:i a')}} a {{Carbon\Carbon::parse($progra->hora_fin)->format('g:i a')}} </p>
-
-                                    </div>
-                                    <div class="c-footer">
-                                        <div class="tag bg-rosa"><small>{{$progra->cat}}</small></div>
-                                        <div class="c-footer-links">
-                                            <form action="{{route('cart-cursos.store')}}" method="POST">
-                                            @csrf
-                                                 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                                 <input type="hidden" name="curso_id" value="{{$progra->id}}">
-                                                <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
-                                                    <img src="{{asset('img/icons/generales/add_cart.svg')}}" alt="">
-                                                </button>
-                                            
-                                            </form>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
+                         <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$progra->imagen)}}" alt="">
                                 </div>
-                                <div class="card__face card__face--back">
-                                    <div class="back-body">
-                                         <details>
-                                          <summary><b>Antecedentes: </b></summary>
-                                          <p>{{$progra->antecedentes}}</p>
-                                        </details>
-                                        <details>
-                                          <summary><b>Equipo: </b></summary>
-                                          <p>{{$progra->equipo}}</p>
-                                        </details>
-                                        <p class="p"><span>Cupo:</span> {{$progra->cupo}}</p>
-                                        <hr>
-                                        <p class="p-grande text-center text-azul">Precios</p>
-                                        <p class="p"><span>Comunidad UNAM:</span> $500</p>
-                                        <p class="p"><span>Alumnos externos:</span> $600</p>
-                                        <p class="p"><span>Público general:</span> $700</p>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$progra->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($progra->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($progra->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($progra->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($progra->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
+                            
+                                </div>
+                                    <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$progra->temario")}}">Ver temario</a>
                                     </div>
-                                    <div class="back-footer">
-                                        <div class="back-footer-links">
-                                            <a class="text-azul" target="_blank" href="{{asset("temarios/$progra->temario")}}">Ver temario</a>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="img/icons/generales/menu_puntos.png" alt="">
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$progra->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
-                                        </div>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
+
+                                                </div>
+                                        </form>
+                            
                                     </div>
+                            
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     @endforeach
                 </div>
@@ -269,126 +296,73 @@
                  <div class="row">
                     @foreach($bases as $base)
                     <div class="col">
-                        <div class="scene scene--card ">
-                            <div class="cursos-card shadow-lg" id="card-t">
-                                <div class="card__face card__face--front">
-                                    <img class="iconos-cursos" src="{{asset('/img/logos/'.$base->imagen)}}" alt="Java">
-                                    <div class="c-body">
-                                        <h3 class="text-azul">{{$base->nombre}}</h3>
-                                        <p>Del {{\Carbon\Carbon::parse($base->fecha_inicio)->translatedFormat('j F') }} al {{\Carbon\Carbon::parse($base->fecha_fin)->translatedFormat('j F') }} </p>
-                                        <p>De {{Carbon\Carbon::parse($base->hora_inicio)->format('g:i a')}} a {{Carbon\Carbon::parse($base->hora_fin)->format('g:i a')}} </p>
-
-                                    </div>
-                                    <div class="c-footer">
-                                        <div class="tag bg-rosa"><small>{{$base->cat}}</small></div>
-                                        <div class="c-footer-links">
-                                            <form action="{{route('cart-cursos.store')}}" method="POST">
-                                            @csrf
-                                                 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                                 <input type="hidden" name="curso_id" value="{{$base->id}}">
-                                                <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
-                                                    <img src="{{asset('img/icons/generales/add_cart.svg')}}" alt="">
-                                                </button>
-                                            
-                                            </form>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
+                         <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$base->imagen)}}" alt="">
                                 </div>
-                                <div class="card__face card__face--back">
-                                    <div class="back-body">
-                                         <details>
-                                          <summary><b>Antecedentes: </b></summary>
-                                          <p>{{$base->antecedentes}}</p>
-                                        </details>
-                                        <details>
-                                          <summary><b>Equipo: </b></summary>
-                                          <p>{{$base->equipo}}</p>
-                                        </details>
-                                        <p class="p"><span>Cupo:</span> {{$base->cupo}}</p>
-                                        <hr>
-                                        <p class="p-grande text-center text-azul">Precios</p>
-                                        <p class="p"><span>Comunidad UNAM:</span> $500</p>
-                                        <p class="p"><span>Alumnos externos:</span> $600</p>
-                                        <p class="p"><span>Público general:</span> $700</p>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$base->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($base->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($base->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($base->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($base->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
+                            
+                                </div>
+                                    <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$base->temario")}}">Ver temario</a>
                                     </div>
-                                    <div class="back-footer">
-                                        <div class="back-footer-links">
-                                           <a class="text-azul" target="_blank" href="{{asset("temarios/$base->temario")}}">Ver temario</a>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="img/icons/generales/menu_puntos.png" alt="">
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$base->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
-                                        </div>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
+
+                                                </div>
+                                        </form>
+                            
                                     </div>
+                            
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="tab-pane fade" id="pills-hardware" role="tabpanel" aria-labelledby="pills-hardware-tab">
-                <div class="row">
-                    @foreach($hardware as $hard)
-                    <div class="col">
-                        <div class="scene scene--card ">
-                            <div class="cursos-card shadow-lg" id="card-t">
-                                <div class="card__face card__face--front">
-                                    <img class="iconos-cursos" src="{{asset('/img/logos/'.$hard->imagen)}}" alt="Java">
-                                    <div class="c-body">
-                                        <h3 class="text-azul">{{$hard->nombre}}</h3>
-                                        <p>Del {{\Carbon\Carbon::parse($hard->fecha_inicio)->translatedFormat('j F') }} al {{\Carbon\Carbon::parse($hard->fecha_fin)->translatedFormat('j F') }} </p>
-                                        <p>De {{Carbon\Carbon::parse($hard->hora_inicio)->format('g:i a')}} a {{Carbon\Carbon::parse($hard->hora_fin)->format('g:i a')}} </p>
-
-                                    </div>
-                                    <div class="c-footer">
-                                        <div class="tag bg-rosa"><small>{{$hard->cat}}</small></div>
-                                        <div class="c-footer-links">
-                                            <form action="{{route('cart-cursos.store')}}" method="POST">
-                                            @csrf
-                                                 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                                 <input type="hidden" name="curso_id" value="{{$hard->id}}">
-                                                <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
-                                                    <img src="{{asset('img/icons/generales/add_cart.svg')}}" alt="">
-                                                </button>
-                                            
-                                            </form>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card__face card__face--back">
-                                    <div class="back-body">
-                                         <details>
-                                          <summary><b>Antecedentes: </b></summary>
-                                          <p>{{$hard->antecedentes}}</p>
-                                        </details>
-                                        <details>
-                                          <summary><b>Equipo: </b></summary>
-                                          <p>{{$hard->equipo}}</p>
-                                        </details>
-                                        <p class="p"><span>Cupo:</span> {{$hard->cupo}}</p>
-                                        <hr>
-                                        <p class="p-grande text-center text-azul">Precios</p>
-                                        <p class="p"><span>Comunidad UNAM:</span> $500</p>
-                                        <p class="p"><span>Alumnos externos:</span> $600</p>
-                                        <p class="p"><span>Público general:</span> $700</p>
-                                    </div>
-                                    <div class="back-footer">
-                                        <div class="back-footer-links">
-                                                                                        <a class="text-azul" target="_blank" href="{{asset("temarios/$hard->temario")}}">Ver temario</a>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="img/icons/generales/menu_puntos.png" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div> 
                     </div>
                     @endforeach
                 </div>
@@ -397,62 +371,73 @@
                  <div class="row">
                     @foreach($desarrollo as $des)
                     <div class="col">
-                        <div class="scene scene--card ">
-                            <div class="cursos-card shadow-lg" id="card-t">
-                                <div class="card__face card__face--front">
-                                    <img class="iconos-cursos" src="{{asset('/img/logos/'.$des->imagen)}}" alt="Java">
-                                    <div class="c-body">
-                                        <h3 class="text-azul">{{$des->nombre}}</h3>
-                                        <p>Del {{\Carbon\Carbon::parse($des->fecha_inicio)->translatedFormat('j F') }} al {{\Carbon\Carbon::parse($des->fecha_fin)->translatedFormat('j F') }} </p>
-                                        <p>De {{Carbon\Carbon::parse($des->hora_inicio)->format('g:i a')}} a {{Carbon\Carbon::parse($des->hora_fin)->format('g:i a')}} </p>
-
-                                    </div>
-                                    <div class="c-footer">
-                                        <div class="tag bg-rosa"><small>{{$des->cat}}</small></div>
-                                        <div class="c-footer-links">
-                                            <form action="{{route('cart-cursos.store')}}" method="POST">
-                                            @csrf
-                                                 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                                 <input type="hidden" name="curso_id" value="{{$des->id}}">
-                                                <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
-                                                    <img src="{{asset('img/icons/generales/add_cart.svg')}}" alt="">
-                                                </button>
-                                            
-                                            </form>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
+                         <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$des->imagen)}}" alt="">
                                 </div>
-                                <div class="card__face card__face--back">
-                                    <div class="back-body">
-                                         <details>
-                                          <summary><b>Antecedentes: </b></summary>
-                                          <p>{{$des->antecedentes}}</p>
-                                        </details>
-                                        <details>
-                                          <summary><b>Equipo: </b></summary>
-                                          <p>{{$des->equipo}}</p>
-                                        </details>
-                                        <p class="p"><span>Cupo:</span> {{$des->cupo}}</p>
-                                        <hr>
-                                        <p class="p-grande text-center text-azul">Precios</p>
-                                        <p class="p"><span>Comunidad UNAM:</span> $500</p>
-                                        <p class="p"><span>Alumnos externos:</span> $600</p>
-                                        <p class="p"><span>Público general:</span> $700</p>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$des->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($des->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($des->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($des->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($des->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
+                            
+                                </div>
+                                    <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$des->temario")}}">Ver temario</a>
                                     </div>
-                                    <div class="back-footer">
-                                        <div class="back-footer-links">
-                                             <a class="text-azul" target="_blank" href="{{asset("temarios/$des->temario")}}">Ver temario</a>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="img/icons/generales/menu_puntos.png" alt="">
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$des->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
-                                        </div>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
+
+                                                </div>
+                                        </form>
+                            
                                     </div>
+                            
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     @endforeach
                 </div>
@@ -461,62 +446,73 @@
                  <div class="row">
                     @foreach($otros as $otro)
                     <div class="col">
-                        <div class="scene scene--card ">
-                            <div class="cursos-card shadow-lg" id="card-t">
-                                <div class="card__face card__face--front">
-                                    <img class="iconos-cursos" src="{{asset('/img/logos/'.$otro->imagen)}}" alt="Java">
-                                    <div class="c-body">
-                                        <h3 class="text-azul">{{$otro->nombre}}</h3>
-                                        <p>Del {{\Carbon\Carbon::parse($otro->fecha_inicio)->translatedFormat('j F') }} al {{\Carbon\Carbon::parse($otro->fecha_fin)->translatedFormat('j F') }} </p>
-                                        <p>De {{Carbon\Carbon::parse($otro->hora_inicio)->format('g:i a')}} a {{Carbon\Carbon::parse($otro->hora_fin)->format('g:i a')}} </p>
-
-                                    </div>
-                                    <div class="c-footer">
-                                        <div class="tag bg-rosa"><small>{{$otro->cat}}</small></div>
-                                        <div class="c-footer-links">
-                                            <form action="{{route('cart-cursos.store')}}" method="POST">
-                                            @csrf
-                                                 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                                 <input type="hidden" name="curso_id" value="{{$otro->id}}">
-                                                <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
-                                                    <img src="{{asset('img/icons/generales/add_cart.svg')}}" alt="">
-                                                </button>
-                                            
-                                            </form>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
+                         <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$otro->imagen)}}" alt="">
                                 </div>
-                                <div class="card__face card__face--back">
-                                    <div class="back-body">
-                                         <details>
-                                          <summary><b>Antecedentes: </b></summary>
-                                          <p>{{$otro->antecedentes}}</p>
-                                        </details>
-                                        <details>
-                                          <summary><b>Equipo: </b></summary>
-                                          <p>{{$otro->equipo}}</p>
-                                        </details>
-                                        <p class="p"><span>Cupo:</span> {{$otro->cupo}}</p>
-                                        <hr>
-                                        <p class="p-grande text-center text-azul">Precios</p>
-                                        <p class="p"><span>Comunidad UNAM:</span> $500</p>
-                                        <p class="p"><span>Alumnos externos:</span> $600</p>
-                                        <p class="p"><span>Público general:</span> $700</p>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$otro->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($otro->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($otro->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($otro->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($otro->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
+                            
+                                </div>
+                                    <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$otro->temario")}}">Ver temario</a>
                                     </div>
-                                    <div class="back-footer">
-                                        <div class="back-footer-links">
-                                                                                        <a class="text-azul" target="_blank" href="{{asset("temarios/$otro->temario")}}">Ver temario</a>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="img/icons/generales/menu_puntos.png" alt="">
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$otro->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
-                                        </div>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
+
+                                                </div>
+                                        </form>
+                            
                                     </div>
+                            
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     @endforeach
                 </div>
@@ -525,62 +521,73 @@
                 <div class="row">
                     @foreach($AM as $matutino)
                     <div class="col">
-                        <div class="scene scene--card ">
-                            <div class="cursos-card shadow-lg" id="card-t">
-                                <div class="card__face card__face--front">
-                                    <img class="iconos-cursos" src="{{asset('/img/logos/'.$matutino->imagen)}}" alt="Java">
-                                    <div class="c-body">
-                                        <h3 class="text-azul">{{$matutino->nombre}}</h3>
-                                        <p>Del {{\Carbon\Carbon::parse($matutino->fecha_inicio)->translatedFormat('j F') }} al {{\Carbon\Carbon::parse($matutino->fecha_fin)->translatedFormat('j F') }} </p>
-                                        <p>De {{Carbon\Carbon::parse($matutino->hora_inicio)->format('g:i a')}} a {{Carbon\Carbon::parse($matutino->hora_fin)->format('g:i a')}} </p>
-
-                                    </div>
-                                    <div class="c-footer">
-                                        <div class="tag bg-rosa"><small>{{$matutino->cat}}</small></div>
-                                        <div class="c-footer-links">
-                                            <form action="{{route('cart-cursos.store')}}" method="POST">
-                                            @csrf
-                                                 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                                 <input type="hidden" name="curso_id" value="{{$matutino->id}}">
-                                                <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
-                                                    <img src="{{asset('img/icons/generales/add_cart.svg')}}" alt="">
-                                                </button>
-                                            
-                                            </form>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
+                         <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$matutino->imagen)}}" alt="">
                                 </div>
-                                <div class="card__face card__face--back">
-                                    <div class="back-body">
-                                         <details>
-                                          <summary><b>Antecedentes: </b></summary>
-                                          <p>{{$matutino->antecedentes}}</p>
-                                        </details>
-                                        <details>
-                                          <summary><b>Equipo: </b></summary>
-                                          <p>{{$matutino->equipo}}</p>
-                                        </details>
-                                        <p class="p"><span>Cupo:</span> {{$matutino->cupo}}</p>
-                                        <hr>
-                                        <p class="p-grande text-center text-azul">Precios</p>
-                                        <p class="p"><span>Comunidad UNAM:</span> $500</p>
-                                        <p class="p"><span>Alumnos externos:</span> $600</p>
-                                        <p class="p"><span>Público general:</span> $700</p>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$matutino->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($matutino->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($matutino->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($matutino->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($matutino->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
+                            
+                                </div>
+                                    <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$matutino->temario")}}">Ver temario</a>
                                     </div>
-                                    <div class="back-footer">
-                                        <div class="back-footer-links">
-                                            <a class="text-azul" target="_blank" href="{{asset("temarios/$matutino->temario")}}">Ver temario</a>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="img/icons/generales/menu_puntos.png" alt="">
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$matutino->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
-                                        </div>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
+
+                                                </div>
+                                        </form>
+                            
                                     </div>
+                            
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                     @endforeach
                 </div>
@@ -589,62 +596,148 @@
                 <div class="row">
                     @foreach($PM as $vespertino)
                     <div class="col">
-                        <div class="scene scene--card ">
-                            <div class="cursos-card shadow-lg" id="card-t">
-                                <div class="card__face card__face--front">
-                                    <img class="iconos-cursos" src="{{asset('/img/logos/'.$vespertino->imagen)}}" alt="Java">
-                                    <div class="c-body">
-                                        <h3 class="text-azul">{{$vespertino->nombre}}</h3>
-                                        <p>Del {{\Carbon\Carbon::parse($vespertino->fecha_inicio)->translatedFormat('j F') }} al {{\Carbon\Carbon::parse($vespertino->fecha_fin)->translatedFormat('j F') }} </p>
-                                        <p>De {{Carbon\Carbon::parse($vespertino->hora_inicio)->format('g:i a')}} a {{Carbon\Carbon::parse($vespertino->hora_fin)->format('g:i a')}} </p>
-
-                                    </div>
-                                    <div class="c-footer">
-                                        <div class="tag bg-rosa"><small>{{$vespertino->cat}}</small></div>
-                                        <div class="c-footer-links">
-                                            <form action="{{route('cart-cursos.store')}}" method="POST">
-                                            @csrf
-                                                 <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                                 <input type="hidden" name="curso_id" value="{{$vespertino->id}}">
-                                                <button type="submit" class="c-footer-link d-inline border-0 bg-white" href="">
-                                                    <img src="{{asset('img/icons/generales/add_cart.svg')}}" alt="">
-                                                </button>
-                                            
-                                            </form>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="{{asset('img/icons/generales/ver_mas.svg')}}" alt="">
-                                            </button>
-                                        </div>
-                                    </div>
+                         <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$vespertino->imagen)}}" alt="">
                                 </div>
-                                <div class="card__face card__face--back">
-                                    <div class="back-body">
-                                         <details>
-                                          <summary><b>Antecedentes: </b></summary>
-                                          <p>{{$vespertino->antecedentes}}</p>
-                                        </details>
-                                        <details>
-                                          <summary><b>Equipo: </b></summary>
-                                          <p>{{$vespertino->equipo}}</p>
-                                        </details>
-                                        <p class="p"><span>Cupo:</span> {{$vespertino->cupo}}</p>
-                                        <hr>
-                                        <p class="p-grande text-center text-azul">Precios</p>
-                                        <p class="p"><span>Comunidad UNAM:</span> $500</p>
-                                        <p class="p"><span>Alumnos externos:</span> $600</p>
-                                        <p class="p"><span>Público general:</span> $700</p>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$vespertino->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($vespertino->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($vespertino->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($vespertino->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($vespertino->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
+                            
+                                </div>
+                                    <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$vespertino->temario")}}">Ver temario</a>
                                     </div>
-                                    <div class="back-footer">
-                                        <div class="back-footer-links">
-                                        <a class="text-azul" target="_blank" href="{{asset("temarios/$vespertino->temario")}}">Ver temario</a>
-                                            <button class="c-footer-link card__flip">
-                                                <img src="img/icons/generales/menu_puntos.png" alt="">
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$vespertino->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
                                             </button>
-                                        </div>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
+
+                                                </div>
+                                        </form>
+                            
                                     </div>
+                            
                                 </div>
                             </div>
-                        </div>
+                        </div> 
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+              <div class="tab-pane fade" id="pills-hardware" role="tabpanel" aria-labelledby="pills-hardware-tab">
+                <div class="row">
+                    @foreach($hardware as $hard)
+                    <div class="col">
+                         <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$hard->imagen)}}" alt="">
+                                </div>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$hard->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($hard->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($hard->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($hard->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($hard->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
+                            
+                                </div>
+                                    <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$hard->temario")}}">Ver temario</a>
+                                    </div>
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$hard->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                                            </button>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
+
+                                                </div>
+                                        </form>
+                            
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div> 
                     </div>
                     @endforeach
                 </div>

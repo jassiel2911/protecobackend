@@ -6,7 +6,7 @@
 
   <section class="container my-5">
       <h2 class="text-azul">Pagados</h2>
-      <section class="container show-curso_lista">
+      <section class="container show-curso_lista table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>

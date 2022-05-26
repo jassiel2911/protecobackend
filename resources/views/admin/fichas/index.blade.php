@@ -48,10 +48,22 @@
          <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-3-tab" data-bs-toggle="pill" data-bs-target="#pills-3" type="button" role="tab" aria-controls="pills-3" aria-selected="false">800</button>
         </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-4-tab" data-bs-toggle="pill" data-bs-target="#pills-4" type="button" role="tab" aria-controls="pills-4" aria-selected="false">900</button>
+        </li>
+         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-5-tab" data-bs-toggle="pill" data-bs-target="#pills-5" type="button" role="tab" aria-controls="pills-5" aria-selected="false">1000</button>
+        </li>
+         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-6-tab" data-bs-toggle="pill" data-bs-target="#pills-6" type="button" role="tab" aria-controls="pills-6" aria-selected="false">1200</button>
+        </li>
+         <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-7-tab" data-bs-toggle="pill" data-bs-target="#pills-7" type="button" role="tab" aria-controls="pills-7" aria-selected="false">500</button>
+        </li>
       </ul>
       <div class="tab-content" id="pills-tabContent">
+          <!-- 600 -->
           <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
-              <!-- 600 -->
                <table class="table table-hover">
                 <thead>
                   <tr>
@@ -72,13 +84,16 @@
                     <td>{{$ficha->monto}}</td>
                     <td>{{$ficha->ticket_id}}</td>
                     <td>
-                        @if($ficha->comprobante==1)
-                        <p class="d-none">{{$total=$total+$ficha->monto}}</p>
-                        ✅
-                        @endif
+                        @foreach($comprobantes as $comprobante)
+                          @if($comprobante->ficha_id == $ficha->id)
+                            <p class="d-none">{{$total=$total+$ficha->monto}}</p>
+                            ✅
+                          @endif
+                        @endforeach
+                       
                     </td>
                     <td>
-
+                      <a href="{{ route('adminfichas.edit', $ficha->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
                     </td>
                   
                   </tr>
@@ -88,8 +103,8 @@
                   <h4 class="text-end">{{$total}}</h4>
               </table>
           </div>
+          <!-- 700 -->
           <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
-              <!-- 700 -->
                <table class="table table-hover">
                 <thead>
                   <tr>
@@ -110,13 +125,15 @@
                     <td>{{$ficha->monto}}</td>
                     <td>{{$ficha->ticket_id}}</td>
                     <td>
-                        @if($ficha->comprobante==1)
-                        <p class="d-none">{{$total=$total+$ficha->monto}}</p>
-                        ✅
+                      @foreach($comprobantes as $comprobante)
+                        @if($comprobante->ficha_id == $ficha->id)
+                          <p class="d-none">{{$total=$total+$ficha->monto}}</p>
+                          ✅
                         @endif
+                      @endforeach
                     </td>
                     <td>
-
+                      <a href="{{ route('adminfichas.edit', $ficha->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
                     </td>
                   
                   </tr>
@@ -126,8 +143,8 @@
                   <h4 class="text-end">{{$total}}</h4>
               </table>
           </div>
+          <!-- 800 -->
           <div class="tab-pane fade" id="pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
-             <!-- 800 -->
                <table class="table table-hover">
                 <thead>
                   <tr>
@@ -148,12 +165,15 @@
                     <td>{{$ficha->monto}}</td>
                     <td>{{$ficha->ticket_id}}</td>
                     <td>
-                        @if($ficha->comprobante==1)
-                        <p class="d-none">{{$total=$total+$ficha->monto}}</p>
-                        ✅
+                      @foreach($comprobantes as $comprobante)
+                        @if($comprobante->ficha_id == $ficha->id)
+                          <p class="d-none">{{$total=$total+$ficha->monto}}</p>
+                          ✅
                         @endif
+                      @endforeach
                     </td>
                     <td>
+                      <a href="{{ route('adminfichas.edit', $ficha->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
 
                     </td>
                   
@@ -164,6 +184,166 @@
                   <h4 class="text-end">{{$total}}</h4>
               </table>
           </div>
+         <!-- 900 -->
+          <div class="tab-pane fade" id="pills-4" role="tabpanel" aria-labelledby="pills-3-tab">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Archivo</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Ticket ID</th>
+                    <th scope="col">Comprobante</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($fichas as $ficha)
+                    @if($ficha->monto == 900)
+                      <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
+                    <th scope="row">{{$ficha->id}}</th>
+                    <td>{{$ficha->file_ficha}}</td>
+                    <td>{{$ficha->monto}}</td>
+                    <td>{{$ficha->ticket_id}}</td>
+                    <td>
+                      @foreach($comprobantes as $comprobante)
+                        @if($comprobante->ficha_id == $ficha->id)
+                          <p class="d-none">{{$total=$total+$ficha->monto}}</p>
+                          ✅
+                        @endif
+                      @endforeach
+                    </td>
+                    <td>
+                      <a href="{{ route('adminfichas.edit', $ficha->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
+
+                    </td>
+                    
+                  </tr>
+                    @endif
+                  @endforeach
+                </tbody>
+                  <h4 class="text-end">{{$total}}</h4>
+              </table>
+          </div>
+          <!-- 1000 -->
+          <div class="tab-pane fade" id="pills-5" role="tabpanel" aria-labelledby="pills-3-tab">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Archivo</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Ticket ID</th>
+                    <th scope="col">Comprobante</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($fichas as $ficha)
+                    @if($ficha->monto == 1000)
+                      <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
+                    <th scope="row">{{$ficha->id}}</th>
+                    <td>{{$ficha->file_ficha}}</td>
+                    <td>{{$ficha->monto}}</td>
+                    <td>{{$ficha->ticket_id}}</td>
+                    <td>
+                        @if($ficha->comprobante==1)
+                        <p class="d-none">{{$total=$total+$ficha->monto}}</p>
+                        ✅
+                        @endif
+                    </td>
+                    <td>
+                      <a href="{{ route('adminfichas.edit', $ficha->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
+
+                    </td>
+                      
+                  </tr>
+                    @endif
+                  @endforeach
+                </tbody>
+                  <h4 class="text-end">{{$total}}</h4>
+              </table>
+          </div>
+          <!-- 1200 -->
+          <div class="tab-pane fade" id="pills-6" role="tabpanel" aria-labelledby="pills-3-tab">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Archivo</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Ticket ID</th>
+                    <th scope="col">Comprobante</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($fichas as $ficha)
+                    @if($ficha->monto == 1200)
+                      <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
+                    <th scope="row">{{$ficha->id}}</th>
+                    <td>{{$ficha->file_ficha}}</td>
+                    <td>{{$ficha->monto}}</td>
+                    <td>{{$ficha->ticket_id}}</td>
+                    <td>
+                        @if($ficha->comprobante==1)
+                        <p class="d-none">{{$total=$total+$ficha->monto}}</p>
+                        ✅
+                        @endif
+                    </td>
+                    <td>
+                      <a href="{{ route('adminfichas.edit', $ficha->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
+
+                    </td>
+                      
+                  </tr>
+                    @endif
+                  @endforeach
+                </tbody>
+                  <h4 class="text-end">{{$total}}</h4>
+              </table>
+          </div>
+         <!-- 500 -->
+        <div class="tab-pane fade" id="pills-7" role="tabpanel" aria-labelledby="pills-1-tab">
+             <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Archivo</th>
+                  <th scope="col">Monto</th>
+                  <th scope="col">Ticket ID</th>
+                  <th scope="col">Comprobante</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($fichas as $ficha)
+                  @if($ficha->monto == 500)
+                    <tr  data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="collapseWidthExample">
+                  <th scope="row">{{$ficha->id}}</th>
+                  <td>{{$ficha->file_ficha}}</td>
+                  <td>{{$ficha->monto}}</td>
+                  <td>{{$ficha->ticket_id}}</td>
+                  <td>
+                    @foreach($comprobantes as $comprobante)
+                      @if($comprobante->ficha_id == $ficha->id)
+                        <p class="d-none">{{$total=$total+$ficha->monto}}</p>
+                        ✅
+                      @endif
+                    @endforeach
+                  </td>
+                  <td>
+                    <a href="{{ route('adminfichas.edit', $ficha->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
+
+                  </td>
+                  
+                </tr>
+                  @endif
+                @endforeach
+              </tbody>
+                <h4 class="text-end">{{$total}}</h4>
+            </table>
+        </div>
       </div>
 
   </section>

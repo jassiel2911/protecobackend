@@ -4,7 +4,7 @@
 <main>
   <x-admin-user-nav/>
 
-  <section class="container my-3">
+  <section class="container my-3 table-responsive">
       <h2 class="text-azul">Becarios</h2>
       <section class="container">
           <table class="table table-hover">

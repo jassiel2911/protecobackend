@@ -7,7 +7,7 @@
     
     <section class="container py-5 carrito px-5">
         @if(session('success'))
-            <div class="alert bg-lavanda alert-dismissible fade show text-center" role="alert">
+            <div class="alert bg-success alert-dismissible fade show text-center" role="alert">
                 <p class="">Se elimino correctamente</p>
             </div>
         @endif
@@ -38,22 +38,31 @@
                             @endif
                                 
                         @elseif(auth()->user()->origin == "Alumno externo")
-                        <p style="margin:0;" class="text-start mx-3">$700</p>
-                        <p class="d-none">{{$subtotal = $subtotal + 700}}</p>
-
-                            @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
-                                    
-                            @else
-                            <p class="d-none">{{$total = $total + 700}}</p>
-                            @endif
-                        @elseif(auth()->user()->origin == "Publico en general")
                         <p style="margin:0;" class="text-start mx-3">$800</p>
-                            <p class="d-none">{{$subtotal = $subtotal + 800}}</p>
+                        <p class="d-none">{{$subtotal = $subtotal + 800}}</p>
 
                             @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
                                     
                             @else
                             <p class="d-none">{{$total = $total + 800}}</p>
+                            @endif
+                         @elseif(auth()->user()->origin == "Ex-alumno UNAM")
+                            <p style="margin:0;" class="text-start mx-3">$900</p>
+                            <p class="d-none">{{$subtotal = $subtotal + 900}}</p>
+
+                                @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
+                                        
+                                @else
+                                <p class="d-none">{{$total = $total + 900}}</p>
+                                @endif
+                        @elseif(auth()->user()->origin == "Publico en general")
+                        <p style="margin:0;" class="text-start mx-3">$1000</p>
+                            <p class="d-none">{{$subtotal = $subtotal + 1000}}</p>
+
+                            @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
+                                    
+                            @else
+                            <p class="d-none">{{$total = $total + 1000}}</p>
                             @endif
                                 
                         @endif
@@ -69,10 +78,9 @@
             <p class="text-end"><b>Subtotal: </b> ${{$subtotal}}</p>
             <p class="text-end">@if($i>=3)<b class="text-rosa ">Promoción 3x2 aplicada &#128640; </b>@endif<b>Total: </b> ${{$total}}</p>
              @if(auth()->user()->origin == "Publico en general")
-            <div class="alert alert-info alert-dismissible fade show" role="alert">
-                <p class="text-end">
-                <svg class="bi flex-shrink-0" width="40" height="40" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-                <b>¿Eres comunidad UNAM o estudiante de otra escuela?</b><br>Sube <a class="text-rosa" href="{{route('perfil.index')}}">aquí</a> tu credencial o comprobante y recibe un descuento</p>
+            <div class="alert alert-info alert-dismissible fade show text-end" role="alert">
+                <p><b>¿Eres comunidad UNAM(alumno, trabajador o profesor), estudiante de otra escuela o ex-alumno UNAM?</b></p>
+                <p>Sube <a class="text-rosa" href="{{route('perfil.index')}}">aquí</a> tu credencial o comprobante y recibe un descuento</p>
             </div>
             @endif
             <a href=""></a>

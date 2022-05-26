@@ -28,6 +28,8 @@
 
     <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
 
+    
+
 </head>
 <body>
     <!-- Header -->
@@ -55,6 +57,9 @@
 				<li class="nav-menu_item">
 					<a href="{{route('home')}}" class="nav-menu_link nav-link active" >Inicio</a>
 				</li>
+                <li class="nav-menu_item">
+                    <a href="{{route('ver-cursos.index')}}" class="nav-menu_link nav-link" >Cursos</a>
+                </li>
                 <li class="nav-menu_item">
                     <a href="{{route('inscripcion')}}" class="nav-menu_link nav-link" >¿Cómo me inscribo?</a>
                 </li>

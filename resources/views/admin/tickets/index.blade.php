@@ -11,7 +11,7 @@
         </div>
     @endif
     <h2 class="text-azul">Todos</h2>
-      <section class="container-fluid show-curso_lista">
+      <section class="container-fluid show-curso_lista table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>

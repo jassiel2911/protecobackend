@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.becarios')
 
 @section('content')
  <main>
@@ -13,38 +13,38 @@
         </div>
     @endif
 
-    <form class="container w-75" action="{{route('becarios.update', $curso->id)}}" method="POST" enctype="multipart/form-data">
+    <form style="max-width:1000px; margin:1rem auto 4rem;" class="container" action="{{route('becarios.update', $curso->id)}}" method="POST" enctype="multipart/form-data">
         @method('PATCH')
         @csrf
       <!-- Nombre -->
       <div class="input-div row">
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <label for="name" class="form-label">Nombre</label>
           <input name="nombre" type="text" placeholder="" value="{{$curso->nombre}}">
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <label for="name" class="form-label">Fecha de inicio</label>
           <input name="fecha_inicio" type="date" placeholder="" value="{{$curso->fecha_inicio}}">
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <label for="name" class="form-label">Fecha de termino</label>
           <input name="fecha_fin" type="date" placeholder="" value="{{$curso->fecha_fin}}">
         </div>
       </div>
     <div class="input-div row">
-        <!-- <div class="col-4">
+        <!-- <div class="col-12 col-lg-4">
           <label for="name" class="form-label">Días</label>
           <input name="dias" type="string" placeholder="" >
         </div> -->
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <label for="name" class="form-label">Antecedentes</label>
           <input name="antecedentes" type="string" placeholder="" value="{{$curso->antecedentes}}">
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <label for="name" class="form-label">Hora inicio</label>
           <input name="hora_inicio" type="time" placeholder="" value="{{$curso->hora_inicio}}">
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <label for="name" class="form-label">Hora término</label>
           <input name="hora_fin" type="time" placeholder=""  value="{{$curso->hora_fin}}">
         </div>
@@ -52,17 +52,17 @@
       </div>
      <div class="input-div row">
         
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <label for="name" class="form-label">Equipo</label>
           <input name="equipo" type="string" placeholder=""  value="{{$curso->equipo}}">
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
             <label for="name" class="form-label">Tipo</label>
             <select class="form-select" name="tipo" id="auth-select">
                 <option value="Intersemestral" >Intersemestral</option>
             </select>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
             <label for="name" class="form-label">Categoría</label>
             <select class="form-select" name="cat" id="auth-select">
                 <option value="Programación" @if ($curso->cat == "Programación") {{ 'selected' }} @endif>Programación</option>
@@ -77,20 +77,20 @@
       </div>
     <div class="input-div row">
          
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
             <label for="name" class="form-label">Temario</label>
               <p>Actual: <a href="{{asset('/temarios/'.$curso->temario)}}">{{$curso->temario}}</a></p>
               <p>Actualizar: </p>
                 <input name="temario" type="file" placeholder="" value="">
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
             <label for="name" class="form-label">Imagen</label>
             <p>Actual: </p>
             <img class="w-25" src="{{asset('/img/logos/'.$curso->imagen)}}" alt="">
               <p>Actualizar: </p>
                 <input name="imagen" type="file" placeholder="" value="">
         </div>
-         <div class="col-4">
+         <div class="col-12 col-lg-4">
             <label for="name" class="form-label">Nivel</label>
             <select class="form-select" name="nivel" id="auth-select">
                 <option value="Básico"  @if ($curso->nivel == "Básico") {{ 'selected' }} @endif>Básico</option>
@@ -104,17 +104,17 @@
           
           <input name="cupo" type="hidden" placeholder="" value="50">
 
-          <!-- <div class="col-4">
+          <!-- <div class="col-12 col-lg-4">
             <label for="name" class="form-label">Cupo</label>
             <input name="cupo" type="hidden" placeholder="" value="50">
           </div> -->
-          <!-- <div class="col-4">
+          <!-- <div class="col-12 col-lg-4">
             <label for="name" class="form-label">Semestre</label>
             <select class="form-select" name="semestre" id="auth-select">
                 <option value="22-1" >22-1</option>
             </select>
           </div> -->
-          <div class="col-4">
+          <div class="col-12 col-lg-4">
             <label for="name" class="form-label">Turno</label>
             <select class="form-select" name="turno" id="auth-select">
                 <option value="AM" >Matutino</option>
@@ -123,11 +123,11 @@
             </select>
           </div>
 
-          <input type="hidden" name="semestre" value="22-1">
+          <input type="hidden" name="semestre" value="22-2">
            <input type="hidden" name="publicado" value="0">
 
         </div>
-         <div class="input-div mx-auto mt-3 col-4">
+         <div class="input-div mx-auto mt-3 col-12 col-lg-4">
           <input type="submit" class="auth-submit btn btn-rosa" value="Actualizar">
         </div>
        

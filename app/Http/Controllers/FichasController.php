@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ficha;
+use App\Models\Comprobante;
+
 
 class FichasController extends Controller
 {
@@ -16,7 +18,8 @@ class FichasController extends Controller
     {
         $total = 0;
         $fichas = Ficha::all();
-        return view('admin.fichas.index', ['fichas'=>$fichas, 'total'=>$total]);
+        $comprobantes = Comprobante::all();
+        return view('admin.fichas.index', ['fichas'=>$fichas, 'total'=>$total, 'comprobantes'=>$comprobantes]);
     }
 
     /**
@@ -63,7 +66,8 @@ class FichasController extends Controller
      */
     public function edit($id)
     {
-        //
+         $ficha=Ficha::findOrFail($id);
+        return view('admin.fichas.edit', compact('ficha'));
     }
 
     /**
@@ -75,7 +79,12 @@ class FichasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ficha = Ficha::findOrFail($id);
+        $ficha->file_ficha = $request->file_ficha;
+        $ficha->monto = $request->monto;
+        $ficha->update();
+
+        return redirect()->back()->with('success', 'Información actualizada exitosamente');
     }
 
     /**

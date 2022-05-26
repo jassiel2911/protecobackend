@@ -10,7 +10,7 @@
       <h2 class="text-azul">Alumnos externos</h2>
       <button  id="btnExport" onclick="fnExportToExcel('xlsx', 'Asistentes')" class="btn btn-rosa my-5 d-inline">Exportar lista a xlsx</button>
 
-      <section class="container show-curso_lista">
+      <section class="container show-curso_lista table-responsive">
           <table id="lista" class="table table-hover">
             <thead>
               <tr>

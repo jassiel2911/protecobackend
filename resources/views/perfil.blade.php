@@ -42,25 +42,33 @@
        
         <div class="card my-5 bg-azulclaro card-info" >
           <div class="card-body">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <b>Es muy importante que tu información (nombre y correo electrónico) esté actualizada ya que es la que usaremos para generar las constancias.</b>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <p><b>Nombre completo: </b>{{$user->fname}} {{$user->lname}}</p>
             <p><b>Correo: </b>{{$user->email}}</p>
             <p><b>Procedencia: </b>{{$user->origin}}</p>
+            <div class="d-flex my-2">
+                <a href="{{route('editar-perfil.edit', auth()->user()->id)}}" class="btn btn-rosa">Editar mi información</a>
+            </div>
             @if($user->origin == "Publico en general")
-              <div class="bg-grisclaro p-2" style="max-width: 30rem;">
+              <div class="bg-grisclaro p-2 my-5" style="max-width: 50rem;">
                 <p>
-                  ¿Eres comunidad UNAM o estudiante de otra escuela? Sube aquí tu credencial o comprobante y recibe un descuento <br>
-                  *Comunidad UNAM incluye estudiantes, ex-alumnos y trabajadores
+                  <b>¿Eres comunidad UNAM (alumno, trabajador o profesor), estudiante de otra escuela o ex-alumno UNAM?</b><br>
+                  Sube aquí tu credencial o comprobante y recibe un descuento en todos los cursos
                 </p>
                 <form action="{{route('estudiante.update', auth()->user()->id)}}" class="" method="POST" enctype="multipart/form-data">
                   @method('PATCH')
                   @csrf
-                  <p class="text-rosa">Comunidad UNAM</p>
-                  <div class="d-flex my-3">
+                  <p class="text-rosa">Comunidad UNAM (estudiantes activos, trabajadores y/o profesores)</p>
+                  <div class="d-flex my-3 justify-content-center">
                     <input type="file" name="probatorio" id="" class="bg-grisclaro border-0" required>
                     <input type="hidden" name="origin" value="Comunidad UNAM">
                     <button type="submit" class="btn btn-rosa">Subir</button>
                   </div>
                 </form>
+                
                  <form action="{{route('estudiante.update', auth()->user()->id)}}" class="" method="POST" enctype="multipart/form-data">
                   @method('PATCH')
                   @csrf
@@ -71,12 +79,22 @@
                     <button type="submit" class="btn btn-rosa">Subir</button>
                   </div>
                 </form>
+
+                <form action="{{route('estudiante.update', auth()->user()->id)}}" class="" method="POST" enctype="multipart/form-data">
+                  @method('PATCH')
+                  @csrf
+                  <p class="text-rosa">Ex-alumno UNAM</p>
+                  <div class="d-flex my-3">
+                    <input type="file" name="probatorio" id="" class="bg-grisclaro border-0" required>
+                    <input type="hidden" name="origin" value="Ex-alumno UNAM">
+                    <button type="submit" class="btn btn-rosa">Subir</button>
+                  </div>
+                </form>
               </div>
                
             @endif
-            <div class="d-flex my-2">
-                <a href="{{route('editar-perfil.edit', auth()->user()->id)}}" class="btn btn-rosa">Editar</a>
-            </div>
+            
+           
           </div>
         </div>
        <h2 class="home-subtitulo">Mis tickets</h2>
@@ -172,14 +190,7 @@
                                     </table>
                                     <p class="text-danger">*Por favor sube un comprobante por ficha</p>
                                     ¿Tienes dudas acerca de cómo pagar?  <a target="_blank" href="{{asset('img/ComoPagar-CursosPROTECO22-1.png')}}">Revisa esta infografía</a>
-
-                                   
-                        
                                 @endif
-
-                                 
-
-                               
                             </div>
                             <div class="col-12 col-md-4 my-3">
                                 <p><b>Cursos: </b></p>

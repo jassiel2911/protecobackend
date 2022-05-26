@@ -16,13 +16,18 @@
           <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-programacion-tab" data-bs-toggle="pill" data-bs-target="#pills-programacion" type="button" role="tab" aria-controls="pills-programacion" aria-selected="false">Semestrales</button>
           </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-presencial-tab" data-bs-toggle="pill" data-bs-target="#pills-presencial" type="button" role="tab" aria-controls="pills-presencial" aria-selected="false">Presenciales</button>
+        </li>
+
       </ul>
       <div class="tab-content" id="pills-tabContent">
+        <!-- Inters -->
           <div class="tab-pane fade show active py-3" id="pills-todos" role="tabpanel" aria-labelledby="pills-todos-tab">
               <!-- Inters -->
               <div class="row">
                   <!-- <h3>Semana 1</h3> -->
-                  <div class="col">
+                  <div class="col table-responsive">
                     <table class="table table-hover table-striped table-bordered">
                       <thead>
                         <tr>
@@ -38,42 +43,44 @@
                       </thead>
                       <tbody>
                         @foreach($inters as $inter)
-                        <tr>
-                          <th scope="row">{{$inter->id}}</th>
-                          <td>{{$inter->nombre}}</td>
-                          @foreach($becarios as $becario)
-                            @if($becario->id == $inter->titular)
-                            <td>{{$becario->fname." ".$becario->lname}}</td>
-                            @endif
-                          @endforeach
-                          <td>{{\Carbon\Carbon::parse($inter->fecha_inicio)->format('j F, Y') }} - {{\Carbon\Carbon::parse($inter->fecha_fin)->format('j F, Y') }}</td>
-                          @foreach($tickets as $ticket)
-                            @if($ticket->curso_id == $inter->id)
-                            <p class="d-none">{{$i=$i+1}}</p>
-                            @endif
-                          @endforeach
-                          <td>{{$i}}</td>
-                          <p class="d-none">{{$i=0}}</p>
-                          <td>{{$inter->inscritos}}</td>
-                          <td>
-                            @if($inter->publicado == 1)
-                              Sí
-                            @else
-                              No
-                            @endif
-                          </td>
-                          <td><a href="{{$inter->classroom}}">{{$inter->classroom}}</a></td>
-                          <td>
-                            <form method="POST" action="{{ route('cursos.destroy', $inter->id) }}" >
-                              @csrf
-                              @method('DELETE')
-                              <a href="{{ route('cursos.show', $inter->id) }}"><span class="tag-category badge rounded-pill bg-dark">Ver</span></a>
-                              <a href="{{ route('cursos.edit', $inter->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
-                              <button type="submit" class="border-0"><span class="tag-category badge rounded-pill bg-dark ">Eliminar</span></a>
-                            </form>
-                  
-                          </td>
-                        </tr>
+                          @if($inter->semestre != "Presencial")
+                          <tr>
+                            <th scope="row">{{$inter->id}}</th>
+                            <td>{{$inter->nombre}}</td>
+                            @foreach($becarios as $becario)
+                              @if($becario->id == $inter->titular)
+                              <td>{{$becario->fname." ".$becario->lname}}</td>
+                              @endif
+                            @endforeach
+                            <td>{{\Carbon\Carbon::parse($inter->fecha_inicio)->format('j F, Y') }} - {{\Carbon\Carbon::parse($inter->fecha_fin)->format('j F, Y') }}</td>
+                            @foreach($tickets as $ticket)
+                              @if($ticket->curso_id == $inter->id)
+                              <p class="d-none">{{$i=$i+1}}</p>
+                              @endif
+                            @endforeach
+                            <td>{{$i}}</td>
+                            <p class="d-none">{{$i=0}}</p>
+                            <td>{{$inter->inscritos}}</td>
+                            <td>
+                              @if($inter->publicado == 1)
+                                Sí
+                              @else
+                                No
+                              @endif
+                            </td>
+                            <td><a href="{{$inter->classroom}}">{{$inter->classroom}}</a></td>
+                            <td>
+                              <form method="POST" action="{{ route('cursos.destroy', $inter->id) }}" >
+                                @csrf
+                                @method('DELETE')
+                                <a href="{{ route('cursos.show', $inter->id) }}"><span class="tag-category badge rounded-pill bg-dark">Ver</span></a>
+                                <a href="{{ route('cursos.edit', $inter->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
+                                <button type="submit" class="border-0"><span class="tag-category badge rounded-pill bg-dark ">Eliminar</span></a>
+                              </form>
+                    
+                            </td>
+                          </tr>
+                          @endif
                         @endforeach
                       </tbody>
 
@@ -81,10 +88,10 @@
                   </div>
               </div>
           </div>
+          <!-- Semestrales -->
           <div class="tab-pane fade" id="pills-programacion" role="tabpanel" aria-labelledby="pills-programacion-tab">
-            <!-- Semestrales -->
             <div class="row">
-                <div class="col">
+                <div class="col  table-responsive">
                   <table class="table table-hover table-striped table-bordered">
                     <thead>
                       <tr>
@@ -143,6 +150,70 @@
                 </div>
             </div>
           </div>
+          <!-- Presenciales -->
+         <div class="tab-pane fade" id="pills-presencial" role="tabpanel" aria-labelledby="pills-presencial-tab">
+          <div class="row">
+              <div class="col  table-responsive">
+                <table class="table table-hover table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Titular</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Inscritos</th>
+                      <th scope="col">No. Asistentes</th>
+                      <th scope="col">Publicado</th>
+                      <th scope="col">Link de Classroom</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($inters as $inter)
+                      @if($inter->semestre == "Presencial")
+                      <tr>
+                        <th scope="row">{{$inter->id}}</th>
+                        <td>{{$inter->nombre}}</td>
+                        @foreach($becarios as $becario)
+                          @if($becario->id == $inter->titular)
+                          <td>{{$becario->fname." ".$becario->lname}}</td>
+                          @endif
+                        @endforeach
+                        <td>{{\Carbon\Carbon::parse($inter->fecha_inicio)->format('j F, Y') }} - {{\Carbon\Carbon::parse($inter->fecha_fin)->format('j F, Y') }}</td>
+                        @foreach($tickets as $ticket)
+                          @if($ticket->curso_id == $inter->id)
+                          <p class="d-none">{{$i=$i+1}}</p>
+                          @endif
+                        @endforeach
+                        <td>{{$i}}</td>
+                        <p class="d-none">{{$i=0}}</p>
+                        <td>{{$inter->inscritos}}</td>
+                        <td>
+                          @if($inter->publicado == 1)
+                            Sí
+                          @else
+                            No
+                          @endif
+                        </td>
+                        <td><a href="{{$inter->classroom}}">{{$inter->classroom}}</a></td>
+                        <td>
+                          <form method="POST" action="{{ route('cursos.destroy', $inter->id) }}" >
+                            @csrf
+                            @method('DELETE')
+                            <a href="{{ route('cursos.show', $inter->id) }}"><span class="tag-category badge rounded-pill bg-dark">Ver</span></a>
+                            <a href="{{ route('cursos.edit', $inter->id) }}"><span class="tag-category badge rounded-pill bg-dark">Editar</span></a>
+                            <button type="submit" class="border-0"><span class="tag-category badge rounded-pill bg-dark ">Eliminar</span></a>
+                          </form>
+                    
+                        </td>
+                      </tr>
+                      @endif
+                    @endforeach
+                  </tbody>
+
+                </table>
+              </div>
+          </div>
+        </div>
       </div>
   </section>
 </main>

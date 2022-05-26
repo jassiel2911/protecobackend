@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Ticket;
 use Illuminate\Support\Facades\Hash;
 class AdminUserController extends Controller
 {
@@ -14,9 +15,11 @@ class AdminUserController extends Controller
      */
     public function index()
     {
+        $bandera_ticket = 0;
+        $tickets = Ticket::all();
         $users = User::all()->where('role','0');
         $i=1;
-        return view('admin.users.index', compact('users','i'));
+        return view('admin.users.index', ['users'=>$users,'i'=>$i,'bandera_ticket'=>$bandera_ticket,'tickets'=>$tickets]);
     }
 
     /**
@@ -75,14 +78,13 @@ class AdminUserController extends Controller
         $user=User::findOrFail($id);
         $user->fname=$request->fname;
         $user->lname=$request->lname;
-        $user->password=Hash::make($request->password);
 
+        // $user->password = bcrypt($request->password);
 
         $user->email=$request->email;
         $user->origin=$request->origin;
         $user->gender=$request->gender;
         $user->role=$request->role;
-
 
         $user->update();
 

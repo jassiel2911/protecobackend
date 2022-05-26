@@ -56,10 +56,10 @@
             <option value="2"  {{ $user->role == '2' ? 'selected' : '' }}>Administrador(a)</option>
           </select>
         </div><br>
-      <div class="col-6">
+      <!-- <div class="col-6">
         <label for="name" class="form-label">Contraseña</label>
-        <input name="password" type="text" placeholder="">
-      </div>
+        <input value="" name="password" type="text" placeholder="">
+      </div> -->
       <!-- Submit -->
       <div class="input-div">
         <input type="submit" class="auth-submit btn btn-rosa" value="Actualizar">

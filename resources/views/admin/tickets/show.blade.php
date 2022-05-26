@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-<main class="container mt-5"> 
+<main class="container" style="padding-top:100px"> 
 
   <a href="{{route('admintickets.index')}}">Regresar</a><br><br>
-  <h1 class="text-rosa">Editar ticket #{{$ticket->id}}</h1>
+  <h1 class="text-rosa">Ver ticket #{{$ticket->id}}</h1>
     <br><br>
     <div class="container">
         <div class="row">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Curso;
 use App\Models\User;
 use App\Models\Ticket;
+use Illuminate\Support\Facades\File;    
 
 use App\Models\TicketItem;
 
@@ -169,6 +170,7 @@ class CursoController extends Controller
         $curso->precio_gral = $request->precio_gral;
 
         if ($request->hasFile('temario')) {
+            File::delete(public_path() . '/temarios/'.$curso->temario); // Delete old flyer
             $temario = $request->temario;
             $nameTemario = "Temario_".$curso->nombre."_".$curso->semestre;
             $ruta = public_path().'/temarios';
@@ -176,7 +178,8 @@ class CursoController extends Controller
             $curso->temario=$nameTemario;
         }
          if ($request->hasFile('imagen')) {
-             $imagen = $request->imagen;
+            File::delete(public_path() . '/img/logos/'.$curso->imagen); // Delete old flyer
+            $imagen = $request->imagen;
             $nameImagen = "Imagen".$curso->nombre;
             $rutaImagen = public_path().'/img/logos/';
             $imagen->move($rutaImagen, $nameImagen);

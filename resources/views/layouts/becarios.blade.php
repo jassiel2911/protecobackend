@@ -41,23 +41,23 @@
           <div class="nav-ico">
               <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/logo_color.png" alt="PROTECO"> -->
               <div class="d-flex">
-                  <img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/logo_negro.png')}}" alt="PROTECO">
-                  <img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/UNAM_logobn1.png')}}" alt="PROTECO">
+                  <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/logo_negro.png')}}" alt="PROTECO"> -->
+                  <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="{{asset('img/icons/personales/UNAM_logobn1.png')}}" alt="PROTECO"> -->
                   <!-- <img class="logo ico-proteco nav-logo nav-logo_color" src="./img/icons/personales/fi_negro.svg" alt="PROTECO"> -->
               </div>
 
-              <img class="logo ico-proteco nav-logo nav-logo_blanco" src="{{asset('img/icons/personales/logo_blanco.png')}}" alt="PROTECO">
+              <a href="{{route('home')}}"><img class="logo ico-proteco nav-logo nav-logo_blanco" src="{{asset('img/icons/personales/logo_blanco.png')}}" alt="PROTECO"></a>
           </div>
           <button class="nav-toggle" aria-label="Abrir menú">
-              <i class="fas fa-bars"></i>
+            <img src="{{asset('img/menu.png')}}" alt="">
           </button>
           <ul class="nav-menu nav-home_menu">
               <li class="nav-menu_item">
                   <a href="{{route('home')}}" class="nav-menu_link nav-link " >Inicio</a>
               </li>
-              <li class="nav-menu_item">
+              <!-- <li class="nav-menu_item">
                   <a href="{{route('cursos.index')}}" class="nav-menu_link nav-link" >Cursos</a>
-              </li>
+              </li> -->
             <!-- desktop -->
             <li class="nav-item dropdown nav-menu_item d-none d-md-block">
                 <div class="dropdown-nav">
@@ -99,7 +99,7 @@
             @endif
                    
             <li class="nav-menu_item d-md-none">
-                <a class="dropdown-item" href="{{ route('logout') }}"
+                <a class="dropdown-item text-white" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                     Cerrar sesión
@@ -111,47 +111,9 @@
           </ul>
       </nav>
   </header>
-  @yield('content')
-
-    <!-- Footer -->
-    <footer class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <img src="img/logo_blanco.png" class="footer-logo img-fluid" alt="">
-                    <img src="img/UNAM.png" class="footer-logo img-fluid unam" alt="">
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <h5 class="">Contacto</h5>
-                    <ul class="list-unstyled text-muted">
-                        <li><a href="#">cursosproteco@gmail.com</a></li>
-                        <li><a href="#">56 1839 4983</a></li>
-                        <li><a href="#">Anexo Facultad Ingeniería Edificio Q "Luis G. Valdés Vallejo Laboratorio Q220, C.U., 04510 Ciudad de México, CDMX</a></li>
-                    </ul>
-                </div>
-                <div class="redes col-lg-4 col-md-12">
-                    <h5 class="">Síguenos</h5>
-                    <div class="d-flex">
-                        <a href="">
-                            <img src="img/fb.png" alt="">
-                        </a>
-                        <a href="">
-                            <img src="img/yb.png" alt="">
-                        </a>
-                        <a href="">
-                            <img src="img/ig.png" alt="">
-                        </a>
-                        <a href="">
-                            <img src="img/tw.png" alt="">
-                        </a>
-                        <a href="">
-                            <img src="img/in.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @yield('content')
+    <footer></footer>
+    
      <!-- Scripts -->
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 

@@ -107,7 +107,9 @@
           <div class="col-4">
             <label for="name" class="form-label">Semestre</label>
             <select class="form-select" name="semestre" id="auth-select">
-                <option value="22-1" selected>22-1</option>
+                <option value="22-2" selected>22-2</option>
+              <option value="Presencial" selected>Presencial</option>
+
             </select>
           </div>
          

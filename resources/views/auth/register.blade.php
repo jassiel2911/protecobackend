@@ -13,7 +13,7 @@
       <!-- col morada -->
       <div class="col-morada col-12 col-md-5 bg-azulfuerte">
         <div class="col-morada_content">
-          <a href="{{route('home')}}"><img class="auth-logo" src="{{asset('img/base/logo-bn.png')}}" alt=""></a>
+          <a href="{{route('home')}}"><img class="auth-logo" src="{{asset('img/logo_blanco.png')}}" alt=""></a>
           <img class="auth-img" src="{{asset('img/base/register.svg')}}" alt="">
         </div>
       </div>
@@ -23,7 +23,7 @@
           <!-- Empieza form -->
         <form class="auth-form container" method="POST" action="{{ route('register') }}">
           @csrf
-          <h1 class="auth_h1 reg_h1 input-div display-6">Regístrate aquí</h1>
+          <h1 class="auth_h1 reg_h1 input-div display-6 text-rosa">Regístrate aquí</h1>
           <!-- Nombre -->
           <div class="input-div row">
             <div class="col-12 col-md-6">

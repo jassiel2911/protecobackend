@@ -23,7 +23,7 @@ class VerCursosController extends Controller
          ->where('publicado', '1');
          $bases = Curso::all()->where('cat', 'Bases de Datos')
          ->where('publicado', '1');
-         $hardware = Curso::all()->where('cat', 'Hardware')
+         $hardware = Curso::all()->where('semestre', 'Presencial')
          ->where('publicado', '1');
          $desarrollo = Curso::all()->where('cat', 'Desarrollo')
          ->where('publicado', '1');

@@ -53,20 +53,28 @@
                                     <p class="d-none">{{$total = $total + 600}}</p>
                                     @endif
                                 @elseif(auth()->user()->origin == "Alumno externo")
-                                    <p style="margin:0; padding-right:8px;" class="text-start">$700</p>
-                                    <p class="d-none">{{$subtotal = $subtotal + 700}}</p>
-                                    @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
-                                    
-                                    @else
-                                    <p class="d-none">{{$total = $total + 700}}</p>
-                                    @endif
-                                @elseif(auth()->user()->origin == "Publico en general")
                                     <p style="margin:0; padding-right:8px;" class="text-start">$800</p>
                                     <p class="d-none">{{$subtotal = $subtotal + 800}}</p>
                                     @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
                                     
                                     @else
                                     <p class="d-none">{{$total = $total + 800}}</p>
+                                    @endif
+                                 @elseif(auth()->user()->origin == "Ex-alumno UNAM")
+                                    <p style="margin:0; padding-right:8px;" class="text-start">$900</p>
+                                    <p class="d-none">{{$subtotal = $subtotal + 900}}</p>
+                                    @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
+                                        
+                                    @else
+                                    <p class="d-none">{{$total = $total + 900}}</p>
+                                    @endif
+                                @elseif(auth()->user()->origin == "Publico en general")
+                                    <p style="margin:0; padding-right:8px;" class="text-start">$1000</p>
+                                    <p class="d-none">{{$subtotal = $subtotal + 1000}}</p>
+                                    @if($loop->index == 2 || $loop->index == 5 || $loop->index == 8)
+                                    
+                                    @else
+                                    <p class="d-none">{{$total = $total + 1000}}</p>
                                     @endif
                                 @endif
                                 <form action="{{route('cart.destroy',$cart->curso_id)}}" method="POST">
@@ -80,9 +88,8 @@
                     <hr>
                     @if(auth()->user()->origin == "Publico en general")
                     <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        <p class="text-end">
-                        <svg class="bi flex-shrink-0" width="40" height="40" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-                        <b>¿Eres comunidad UNAM o estudiante de otra escuela?</b><br>Sube <a class="text-rosa" href="{{route('perfil.index')}}">aquí</a> tu credencial o comprobante y recibe un descuento</p>
+                        <p><b>¿Eres comunidad UNAM(alumno, trabajador o profesor), estudiante de otra escuela o ex-alumno UNAM?</b></p>
+                        <p>Sube <a class="text-rosa" href="{{route('perfil.index')}}">aquí</a> tu credencial o comprobante y recibe un descuento</p>
                     </div>
                     @endif
                     <p class="text-end"><b>Subtotal: </b> ${{$subtotal}}</p>
@@ -127,8 +134,8 @@
                 <img class="img-fluid" src="img/Software code testing-bro.png" alt="">
             </div>
             <div class="home-landing_text">
-                <h1 class="landing_text_titulo1">Programa de <span><b>Tecnología</b></span> en Cómputo</h1>
-                <p class="landing_text_p">A través de nuestros cursos, talleres y asesorías, te ayudamos a crecer en el mundo de la computación.</p>
+                <h1 class="landing_text_titulo1">Aprende <span>tecnología</span> con nosotros</h1>
+                <p class="landing_text_p">Inscríbete a nuestro cursos y complementa tu formación</p>
                 <div class="landing_text_botones">
                     <a href="#cursos-proteco" class="btn btn-rosa landing-btn">Ver cursos</a>
                 </div>
@@ -172,80 +179,170 @@
     
     
     <!-- Cursos-->
-    <section class="home-cursos" id="cursos-proteco">
-        <div class="container">
-            <h2 class="home-subtitulo">Próximos cursos</h2>
-            <p>*En línea</p>
+    <section class="home-cursos bg-transparent" id="cursos-proteco">
+        
+        <!-- Presenciales -->
+         <div class="container my-5">
+            <h2 class="home-subtitulo">Cursos presenciales</h2>
+            <p>Se impartirán en el <a title="Ver en Google Maps" target="_blank" href="https://goo.gl/maps/GtRcMbsqfG8xqCRq8">Anexo de la Facultad de Ingeniería, CU.</a></p>
             <div class="alert-info">
             </div>
         
             <!-- Cursos -->
             <div class="home-cursos-cards mt-seccion">
                 @foreach($cursos as $curso)
-                <div class="card shadow-lg">
-                        <div class="card-body">
-                            <div class="card-img">
-                                <img src="{{asset('/img/logos/'.$curso->imagen)}}" alt="">
-                            </div>
-                            <div class="card-text">
-                                <h4 class="card-text_titulo">{{$curso->nombre}}</h4>
-                                <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
-                                <p class="card-text_p">
-                                    <span class="material-symbols-outlined">calendar_month</span>
-                                    {{\Carbon\Carbon::parse($curso->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($curso->fecha_fin)->translatedFormat('j F') }}
-                                </p>
-                                <p class="card-text_p">
-                                    <span class="material-symbols-outlined">schedule</span>
-                                    {{Carbon\Carbon::parse($curso->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($curso->hora_fin)->format('g:i a')}}
-                                </p>
-                                <hr>
+                    @if($curso->semestre == "Presencial") 
+                     <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$curso->imagen)}}" alt="">
+                                </div>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$curso->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($curso->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($curso->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($curso->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($curso->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
                                
-                            </div>
-                             <div class="card-links">
-                                <div class="card-links-botones">
-                                    <a target="_blank" class="link-temario" href="{{asset("temarios/$curso->temario")}}">Ver temario</a>
                                 </div>
-                                <div class="d-flex">
-                                    <form class="d-flex" action="{{route('cart.store')}}" method="POST">
-                                    @csrf
-                                        <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-                                        <input type="hidden" name="curso_id" value="{{$curso->id}}">
-                                        <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
-                                            <span class="material-symbols-outlined">add_shopping_cart</span>
-                                        </button>
-                                        <span class="flip d-block" title="Ver detalles">
-                                            <span class="material-symbols-outlined">more_vert</span>
-                                        </span>    
-                                        <!-- atras -->
-                                        <div class="panel">
-                                            <p class="panel-p">
-                                                <span>Antecedentes:</span> Ninguno  
-                                            </p>
-                                            <p class="panel-p">
-                                                <span>Equipo:</span> Computadora con acceso a internet  
-                                            </p>
-                                            <p class="panel-p">
-                                                <span>Cupo:</span> 20  
-                                            </p>
-                                            <h5 class="card-list_precios text-white">Precios</h5>
-                                            <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
-                                                <span >Comunidad UNAM:</span> $600  
-                                            </p>
-                                            <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
-                                                <span >Alumnos externos:</span> $700  
-                                            </p>
-                                            <p class="panel-p">
-                                                <span>Publico general:</span> $800  
-                                            </p>
+                                 <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$curso->temario")}}">Ver temario</a>
+                                    </div>
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$curso->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                                            </button>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
 
-                                            </div>
-                                    </form>
+                                                </div>
+                                        </form>
+                                
+                                    </div>
                                 
                                 </div>
-                                
                             </div>
-                        </div>
-                </div>    
+                    </div>   
+                    @endif
+                @endforeach
+            </div>
+            <!-- <a class="d-block text-center text-rosa btn btn-rosa btn-min" href="{{route('ver-cursos.index')}}">Ver todos</a> -->
+        </div>
+
+        <!--  En línea -->
+        <div class="container">
+            <h2 class="home-subtitulo">Cursos en línea</h2>
+            <div class="alert-info">
+            </div>
+
+            <!-- Cursos -->
+            <div class="home-cursos-cards mt-seccion">
+                @foreach($cursos as $curso)
+                    @if($curso->semestre !="Presencial") 
+                    <div class="card shadow-lg">
+                            <div class="card-body">
+                                <div class="card-img">
+                                    <img src="{{asset('/img/logos/'.$curso->imagen)}}" alt="">
+                                </div>
+                                <div class="card-text">
+                                    <h4 class="card-text_titulo">{{$curso->nombre}}</h4>
+                                    <div class="d-none">{{setlocale(LC_ALL, 'es_ES')}}</div>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">calendar_month</span>
+                                        {{\Carbon\Carbon::parse($curso->fecha_inicio)->translatedFormat('j F') }} -  {{\Carbon\Carbon::parse($curso->fecha_fin)->translatedFormat('j F') }}
+                                    </p>
+                                    <p class="card-text_p">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        {{Carbon\Carbon::parse($curso->hora_inicio)->format('g:i a')}} - {{Carbon\Carbon::parse($curso->hora_fin)->format('g:i a')}}
+                                    </p>
+                                    <hr>
+                                
+                                </div>
+                                <div class="card-links">
+                                    <div class="card-links-botones">
+                                        <a target="_blank" class="link-temario" href="{{asset("temarios/$curso->temario")}}">Ver temario</a>
+                                    </div>
+                                    <div class="d-flex">
+                                        <form class="d-flex" action="{{route('cart.store')}}" method="POST">
+                                        @csrf
+                                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+                                            <input type="hidden" name="curso_id" value="{{$curso->id}}">
+                                            <button type="submit" class="ml-4 bg-transparent border-0" title="Añadir al carrito">
+                                                <span class="material-symbols-outlined">add_shopping_cart</span>
+                                            </button>
+                                            <span class="flip d-block" title="Ver detalles">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </span>    
+                                            <!-- atras -->
+                                            <div class="panel bg-light text-dark">
+                                                <p class="panel-p">
+                                                    <span>Antecedentes:</span> Ninguno  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Cupo:</span> 20  
+                                                </p>
+                                                <h5 class="card-list_precios">Precios</h5>
+                                                <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
+                                                    <span>Comunidad UNAM:</span> $600  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Estudiantes externos:</span> $800  
+                                                </p>
+                                                <p  title="Estudiantes de escuelas externas a la UNAM" class="panel-p">
+                                                    <span >Ex alumnos:</span> $900  
+                                                </p>
+                                                <p class="panel-p">
+                                                    <span>Publico general:</span> $1000  
+                                                </p>
+
+                                                </div>
+                                        </form>
+                                    
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                    </div>    
+                    @endif
                 @endforeach
             </div>
             <!-- <a class="d-block text-center text-rosa btn btn-rosa btn-min" href="{{route('ver-cursos.index')}}">Ver todos</a> -->
@@ -269,7 +366,7 @@
                  </button>
                 <div class="collapse" id="collapse1">
                   <div class="card card-body">
-                        <p>Por el momento todos nuestros curso son en línea a través de Zoom. <img src="{{asset('img/zoom.svg')}}" alt=""></p>
+                        <p>Tenemos cursos en línea a través de Zoom <img src="{{asset('img/zoom.svg')}}" alt=""> y por el momento solo Python y Android modalidad presencial que se imparten en el Anexo de Ingeniería, CU.</p>
 
                   </div>
                 </div>
@@ -308,7 +405,7 @@
                  </button>
                 <div class="collapse" id="collapse4">
                   <div class="card card-body">
-                    <p>¿No pudiste asistir a la clase? No te preocupes, todas las sesiones se graban para que la revises cuando tu quieras.</p>
+                    <p><b>¿No pudiste asistir a la clase?</b> No te preocupes, todas las sesiones se graban para que la revises cuando tu quieras.</p>
 
                   </div>
                 </div>
@@ -317,7 +414,7 @@
         </div>
     </section>
 
-    <section class="talleres">
+    <section class="talleres" style="margin:0">
         <h2 class="home-subtitulo">Talleres gratuitos</h2>
         <p class="text-center">Cada semana ofrecemos talleres de 2 horas completamente gratis. ¡No te los pierdas!</p>
         <div id="carouselExampleIndicators" class="carousel carousel-fade" data-bs-ride="carousel">

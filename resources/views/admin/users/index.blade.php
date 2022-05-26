@@ -29,10 +29,19 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->origin}}</td>
                 <td>
-                  <!-- <img class="img-fluid" src="{{asset("probatorios/$user->probatorio")}}"> -->
-                  <a target="_blank" href="{{asset("probatorios/$user->probatorio")}}">Ver</a>
+                  <iframe src="{{asset("probatorios/$user->probatorio")}}" width="100%" height="500px">
+                  </iframe>
+                  <a target="_blank" href="{{asset("probatorios/$user->probatorio")}}">Ver archivo</a>
                 </td>
-                <td>NA</td>
+                <td>
+                  @foreach($tickets as $ticket)
+                    @if($ticket->user_id == auth()->user()->id)
+                      <p class="d-none">{{$bandera_ticket = $bandera_ticket+1}}</p>
+                      {{$ticket->id}}
+                    @endif
+                  @endforeach
+                  {{$bandera_ticket}}
+                </td>
                 <td>
                   <!-- <a href="admin-user-show.html"><span class="tag-category badge rounded-pill bg-dark">Ver</span></a> -->
                   <form action="{{route('admin.destroy', $user->id)}}" method="POST">
@@ -42,11 +51,6 @@
                     <button style="background-color:transparent; border:none;" type="submit"><span class="tag-category badge rounded-pill bg-dark">Eliminar</span></ style="background-color:transparent; border:none;">
                   </form>
                 </td>
-              </tr>
-              <tr>
-                <div class="collapse" id="{{$user->email}}">
-                  <p>Hola {{$user->name}}</p>
-                </div>
               </tr>
               @endforeach
             </tbody>
