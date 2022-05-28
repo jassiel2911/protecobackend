@@ -20,10 +20,11 @@
           </div>
         </div>
         <hr>
-        <p>Para descargar la ficha de pago ve a la sección de  
+        <p>Las fichas de pago aún no están disponibles, te notificaremos por e-mail cuando ya puedas generarla. :)</p>
+        <!-- <p>Para descargar la ficha de pago ve a la sección de  
           <a style="text-decoration: underline;" class="text-rosa" href="{{route('perfil.index')}}">Mi perfil.</a>
           y da click en "Generar ficha".
-      </p>
+      </p> -->
         <!-- <p>Las fichas de pago estarán disponibles el día Lunes 10 de enero y las podrás descargar desde la sección de <a style="text-decoration: underline;" class="text-rosa" href="{{route('perfil.index')}}">Mi perfil.</a></p> -->
         <h5 class="text-rosa text-center">¡Gracias por tu confianza!</h5>
         <!-- <p>Descarga las fichas referenciadas con las que podrás hacer el pago de tus cursos, recuerda que puede ser por transferencia o directamente en un cajero BBVA. <b>¿Tienes dudas? </b><a style="text-decoration: underline;" href="" class="text-rosa">Visita esta infografía</a></p>

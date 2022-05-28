@@ -176,11 +176,29 @@
 				<div><img class="padding-logo" src="./img/icons/carousel/db.svg" alt="Bases de Datos"  title="Bases de Datos"></div>
 			</div>
 	</div>
-    
+    <style>
+        .tres{
+          font-size:3rem;
+          color:white;
+          animation-name:glow;
+          animation-duration:1s;
+          animation-iteration-count:infinite;
+          animation-direction:alternate;
+        }
+
+        @keyframes glow{
+          from{text-shadow:0px 0px 5px #0a043c,0px 0px 5px #0a043c;}
+          to{text-shadow:0px 0px 20px #0a043c,0px 0px 20px #0a043c;}
+        }
+    </style>
+   
     
     <!-- Cursos-->
-    <section class="home-cursos bg-transparent" id="cursos-proteco">
-        
+    <section class="home-cursos bg-transparent" id="cursos-proteco" sty>
+         <div class="container  text-center">
+            <h1 class="tres">3x2</h1>
+            <h5>Aprovecha la promoción. Válida en todos los cursos!!</h5>
+        </div>
         <!-- Presenciales -->
          <div class="container my-5">
             <h2 class="home-subtitulo">Cursos presenciales</h2>
