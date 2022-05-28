@@ -183,13 +183,13 @@
                                             <!-- atras -->
                                             <div class="panel bg-light text-dark">
                                                 <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
+                                                    <span>Antecedentes:</span> {{$todo->antecedentes}}    
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                                                                        <span>Equipo:</span> {{$todo->equipo}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
+                                                    <span>Cupo:</span> {{$todo->cupo}}   
                                                 </p>
                                                 <h5 class="card-list_precios">Precios</h5>
                                                 <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
@@ -258,13 +258,13 @@
                                             <!-- atras -->
                                             <div class="panel bg-light text-dark">
                                                 <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
+                                                    <span>Antecedentes:</span> {{$progra->antecedentes}}    
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                                                                        <span>Equipo:</span> {{$progra->equipo}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
+                                                    <span>Cupo:</span> {{$progra->cupo}}   
                                                 </p>
                                                 <h5 class="card-list_precios">Precios</h5>
                                                 <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
@@ -333,13 +333,13 @@
                                             <!-- atras -->
                                             <div class="panel bg-light text-dark">
                                                 <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
+                                                    <span>Antecedentes:</span> {{$base->antecedentes}}    
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                                                                        <span>Equipo:</span> {{$base->equipo}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
+                                                    <span>Cupo:</span> {{$base->cupo}}   
                                                 </p>
                                                 <h5 class="card-list_precios">Precios</h5>
                                                 <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
@@ -408,13 +408,13 @@
                                             <!-- atras -->
                                             <div class="panel bg-light text-dark">
                                                 <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
+                                                    <span>Antecedentes:</span> {{$des->antecedentes}}    
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                                                                        <span>Equipo:</span> {{$des->equipo}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
+                                                    <span>Cupo:</span> {{$des->cupo}}   
                                                 </p>
                                                 <h5 class="card-list_precios">Precios</h5>
                                                 <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
@@ -483,13 +483,13 @@
                                             <!-- atras -->
                                             <div class="panel bg-light text-dark">
                                                 <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
+                                                    <span>Antecedentes:</span> {{$otro->antecedentes}}    
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                   <span>Equipo:</span> {{$otro->equipo}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
+                                                    <span>Cupo:</span> {{$otro->cupo}}   
                                                 </p>
                                                 <h5 class="card-list_precios">Precios</h5>
                                                 <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
@@ -558,13 +558,13 @@
                                             <!-- atras -->
                                             <div class="panel bg-light text-dark">
                                                 <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
+                                                    <span>Antecedentes:</span> {{$curso->antecedentes}}    
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                                                                        <span>Equipo:</span> {{$curso->equipo}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
+                                                    <span>Cupo:</span> {{$curso->cupo}}   
                                                 </p>
                                                 <h5 class="card-list_precios">Precios</h5>
                                                 <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
@@ -633,13 +633,13 @@
                                             <!-- atras -->
                                             <div class="panel bg-light text-dark">
                                                 <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
+                                                    <span>Antecedentes:</span> {{$curso->antecedentes}}    
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                                                                        <span>Equipo:</span> {{$curso->equipo}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
+                                                    <span>Cupo:</span> {{$curso->cupo}}   
                                                 </p>
                                                 <h5 class="card-list_precios">Precios</h5>
                                                 <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
@@ -708,13 +708,13 @@
                                             <!-- atras -->
                                             <div class="panel bg-light text-dark">
                                                 <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
+                                                    <span>Antecedentes:</span> {{$hard->antecedentes}}    
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                                                                        <span>Equipo:</span> {{$hard->equipo}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
+                                                    <span>Cupo:</span> {{$hard->cupo}}   
                                                 </p>
                                                 <h5 class="card-list_precios">Precios</h5>
                                                 <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
