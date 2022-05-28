@@ -229,13 +229,13 @@
                                             <!-- atras -->
                                             <div class="panel bg-light text-dark">
                                                 <p class="panel-p">
-                                                    <span>Antecedentes:</span> Ninguno  
+                                                    <span>Antecedentes:</span> {{$curso->antecedentes}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Equipo:</span> Computadora con acceso a internet  
+                                                    <span>Equipo:</span> {{$curso->equipo}}  
                                                 </p>
                                                 <p class="panel-p">
-                                                    <span>Cupo:</span> 20  
+                                                    <span>Cupo:</span> {{$curso->cupo}}  
                                                 </p>
                                                 <h5 class="card-list_precios">Precios</h5>
                                                 <p title="Alumnos, ex-alumnos y trabajadores" class="panel-p">
