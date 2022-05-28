@@ -477,6 +477,7 @@
       background-color: var(--azulfuerte);
       padding: 1.5rem;
       color: var(--blanco);
+      overflow-y: scroll;
   }
   .panel-p{
     margin-bottom: 8px;
