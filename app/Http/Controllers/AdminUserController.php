@@ -79,7 +79,7 @@ class AdminUserController extends Controller
         $user->fname=$request->fname;
         $user->lname=$request->lname;
 
-        // $user->password = bcrypt($request->password);
+        $user->password = bcrypt($request->password);
 
         $user->email=$request->email;
         $user->origin=$request->origin;
