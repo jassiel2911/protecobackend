@@ -432,7 +432,7 @@
         </div>
     </section>
 
-    <section class="talleres" style="margin:0">
+    <!-- <section class="talleres" style="margin:0">
         <h2 class="home-subtitulo">Talleres gratuitos</h2>
         <p class="text-center">Cada semana ofrecemos talleres de 2 horas completamente gratis. ¡No te los pierdas!</p>
         <div id="carouselExampleIndicators" class="carousel carousel-fade" data-bs-ride="carousel">
@@ -470,7 +470,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-    </section>
+    </section> -->
 
     
 
