@@ -122,8 +122,8 @@
                                         @method('PATCH')
                                         @csrf
                                         <input type="hidden" name="total" value="{{$ticket->total}}">
-                                        <!-- <p>Las fichas de pago aún no están disponibles, te notificaremos por e-mail cuando ya puedas generarla. :)</p> -->
-                                        <button type="submit" class="btn btn-rosa text-center text-white bg-rosa">Generar ficha</button>
+                                        <p>Las fichas de pago aún no están disponibles, te notificaremos por e-mail cuando ya puedas generarla. :)</p>
+                                        <!-- <button type="submit" class="btn btn-rosa text-center text-white bg-rosa">Generar ficha</button> -->
                                     </form>
                                 @endif
 
