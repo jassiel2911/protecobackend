@@ -29,15 +29,15 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->origin}}</td>
                 <td>
-                  <iframe src="{{asset("probatorios/$user->probatorio")}}" width="100%" height="500px">
-                  </iframe>
+                  <!-- <iframe src="{{asset("probatorios/$user->probatorio")}}" width="100%" height="500px">
+                  </iframe> -->
                   <a target="_blank" href="{{asset("probatorios/$user->probatorio")}}">Ver archivo</a>
                 </td>
                 <td>
                   @foreach($tickets as $ticket)
                     @if($ticket->user_id == auth()->user()->id)
                       <p class="d-none">{{$bandera_ticket = $bandera_ticket+1}}</p>
-                      {{$ticket->id}}
+                      <p class="d-none"> {{$ticket->id}}</p>
                     @endif
                   @endforeach
                   {{$bandera_ticket}}

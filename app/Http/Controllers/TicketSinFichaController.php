@@ -132,7 +132,6 @@ class TicketSinFichaController extends Controller
             $ficha->ticket_id = $ticket->id;
             $ficha->save();
             $ticket->status = "Pendiente de pago";
-
             // return redirect()->route('perfil.index')->with('ficha', 'q pez');
         }
         else if($total==800){
