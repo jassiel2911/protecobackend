@@ -21,7 +21,14 @@ use App\Http\Controllers\FichasController;
 use App\Http\Controllers\FichasMontoController;
 use App\Http\Controllers\ImportFichaController;
 use App\Http\Controllers\AdminComprobantesController;
-
+use App\Http\Controllers\AppTallerController;
+use App\Http\Controllers\AppCursoController;
+use App\Http\Controllers\AppHerramientaController;
+use App\Http\Controllers\AppMaterialController;
+use App\Http\Controllers\AppTemaController;
+use App\Http\Controllers\AppVideoController;
+use App\Http\Controllers\AppAsesoriaController;
+use App\Http\Controllers\AppConvocatoriaController;
 
 
 
@@ -89,6 +96,15 @@ Route::resource('cart-cursos', CartCursosController::class)->middleware('auth');
 
 Route::resource('ticket-item', TicketItemController::class);
 Route::resource('admincomprobantes', AdminComprobantesController::class)->middleware('admin');
+
+Route::resource('talleres', AppTallerController::class);
+Route::resource('cursosApp', AppCursoController::class);
+Route::resource('herramientas', AppHerramientaController::class);
+Route::resource('materiales', AppMaterialController::class);
+Route::resource('temas',AppTemaController::class);
+Route::resource('videos',AppVideoController::class);
+Route::resource('asesorias', AppAsesoriaController::class);
+Route::resource('convocatorias', AppConvocatoriaController::class);
 
 Route::get('/admins/comprobantes/comprobanteappbbva', [App\Http\Controllers\AdminComprobantesController::class, 'comprobanteappbbva'])->name('comprobanteappbbva')->middleware('admin');
 Route::get('/admins/comprobantes/comprobanteotrobanco', [App\Http\Controllers\AdminComprobantesController::class, 'comprobanteotrobanco'])->name('comprobanteotrobanco')->middleware('admin');
