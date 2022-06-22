@@ -168,8 +168,8 @@ class TicketSinFichaController extends Controller
 
         }
         else if($total==1200){
-             $fichas = Ficha::where('monto', 1200)
-             ->where('ticket_id', NULL)->take(1)->get();
+             $fichas = Ficha::where('monto', 600)
+             ->where('ticket_id', NULL)->take(2)->get();
            
             // if($fichas==NULL){
             //      $fichas = Ficha::where('monto', 1200)
