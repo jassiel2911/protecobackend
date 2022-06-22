@@ -229,8 +229,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
+    'base_uri' => env('BASE_URI', 'https://api-app-proteco.herokuapp.com'),
+    'http_client' => env('HTTP_CLIENT', 'HttpClient'),
 
 ];
